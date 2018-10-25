@@ -1,69 +1,31 @@
 {
   "name": "taskmanager",
-  "productName": "taskmanager",
-  "version": "1.0.0",
-  "description": "My Electron application description",
-  "main": "src/index.js",
-  "scripts": {
-    "start": "electron-forge start",
-    "package": "electron-forge package",
-    "make": "electron-forge make",
-    "publish": "electron-forge publish",
-    "lint": "eslint src --color"
-  },
-  "keywords": [],
-  "author": "JaneHsieh",
-  "license": "MIT",
-  "config": {
-    "forge": {
-      "make_targets": {
-        "win32": [
-          "squirrel"
-        ],
-        "darwin": [
-          "zip"
-        ],
-        "linux": [
-          "deb",
-          "rpm"
-        ]
-      },
-      "electronPackagerConfig": {
-        "packageManager": "npm"
-      },
-      "electronWinstallerConfig": {
-        "name": "taskmanager"
-      },
-      "electronInstallerDebian": {},
-      "electronInstallerRedhat": {},
-      "github_repository": {
-        "owner": "",
-        "name": ""
-      },
-      "windowsStoreConfig": {
-        "packageName": "",
-        "name": "taskmanager"
-      }
-    }
-  },
+  "version": "0.1.0",
+  "private": true,
   "dependencies": {
-    "electron-compile": "^6.4.3",
-    "electron-squirrel-startup": "^1.0.0",
-    "react": "^16.5.2",
-    "react-dom": "^16.5.2",
-    "react-hot-loader": "^4.3.11"
+    "react": "^16.6.0",
+    "react-dom": "^16.6.0",
+    "react-scripts": "2.0.5"
   },
+  "main": "src/electron-start.js",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "electron": "electron ."
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
   "devDependencies": {
-    "babel-plugin-transform-async-to-generator": "^6.24.1",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-react": "^6.24.1",
-    "electron-devtools-installer": "^2.2.4",
-    "electron-forge": "^5.2.2",
-    "electron-prebuilt-compile": "3.0.2",
-    "eslint": "^5.7.0",
-    "eslint-config-airbnb": "^15.1.0",
-    "eslint-plugin-import": "^2.14.0",
-    "eslint-plugin-jsx-a11y": "^5.1.1",
-    "eslint-plugin-react": "^7.11.1"
+    "electron": "^3.0.6",
+    "foreman": "^3.0.1"
   }
 }
