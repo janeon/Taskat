@@ -6,7 +6,7 @@ export default class Frame extends Component {
 
     render() {
         return (
-            <View />
+            <View tasks={this.props.tasks}/>
         );
     }
 

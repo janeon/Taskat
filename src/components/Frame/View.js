@@ -4,10 +4,10 @@ import TaskList from '../TaskList';
 import TaskDisplay from '../TaskDisplay';
 import './Frame.css';
 
-const View = () => (
+const View = ({tasks}) => (
 
     <div id="frame"> 
-        <TaskList></TaskList>
+        <TaskList tasks={tasks}></TaskList>
         <TaskDisplay></TaskDisplay>
     </div>
 

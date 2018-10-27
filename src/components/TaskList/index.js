@@ -4,16 +4,11 @@ import View from "./View"
 
 class TaskList extends Component {
 
-    constructor(props) {
-        super(props);
-        
-    }
-
     render() { 
         // convert task objects to task elements (should this be its own function?)
-        var taskList = [{text: "sleep"}, {text: "eat"}, {text: "wake up "}];
+        var taskList = this.props.tasks
         var taskElementList = taskList.map((el) => {
-            return <div className="task">{el.text}</div>
+            return <div className="task" key={el.key}>{el.title}</div>
         });
 
         return (

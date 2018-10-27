@@ -22,7 +22,7 @@ function createWindow() {
     mainWindow = new BrowserWindow({width: 800, height: 600});
 
     // If we have set the ELECTRON_START_URL (meaning we ran 'npm run dev')
-    // then use the local host, otherwise navigate to index.html
+    // then use the local host, otherwise navigate to the index.html
     const startUrl = process.env.ELECTRON_START_URL || url.format({
         pathname: path.join(__dirname, '/../../build/index.html'),
         protocol: 'file:',
