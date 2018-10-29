@@ -6,9 +6,9 @@ import React from 'react';
 import "./TaskList.css";
 
 // 'taskElementList' is a list of html elements that represent tasks. 
-const View = ({taskElementList}) => (
+const View = ({taskTitleElementList}) => (
     <div id="tasklist_container">
-            {taskElementList}
+            {taskTitleElementList}
     </div>
 );
 
