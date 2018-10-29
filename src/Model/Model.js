@@ -1,6 +1,6 @@
 /*
- * This tracks state changes. 
- */ 
+ * This tracks state changes.
+ */
 
 import ObservableData from './ObservableData';
 // just for testing :)
@@ -23,18 +23,19 @@ class Model {
 
         // TODO -> read from DB on initial load  
         // THIS IS TEMPORARY
+
         this.allTasks.updateData(getTestTaskListSmall());
     }
 
     // TODO -> Destructor (save changes to the file)
 
-    // returns all the tasks that exist. 
+    // returns all the tasks that exist.
     getAllTasks() {
         // return this.allTasks;
         // dummy data for testing purposes
         return this.allTasks.data;
     }
-    // TODO -> maybe the TaskList should just subscribe, and circumvent this little thing? 
+    // TODO -> maybe the TaskList should just subscribe, and circumvent this little thing?
 
     getAllTaskTitles() {
         return this.allTasks.data.map((task) => {
@@ -73,3 +74,4 @@ export default Model;
  * 
  * Maybe something more functional in design? - but I don't really want to pass state all over the place...
  */
+

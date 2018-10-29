@@ -15,7 +15,7 @@ class App extends Component {
         <Frame model={this.model}/>
       </div>
     );
-    
+
   }
 
 }
