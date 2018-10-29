@@ -10,10 +10,9 @@ class App extends Component {
   }
 
   render() {
-    this.allTasks = this.model.getAllTasks();
     return (
       <div className="App">
-        <Frame tasks={this.allTasks}/>
+        <Frame model={this.model}/>
       </div>
     );
     

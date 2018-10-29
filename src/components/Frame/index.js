@@ -1,13 +1,7 @@
 // the definition of the Frame object
-import React, { Component }  from 'react';
+import React from 'react';
 import View from './View';
 
-export default class Frame extends Component {
-
-    render() {
-        return (
-            <View tasks={this.props.tasks}/>
-        );
-    }
-
+export default function Frame(props) {
+    return <View model={props.model}/>;
 }

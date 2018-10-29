@@ -4,13 +4,11 @@ import TaskList from '../TaskList';
 import TaskDisplay from '../TaskDisplay';
 import './Frame.css';
 
-const View = ({tasks}) => (
-
+const View = ({model}) => (
     <div id="frame"> 
-        <TaskList tasks={tasks}></TaskList>
+        <TaskList model={model}></TaskList>
         <TaskDisplay></TaskDisplay>
     </div>
-
 );
 
 export default View;
