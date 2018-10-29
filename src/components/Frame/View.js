@@ -6,7 +6,8 @@ import './Frame.css';
 
 const View = ({tasks}) => (
 
-    <div id="frame"> 
+    <div id="frame">
+
         <TaskList tasks={tasks}></TaskList>
         <TaskDisplay></TaskDisplay>
     </div>

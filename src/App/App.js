@@ -14,9 +14,10 @@ class App extends Component {
     return (
       <div className="App">
         <Frame tasks={this.allTasks}/>
+
       </div>
     );
-    
+
   }
 
 }
