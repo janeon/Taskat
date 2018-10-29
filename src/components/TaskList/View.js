@@ -1,7 +1,6 @@
 /* 
- * This is defines how we want to display the tasks. 
+ * This defines how we want to display the tasks. 
  */
-
 import React from 'react';
 import "./TaskList.css";
 
