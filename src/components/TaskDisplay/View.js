@@ -4,6 +4,15 @@ import TabDisplay from '../TabDisplay';
 import './TaskDisplay.css';
 import BigCalendar from 'react-big-calendar-like-google';
 import 'react-big-calendar/lib/css/react-big-calendar.css'
+// https://github.com/intljusticemission/react-big-calendar/issues/234
+/* The current version of big calendar implemented here is the most basic, the package also allows:
+- event creation
+- Localization
+- show more via popup
+- drag and drop
+*see more here http://intljusticemission.github.io/react-big-calendar/examples/index.html
+Q&A about big-calendar availale on Discord https://discordapp.com/channels/102860784329052160/424364360731852800
+*/
 import moment from 'moment'
 
 
