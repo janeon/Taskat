@@ -16,14 +16,14 @@ Q&A about big-calendar availale on Discord https://discordapp.com/channels/10286
 import moment from 'moment'
 
 /* 
- * TODO -> move this into its own component
+ * TODO -> move Calendar into its own component
  */
 
 const localizer = BigCalendar.momentLocalizer(moment)
 let allViews = Object.keys(BigCalendar.Views).map(k => BigCalendar.Views[k])
 
 const View = props => {
-  const myEventsList = [
+  /*const myEventsList = [
     {
       allDay: false,
       end: new Date('December 10, 2017 11:13:00'),
@@ -36,20 +36,24 @@ const View = props => {
       start: new Date('December 09, 2017 11:13:00'),
       title: 'All Day Event',
     },
-  ];
+  ]; */
   return (
     <div id="taskdisplay">
-    <TabList />
+      <TabList />
       <TabDisplay />
-        <div className="rbc-calendar">
+        
+    </div>)}
+
+export default View;
+
+/*
+<div className="rbc-calendar">
         <BigCalendar
         events={myEventsList}
         views={allViews}
         startAccessor='startDate'
         endAccessor='endDate'
         localizer='localizer'
-        />
+        /> 
         </div>
-    </div>)}
-
-export default View;
+*/
