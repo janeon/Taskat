@@ -21,7 +21,6 @@ describe('TaskList', () => {
     it('should update display when the model\'s task list changes', () => {
         const model = new Model();
         model.allTasks.updateData(getTestTaskListSmall());
-        console.log("entering test...");
         const tl = mount(<TaskList model={model}/>);
 
         // removing one of the tasks
@@ -49,7 +48,7 @@ describe('TaskList', () => {
 
         tl.unmount();
 
-        
+
 
         expect(model.allTasks.subscribers.length).toEqual(0);
     });

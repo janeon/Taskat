@@ -29,7 +29,6 @@ class ObservableData {
         this.subscribers = this.subscribers.filter((value) => {
             return value !== observer;
         });
-        console.log("unsubscribing" + observer);
     }
 
     updateData(newData) {

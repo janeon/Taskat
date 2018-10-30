@@ -18,6 +18,10 @@ class TaskList extends Component {
         this.onChange.bind(this);
     }
 
+    /*
+     * This is a lifecycle method from React.Component that gets called after this 
+     * component it loaded into the DOM.  
+     */
     componentDidMount() {
         // The TaskList wants to know when the list of tasks changes.
         this.model.allTasks.subscribe(this);
@@ -25,12 +29,13 @@ class TaskList extends Component {
         this.onChange();
     }
 
+    // Another lifecycle method, that gets called before it is removed from the DOM. 
     componentWillUnmount() {
         this.model.allTasks.unsubscribe(this);
     }
 
-    // ignore the data that gets passed in...
-    onChange() {
+    // I think I will change this to subscribe exlusively to the title list.  
+    onChange(newData) {
         this.setState((state) => {
             state.taskTitles = this.model.getAllTaskTitles();
             return state;

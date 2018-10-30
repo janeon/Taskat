@@ -1,9 +1,11 @@
 import React from 'react';
-
-// This begins as an empty container, but we will have a function that fills it 
-// on tab clicks.  
+import ExTab from '../ExTab/';
+import Calendar from '../Calendar'
+// This begins as an empty container, but we will have a function that fills it
+// on tab clicks.
 const View = ({}) => (
     <div className="displayContainer">
+        <ExTab />
         
     </div>
 );
