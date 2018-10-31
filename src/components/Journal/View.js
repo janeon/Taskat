@@ -2,8 +2,8 @@ import React from 'react';
 
 
 const View = ({}) => (
-    <div className="displayContainer">
-        
+    <div className="Journal">
+        {title}
     </div>
 );
 
