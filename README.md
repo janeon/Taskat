@@ -17,12 +17,10 @@ THE TREE... (structure of the html elements)
                                 -
                                 -> (whatever tab gets clicked.  Ex. <Calendar />, <Journal />, etc.)
 
-    RENDERING FOR DEBUGGING:
-        To render your component for debuggging/testing (see ExTab for an example component) you can go into TabDisplay (the component 
-that renders whichever tab gets clicked) and add <YourComponent /> inside the ".displayContainer" div.  If you want to pass it test 
-arguments, you can call it with  <YourComponent testData={reference to some test data}> and then in your constructor, you can access 
-this data with 'props.testData'.  
 
+    RENDERING FOR DEBUGGING:
+        To render your component for debuggging/testing (see ExTab for an example component) you can go into TabDisplay (the component
+    and replace <ExTab /> with your component (and pass it any dummy data you will need). 
 
 /---------------------------------- MODEL ------------------------------------/
 
@@ -53,8 +51,8 @@ this data with 'props.testData'.
 
                 *** if you think this is bonkers, slack me, I am happy to make changes to try and make it easier :) ***
                         
-            *** For now, just pretend that you have access to all of the data from the currentTask that has to do with your individual
-        component, passed in through the 'props' argument in the constructor.  ***
+                *** For now, just pretend that you have access to all of the data from the currentTask that has to do with your individual
+            component, passed in through the 'props' argument in the constructor.  ***
 
 /------------------------------- OTHER STUFF? -------------------------------/
 
