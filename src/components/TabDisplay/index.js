@@ -4,7 +4,7 @@ import View from './View';
 class TabDisplay extends Component {
 
     render() {
-        return <View />;
+      return <View />;
     }
 
 }
