@@ -30,6 +30,12 @@ const View = props => {
       title: 'All Day Event',
     },
   ];
+  /*
+  TODO: Things to fix
+  - vertical overflow in views other than month
+  - align vertical location of back and forward buttons for month views
+  - fix horizonal squishing in all non-month views
+  */
   return (
     <div className="displayContainer">
       <div className="rbc-calendar">
