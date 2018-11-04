@@ -35,6 +35,7 @@ const View = props => {
   - vertical overflow in views other than month
   - align vertical location of back and forward buttons for month views
   - fix horizonal squishing in all non-month views
+  - be able to add an event based on start and end times
   */
   return (
     <div className="displayContainer">
