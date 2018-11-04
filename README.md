@@ -43,12 +43,13 @@ THE TREE... (structure of the html elements)
 
             Components and the model:
                 Basically, I don't think they should interact directly with the model, I think it is easier to test and manage
-                if the components (tabs) get passed the single function that they need from the Model ('recordFinalState()'),
+                if the components (tabs) get passed the single function that they need from the Model ('registerFinalState()'),
                 rather than a reference to the entire thing.
 
                 -> The TabDisplay component (who's role is rendering tabs based on tab clicks) that renders your component
              will pass in all the data from the currently selected task that has to do with your component, along with that
-             task's 'key' property (a unique numeric identifier).  
+             task's 'key' property (a unique numeric identifier), and a reference to the Model's 'registerFinalState()'
+             function.  
 
                 -> I think you should handle actions locally, meaning if a user wants to edit a journal entry, then record
              those changes in your local copy of the Journal info for the currently selected task in your component's 'state'.
