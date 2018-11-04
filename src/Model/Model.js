@@ -1,13 +1,7 @@
-/*
- * This tracks state changes.
- */
-
-import ObservableData from './ObservableData';
-// just for testing :)
-import { getTestTaskListSmall } from '../TestResources/testutils'
+import Resources from './Resources';
 
 /*
- * This the single source of data for the app.
+ * This manages connections between components, data, and actions (updates, edits, deletion, etc.).
  *
  * Any components that need information can subscribe to the datasource that they need (and they 
  * will be updated (through their 'onChange()' method) when that data is altered).
@@ -16,62 +10,87 @@ import { getTestTaskListSmall } from '../TestResources/testutils'
  */
 class Model {
 
-    constructor() {
-        this.currentTask = new ObservableData();
-        // 'allTasks' - holds the task objects (title, key, {tabs})
-        this.allTasks = new ObservableData();
+    // There is only an initTaskList passed in when 'testing' == true; 
+    constructor(testing, initTaskList) {
+        // TODO -> read from DB on construction
+        
+        // Load some testing data in lieu of loading from DB
+        if (testing) {
+            this.resources = new Resources(initTaskList);
+        } else {
+            this.resources = new Resources([]);
+        }
+        // Lol you better be testing because otherwise resources is always empty...
 
-        // TODO -> read from DB on initial load  
-        // THIS IS TEMPORARY
-
-        this.allTasks.updateData(getTestTaskListSmall());
+        // binding the 'this' of that function to be the Model reference. 
+        this.registerFinalState = this.registerFinalState.bind(this);
     }
 
     // TODO -> Destructor (save changes to the file)
 
-    // returns all the tasks that exist.
-    getAllTasks() {
-        // return this.allTasks;
-        // dummy data for testing purposes
-        return this.allTasks.data;
-    }
-    // TODO -> maybe the TaskList should just subscribe, and circumvent this little thing?
+    /*
+     * 'desired_resource' - a string (ie. "task_title_list") that indicates which resource the subscriber wants to 
+     * know about.  
+     */ 
+    subscribeTo(obs, desired_resource) {
 
-    getAllTaskTitles() {
-        return this.allTasks.data.map((task) => {
-            return task.title;
-        });
+        switch (desired_resource) {
+            case "title_key_list":
+                this.resources.titleKeyList.subscribe(obs);
+                break;
+            case "current_task":
+                this.resources.currentTask.subscribe(obs);
+                break;
+            default:
+                throw Error("hmmm, couldn't find that resource: ${desired_resource}");
+        }
+        
     }
 
     /*
-     * This is the function that applies changes to the data. 
-     *
-     * all 'action' is an object with {code: 'what_to_do', args: {   } }.   
+     * Unsubscribes the 'obs' from the 'subbed_resource'.  
      */
-    applyChange(action) {
-        //remove task
-        //add task 
-        //task completed
-        //edit task (meaning edit tabs)
+    unsubscribeFrom(obs, subbed_resource) {
+
+        switch (subbed_resource) {
+            case "title_key_list":
+                this.resources.titleKeyList.unsubscribe(obs);
+                break;
+            case "current_task":
+                this.resources.currentTask.unsubscribe(obs);
+                break;
+        }
+
+    }
+
+    /*
+     * This is the function that updates tasks based on the final state of the tab....
+     */
+    registerFinalState(componentName, finalState, key) {
+        // Filter for the task that got changed by matching 'key's.  
+        this.resources.allTasks.apply((obsTask) => {
+            const task = obsTask.getData();
+            if (task.key === key) {
+                // finding th tab to update 
+                var foundIt = false;
+                task.tabs.apply((tab) => {
+                    if (tab.title === componentName) {
+                        tab.info = finalState;
+                        // mark that we found the tab we were looking for
+                        foundIt = true;
+                    }
+                });
+                // handling the case when we don't find it
+                if (!foundIt) {
+                    throw Error(
+                        "You tried to update a component that isn't associated with that task: \n\tcom -> ${componentName}\n\ttask -> ${task})"
+                    );
+                } else {
+                    obsTask.updateData(task);
+                }
+            }
+        });
     }
 }
 
 export default Model;
-
-/*
- *  Maybe the components should only recieve the necessary subscribe function, as opposed to the entire model? 
- *
- *  Would it be cleaner to parse the general task[] in the model itself (as various OD's), or have the components just clean 
- * up whatever they need? 
- */  
-
-/*
- * ALTERNATIVE DESIGN: as things are constructed, they are added (similar to the subscriber approach) into an array,
- * that lives inside the model, and button clicks / interactions correspond to various actions that the model coordinates 
- * entirely (components are just conduits, they no longer contain logic).
- * 
- * -- or maybe this is just how clicks should be handled?  YES THIS
- * 
- * Maybe something more functional in design? - but I don't really want to pass state all over the place...
- */
-

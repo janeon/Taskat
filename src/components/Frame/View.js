@@ -7,7 +7,7 @@ import './Frame.css';
 const View = ({model}) => (
     <div id="frame"> 
         <TaskList model={model}></TaskList>
-        <TaskDisplay></TaskDisplay>
+        <TaskDisplay model={model}></TaskDisplay>
     </div>
 );
 
