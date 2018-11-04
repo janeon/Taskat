@@ -1,5 +1,5 @@
 import ObservableData from './ObservableData';
-import { InitialTask } from '../Utilities/GeneralContent';
+import { InitialTask } from '../utilities/GeneralContent';
 /*
  * This is where the data is parsed and stored throughout its life.  It only ever returns 
  * copies of what it is holding, not actual references to their values.    

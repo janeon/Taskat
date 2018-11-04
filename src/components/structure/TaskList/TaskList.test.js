@@ -1,8 +1,8 @@
 import React from 'react'
 import TaskList from './index'
-import { getTestTaskListSmall } from '../../TestResources/testutils'
+import { getTestTaskListSmall } from '../../../test_resources/testutils'
 import { shallow, mount } from 'enzyme'
-import Model from '../../Model/Model'
+import Model from '../../../model'
 
 describe('TaskList', () => {
     it('should display all tasks', () => {
