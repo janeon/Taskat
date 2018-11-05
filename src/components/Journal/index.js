@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom'
 import View from './View';
 
 export default class Journal extends Component {
@@ -7,32 +8,34 @@ export default class Journal extends Component {
         super(props);
 
         this.state = {
-            data: []
-        }
+            value: 'enter ur entry',
+            entries: []
+        };
 
-        this.mytitle = "tomatoes, apples, big difference."; // to initialize
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+
     }
 
-    componentDidMount() {
-        // it's where you want to subscribe to whatever data you need in the model
-        // this.model.subscribe() THIS PROTOCOL IS PROBABLY GOING TO CHANGE
+    handleChange(event) {
+        this.setState({value: event.target.value});
     }
+
+    handleSubmit(event) {
+        alert('An essay was submitted: ' + this.state.value);
+        event.preventDefault();
+        this.state.entries.push(this.state.value);
+      }
+
     componentWillUnmount() {
-        // this is where you should '.unsubscribe(this)' from the model.  
-    }
-
-    onChange(updatedData) {
-        this.setState((state) => {
-            // how do you want to change this state based on the old state? 
-            // 'state' is the old state, and you return the new state.  
-            return state.data = updatedData;
-        });
+        // this is where you record your final state to the model
+        // ex --> this.recordFinalState("ex_tab", this.state);
+        // this is commented out because I'm not passing in the register function yet :)
     }
 
     render() {
-        return <View title={this.mytitle}/>;
+        return <View value={this.state.value} entries={this.state.entries} handleSubmit={this.handleSubmit} handleChange = {this.handleChange}/>;
     }
 
 }
 
-export default Journal;
