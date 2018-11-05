@@ -1,4 +1,4 @@
-import ObservableData from './ObservableData'
+import ObservableData from './ObservableData';
 
 describe('ObservableData', () => {
     it('constructor inits correctly', () => {
@@ -11,6 +11,8 @@ describe('ObservableData', () => {
     it('notifies observers of update to data', () => {
         const od = new ObservableData();
         const obs = new MockObserver();
+
+        od.updateData(2);
 
         od.subscribe(obs);  
 
@@ -38,6 +40,8 @@ describe('ObservableData', () => {
         const obs2 = new MockObserver();
         const obs3 = new MockObserver();
         
+        od.updateData(11);
+
         od.subscribe(obs1);
         od.subscribe(obs2);
         od.subscribe(obs3);
@@ -53,6 +57,8 @@ describe('ObservableData', () => {
         const od = new ObservableData();
         const obs = new MockObserver();
         const obs2 = new MockObserver();
+
+        od.updateData(2);
         
         od.subscribe(obs);
         od.subscribe(obs2);
@@ -66,14 +72,50 @@ describe('ObservableData', () => {
         expect(od.subscribers.length).toEqual(1);
         expect(obs.internalState).toEqual(2);
     });
+
+    it('calls \'obs.onChange(newData)\' with a shallow copy of data when data is a primitive', () => {
+        const od = new ObservableData();
+        var originalTitle = "tomatoes";
+        var data = originalTitle;
+
+        od.updateData(data);
+
+        var obs = new MockObserver();
+
+        od.subscribe(obs);
+
+        expect(obs.data).toEqual(originalTitle);
+        obs.data = "new title";
+        expect(od.data).toEqual(originalTitle);
+    });
+
+    it('call \'obs.onChange(newData)\' with a shallow copy of data when data is an object', () => {
+        const od = new ObservableData();
+        var originalData = {
+            title: "tomatoes",
+            list: [1, 2, 3, 4]
+        }
+
+        od.updateData(originalData);
+
+        var obs = new MockObserver();
+        od.subscribe(obs);
+
+        expect(obs.data).toEqual(originalData);
+        obs.data.title = "different data!";
+        obs.data.list[2] = 6;
+        expect(od.data).toEqual(originalData);
+    });
 });    
 
 class MockObserver {
     constructor() {
         this.internalState = -1;
+        this.data= "init title";
     }
 
-    onChange(ignoredData) {
+    onChange(newData) {
         this.internalState += 1;
+        this.data = newData;
     }
 }

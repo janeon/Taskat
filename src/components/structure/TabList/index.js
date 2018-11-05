@@ -1,9 +1,9 @@
-/*
- * This component is all about the tab list.
- */
 import React, { Component } from 'react';
 import View from "./View";
 
+/*
+ * This component renders the list of tabs for the 'current_task'.
+ */
 class TabList extends Component {
 
     render() {

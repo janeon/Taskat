@@ -1,20 +1,26 @@
-import Model from './Model'
-import { getTestTaskListSmall, getTestTaskListTitlesSmall } from '../TestResources/testutils.js'
+import Model from './Model';
+import { getTestTaskListSmall, getTestTitleKeyListSmall } from '../TestResources/testutils.js';
 
 describe('Model', () => {
     it('constructs a new Model', () => {
-        const model = new Model();
-        expect(model !== null);
+        const model = new Model(true, getTestTaskListSmall());
+        expect(model.resources !== null);
     });
 
-    it('returns list of titles on \'getAllTaskTitles()\'', () => {
-        const model = new Model();
-        model.allTasks.updateData(getTestTaskListSmall());
+    it('allows subscription and updates on task title list', () => { 
+        const testing = true;
+        const model = new Model(testing, getTestTaskListSmall());
 
-        const titles = model.getAllTaskTitles();
-        const correctTitles = getTestTaskListTitlesSmall();
+        var obs = {
+            taskTitles: [],
+            onChange: (newTitles) => {
+                obs.taskTitles = newTitles;
+            }
+        };
 
-        expect(titles).toEqual(correctTitles)
+        model.subscribeTo(obs, "title_key_list");
+
+        expect(obs.taskTitles).toEqual(getTestTitleKeyListSmall());
     });
 
 });
