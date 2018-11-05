@@ -8,7 +8,7 @@ class TaskDisplay extends Component {
 
         // This is the farthest down the tree the Model itself needs to go...
         this.model = props.model;
-    
+
         this.state = {
             currentTask: new InitialTask(),
             currentTabTitle: "welcome tab",
@@ -31,10 +31,10 @@ class TaskDisplay extends Component {
         });
     }
 
-    /* 
+    /*
      * Clicks to tabList should cause a different tab to be loaded...
-     * 
-     * 'tabClicked' - a string that represents which tab got clicked. 
+     *
+     * 'tabClicked' - a string that represents which tab got clicked.
      */
     onClick(tabClicked) {
         this.setState((state) => {
@@ -52,11 +52,11 @@ class TaskDisplay extends Component {
                 return tab.info;
             }
         });
-        
-        return < View 
-                    tabList={tabList} 
-                    tabToDisplay={this.state.currentTabTitle} 
-                    tabInfo={tabInfo} 
+
+        return < View
+                    tabList={tabList}
+                    tabToDisplay={this.state.currentTabTitle}
+                    tabInfo={tabInfo}
                     registerFinalState={this.model.registerFinalState} />;
     }
 

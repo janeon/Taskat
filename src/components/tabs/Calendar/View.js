@@ -31,6 +31,7 @@ const View = props => {
       title: 'All Day Event',
     },
   ];
+
   /*
   TODO: Things to fix
   - vertical overflow in views other than month
@@ -38,15 +39,22 @@ const View = props => {
   - fix horizonal squishing in all non-month views
   - be able to add an event based on start and end times
   */
+  
   return (
     <div className="displayContainer">
       <div className="rbc-calendar">
               <BigCalendar
+              selectable
               events={myEventsList}
+              defaultView={BigCalendar.Views.WEEK}
               views={allViews}
               startAccessor='startDate'
               endAccessor='endDate'
               localizer='localizer'
+              scrollToTime={new Date(1970, 1, 1, 6)}
+              defaultDate={new Date(2015, 3, 12)}
+              onSelectEvent={event => alert(event.title)}
+              onSelectSlot={this.handleSelect}
               />
               </div>
     </div>
