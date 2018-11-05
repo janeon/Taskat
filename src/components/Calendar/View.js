@@ -12,6 +12,7 @@ import moment from 'moment'
 *see more here http://intljusticemission.github.io/react-big-calendar/examples/index.html
 Q&A about big-calendar availale on Discord https://discordapp.com/channels/102860784329052160/424364360731852800
 */
+
 const localizer = BigCalendar.momentLocalizer(moment)
 let allViews = Object.keys(BigCalendar.Views).map(k => BigCalendar.Views[k])
 
