@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import Frame from '../components/structure/Frame';
 import Model from '../model/Model';
-import './App.css';
 import { getTestTaskListSmall } from '../test_resources/testutils'
+import './App.css';
 
 class App extends Component {
   constructor(props) {
