@@ -1,5 +1,5 @@
 import Resources from './Resources'
-import { getTestTaskListSmall, getTestTitleKeyListSmall } from '../TestResources/testutils'
+import { getTestTaskListSmall, getTestTitleKeyListSmall } from '../test_resources/testutils'
 
 describe('Resources', () => {
 

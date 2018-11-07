@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import View from './View';
-import { InitialTask } from '../../../utilities/GeneralContent';
+import { InitialTask } from '../../../utilities/general_content';
 
 class TaskDisplay extends Component {
     constructor(props) {

@@ -4,15 +4,17 @@
  * 
  * If you feel that you have a lot of recources to create, feel free to make 
  * another file in this directory. 
+ * 
+ * These do not reflect the way that tabs 'info' needs to look. 
  */
 
 // returns a (small) list of tasks 
 export function getTestTaskListSmall() {
     return [ 
         { title: "get pizza", key: 0, tabs: [ { title: "analytics", info: "ooh buddy, that's a lot of pepperoni" }, { title: "journal", info: "pinapple, nice!" }]},
-        {title: "go swimming", key: 1, tabs: [ { title: "journal", info: "the pool was lovely this evening" }, { title: "journal", info: "I look good in my new goggles" }]},
-        {title: "pick up kid", key: 2, tabs: [ { title: "journal", info: "that was fun" }, { title: "journal", info: "time to put them back down" } ]},
-        {title: "practice snorkeling", key: 3, tabs: [ { title: "analytics", info: "20 minutes"}, {calendar: "some dates"}]}
+        {title: "go swimming", key: 1, tabs: [ { title: "analytics", info: {laptimes: [40, 35, 36] } }, { title: "journal", info: "I look good in my new goggles" }]},
+        {title: "pick up kid", key: 2, tabs: [ { title: "analytics", info: {label: "duration", data: [15, 11, 16 ]} }, { title: "journal", info: "time to put them back down" } ]},
+        {title: "practice snorkeling", key: 3, tabs: [ { title: "analytics", info: {label: "duration", data: [15, 11, 20]}}, {calendar: "some dates"}]}
     ];
 }
 
