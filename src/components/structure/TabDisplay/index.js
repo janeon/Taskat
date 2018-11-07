@@ -8,8 +8,8 @@ class TabDisplay extends Component {
 
         this.tabInfo = props.tabInfo;
         this.tabToDisplay = props.tabToDisplay;
-        // this is being passed the registerFinalState function, it just isn't passing it yet. 
         
+        // this is being passed the registerFinalState function, it just isn't passing it yet. 
     }
 
     render() {

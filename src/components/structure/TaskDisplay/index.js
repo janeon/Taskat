@@ -10,6 +10,7 @@ class TaskDisplay extends Component {
         this.model = props.model;
     
         this.state = {
+            // what to do here is up in the air, maybe the 'menu' tab? 
             currentTask: new InitialTask(),
             currentTabTitle: "welcome tab",
         };
@@ -34,7 +35,7 @@ class TaskDisplay extends Component {
     /* 
      * Clicks to tabList should cause a different tab to be loaded...
      * 
-     * 'tabClicked' - a string that represents which tab got clicked. 
+     * 'tabClicked' - a string that is the title of the clicked tab. 
      */
     onClick(tabClicked) {
         this.setState((state) => {
@@ -47,11 +48,8 @@ class TaskDisplay extends Component {
         const tabList = this.state.currentTask.tabs.map((tab) => {
             return tab.name;
         });
-        const tabInfo = this.state.currentTask.tabs.filter((tab) => {
-            if (tab.title === this.state.currentTabTitle) {
-                return tab.info;
-            }
-        });
+        const tabInfo = this.state.currentTask.tabs.filter(
+            tab => tab.title === this.state.currentTabTitle)[0];
         
         return < View 
                     tabList={tabList} 

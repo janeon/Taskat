@@ -64,6 +64,21 @@ describe('Model', () => {
         expect(model.resources.taskList[2].getData().tabs[0].info).toEqual(newState);
     });
 
+    it("updates 'current_task' with updateCurrentTask function", () => {
+        const testing = true;
+        const model = new Model(testing, getTestTaskListSmall());
+
+        const obs = new MockObserver();
+
+        model.subscribeTo(obs, "current_task");
+
+        expect(obs.data.key).toEqual(-1);
+
+        model.updateCurrentTask(1);
+
+        expect(obs.data).toEqual(model.resources.currentTask.getData());
+    });
+
 });
 
 /*
