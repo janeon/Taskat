@@ -42,7 +42,7 @@ class Model {
                 this.resources.currentTask.subscribe(obs);
                 break;
             default:
-                throw Error("hmmm, couldn't find that resource: ${desired_resource}");
+                throw Error(`hmmm, couldn't find that resource: ${desired_resource}`);
         }
         
     }
@@ -59,6 +59,8 @@ class Model {
             case "current_task":
                 this.resources.currentTask.unsubscribe(obs);
                 break;
+            default:
+                throw Error(`you tried to access ${subbed_resource}, which doesn't exist`);
         }
 
     }
@@ -67,29 +69,46 @@ class Model {
      * This is the function that updates tasks based on the final state of the tab....
      */
     registerFinalState(componentName, finalState, key) {
-        // Filter for the task that got changed by matching 'key's.  
-        this.resources.allTasks.apply((obsTask) => {
+        // Filter for the task that got changed by matching 'key's. 
+        this.resources.taskList.forEach((obsTask) => {
             const task = obsTask.getData();
+            // if the task matches...
             if (task.key === key) {
-                // finding th tab to update 
+                // find the tab to update...
                 var foundIt = false;
-                task.tabs.apply((tab) => {
+                task.tabs.forEach((tab) => {
                     if (tab.title === componentName) {
                         tab.info = finalState;
                         // mark that we found the tab we were looking for
                         foundIt = true;
                     }
                 });
-                // handling the case when we don't find it
+                // handle the case where we don't find it
                 if (!foundIt) {
                     throw Error(
-                        "You tried to update a component that isn't associated with that task: \n\tcom -> ${componentName}\n\ttask -> ${task})"
+                        `You tried to update a component that isn't associated with that task: \n\tcom -> ${componentName}\n\ttask -> ${task})`
                     );
+                // otherwise update that task's data
                 } else {
                     obsTask.updateData(task);
                 }
             }
         });
+    }
+
+    /*
+     * Update the current task, it gets called by the TaskList's task_key items.  
+     */
+    updateCurrentTask(key) {
+        // this should never be size greater than 1...
+        const newCurrentTask = this.resources.taskList.filter(taskObs =>
+            taskObs.getData().key === key)[0];
+            
+        if (newCurrentTask !== null) {
+            this.resources.currentTask.updateData(newCurrentTask.getData());
+        } else {
+            throw Error("model.updateCurrentTask() was called with a null task...");
+        }
     }
 }
 
