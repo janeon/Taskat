@@ -36,6 +36,7 @@ describe('TaskList', () => {
         expect(model.resources.currentTask.getData().key).toEqual(1);
     });
 
-    // FINISH THESE
-
+    it("should be updated when task titles are edited", () => {
+        // Not yet implemented...
+    });
 });

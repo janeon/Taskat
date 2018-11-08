@@ -7,9 +7,11 @@ class TabDisplay extends Component {
         super(props);
 
         this.tabInfo = props.tabInfo;
-        this.tabToDisplay = props.tabToDisplay;
-        
         // this is being passed the registerFinalState function, it just isn't passing it yet. 
+    }
+
+    componentWillReceiveProps(newProps) {
+        this.tabInfo = newProps.tabInfo;
     }
 
     render() {
