@@ -9,10 +9,10 @@ const View = ({value, entries, handleSubmit, handleChange}) => (
 	          Essay:
 	          <textarea value={value} onChange={handleChange} />
 	        </label>
-	        <input type="submit" value="Submit" />
+	        <div onClick={handleSubmit}> submit</div>
 	      </form>
     	<div>
-	      {entries}
+	      {entries.map((txt, index) => <p key={index}>{txt}</p>)}
 	   	</div>
      </div>
 );

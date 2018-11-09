@@ -9,7 +9,7 @@ export default class Journal extends Component {
 
         this.state = {
             value: 'enter ur entry',
-            entries: []
+            entries: ["this is my first entry", "this is a second entry", "i also wrote this lol"]
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -21,19 +21,26 @@ export default class Journal extends Component {
         this.setState({value: event.target.value});
     }
 
-    handleSubmit(event) {
-        alert('An essay was submitted: ' + this.state.value);
-        event.preventDefault();
-        this.state.entries.push(this.state.value);
+    handleSubmit(event) { 
+        const itemToAdd = this.state.value;
+        const entries = this.state.entries;
+        this.setState({
+            value: "enter ur entryyyy",
+            entries: entries.concat(itemToAdd)
+        });
+        console.log(entries.concat(itemToAdd));
+
       }
 
     componentWillUnmount() {
         // this is where you record your final state to the model
-        // ex --> this.recordFinalState("ex_tab", this.state);
+        this.recordFinalState("Journal", this.state);
         // this is commented out because I'm not passing in the register function yet :)
     }
 
     render() {
+        console.log("rendering");
+        console.log(this.state);
         return <View value={this.state.value} entries={this.state.entries} handleSubmit={this.handleSubmit} handleChange = {this.handleChange}/>;
     }
 
