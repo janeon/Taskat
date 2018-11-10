@@ -47,7 +47,6 @@ class TaskDisplay extends Component {
             state.currentTabTitle = tabTitle;
             return state;
         })
-        console.log(tabTitle);
     }
 
     /*

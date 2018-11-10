@@ -55,11 +55,13 @@ describe('TaskDisplay', () => {
         const currentTask = getTestTaskListSmall()[3];
 
         td.instance().onChange(currentTask);
+        td.update();
 
         const tl = td.find(TabList);
         const tabs = tl.find('.tab');
 
-        
+        expect(tabs.length).toEqual(currentTask.tabs.length);
+        expect(tabs.map(el => el.text())).toEqual(currentTask.tabs.map(tab => tab.title));
     });
 
 });
