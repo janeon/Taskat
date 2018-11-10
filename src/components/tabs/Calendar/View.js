@@ -1,14 +1,7 @@
-import React from 'react';
-// This begins as an empty container, but we will have a function that fills it on tab clicks.
-import BigCalendar from 'react-big-calendar-like-google';
+import React, { Component } from 'react'; // This begins as an empty container, but we will have a function that fills it on tab clicks.
+import BigCalendar from 'react-big-calendar';
 import moment from 'moment'
-import events from 'events'
-// import './prism.less'
-
-require('react-big-calendar/lib/css/react-big-calendar.css');
-
-
-// https://github.com/intljusticemission/react-big-calendar/issues/234
+import BigCalendarCSS from 'react-big-calendar/lib/css/react-big-calendar.css';
 /* The current version of big calendar implemented here is the most basic, the package also allows:
 - event creation
 - Localization
@@ -16,11 +9,10 @@ require('react-big-calendar/lib/css/react-big-calendar.css');
 - drag and drop
 *see more here http://intljusticemission.github.io/react-big-calendar/examples/index.html
 Q&A about big-calendar availale on Discord https://discordapp.com/channels/102860784329052160/424364360731852800
+// https://github.com/intljusticemission/react-big-calendar/issues/234
 */
-
 const localizer = BigCalendar.momentLocalizer(moment)
 let allViews = Object.keys(BigCalendar.Views).map(k => BigCalendar.Views[k])
-
 const View = props => {
   const myEventsList = [
     {
@@ -36,25 +28,17 @@ const View = props => {
       title: 'All Day Event',
     },
   ];
-
-  /*
-  TODO: Things to fix
-  - align vertical location of back and forward buttons for month views
-  - fix horizonal squishing in all non-month views
-  - store event start and end times into database
-  */
-
   return (
     <div className="displayContainer">
       <div className="rbc-calendar">
               <BigCalendar
               selectable
               events={myEventsList}
-              defaultView={BigCalendar.Views.MONTH}
+              defaultView={BigCalendar.Views.DAY}
               views={allViews}
               startAccessor='startDate'
               endAccessor='endDate'
-              localizer='localizer'
+              localizer={localizer}
               defaultDate={new Date(2018, 10, 6)}
               onSelectEvent={event => alert(event.title)}
               onSelectSlot={props.handleSelect}
@@ -62,5 +46,12 @@ const View = props => {
               </div>
     </div>
 )}
+
+
+
+
+
+
+
 
 export default View;
