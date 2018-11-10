@@ -24,3 +24,14 @@ export function getTestTitleKeyListSmall() {
         return {key: index, title: task.title};
     });
 }
+
+export function getNewTestTask() {
+    return { 
+        title: "finish that potatoe", key: 4, 
+        tabs: [ 
+            { title: "analytics", info: [4, 11, 10, 8, 12, 13] }, 
+            { title: "journal", info: "this is the only journal"},
+            { title: "calendar", info: {events: [1, 2, 3, 4]}
+        }]
+    };
+}
