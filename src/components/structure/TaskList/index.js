@@ -27,10 +27,13 @@ class TaskList extends Component {
 
     // Another lifecycle method, that gets called before it is removed from the DOM. 
     componentWillUnmount() {
-        this.model.unsubscribeFrom(this, "");
+        this.model.unsubscribeFrom(this, "title_key_list");
     }
 
-    // When the list of titles changes, this component should update its state to reflect the new title list
+    /*
+     * When the list of titles changes, this component should update its state to reflect 
+     * the new title list.
+     */
     onChange(newTitles) {
         this.setState((state) => {
             state.taskTitles = newTitles;
@@ -38,13 +41,24 @@ class TaskList extends Component {
         });
     }
 
+    /*
+     * Update the current task in the model on task element clicks. 
+     */
+    onClick(key) {
+        this.model.updateCurrentTask(parseInt(key));
+    }
+
     // TODO -> Create the button that adds new tasks, pass it an on click method
 
     render() {
         // converting task objects to task elements
         const taskTitleElementList = this.state.taskTitles.map((titleKeyPair) => {
-
-            return <div className="task" key={titleKeyPair.key}>{titleKeyPair.title}</div>;
+            const key = titleKeyPair.key;
+            return <div className="task" 
+                        onClick={(e) => this.onClick(key)}
+                        key={titleKeyPair.key}>
+                            {titleKeyPair.title}
+                    </div>;
         });
 
         return <View taskTitleElementList={taskTitleElementList}/>;
