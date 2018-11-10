@@ -1,7 +1,7 @@
 import React, { Component } from 'react'; // This begins as an empty container, but we will have a function that fills it on tab clicks.
 import BigCalendar from 'react-big-calendar';
-import moment from 'moment'
 import BigCalendarCSS from 'react-big-calendar/lib/css/react-big-calendar.css';
+import events from 'events'
 /* The current version of big calendar implemented here is the most basic, the package also allows:
 - event creation
 - Localization
@@ -11,23 +11,14 @@ import BigCalendarCSS from 'react-big-calendar/lib/css/react-big-calendar.css';
 Q&A about big-calendar availale on Discord https://discordapp.com/channels/102860784329052160/424364360731852800
 // https://github.com/intljusticemission/react-big-calendar/issues/234
 */
-const localizer = BigCalendar.momentLocalizer(moment)
 let allViews = Object.keys(BigCalendar.Views).map(k => BigCalendar.Views[k])
+
 const View = props => {
-  const myEventsList = [
-    {
-      allDay: false,
-      end: new Date('November 01, 2018 11:15:00'),
-      start: new Date('November 01, 2018 11:13:00'),
-      title: 'hi',
-    },
-    {
-      allDay: true,
-      end: new Date('December 09, 2017 11:13:00'),
-      start: new Date('December 09, 2017 11:13:00'),
-      title: 'All Day Event',
-    },
-  ];
+  const event = props.Event;
+  const eventAgenda = props.EventAgenda;
+  // console.log("this is the list of events", props.events);
+  var myEventsList = props.events;
+  const localizer = props.localizer;
   return (
     <div className="displayContainer">
       <div className="rbc-calendar">
@@ -36,12 +27,20 @@ const View = props => {
               events={myEventsList}
               defaultView={BigCalendar.Views.DAY}
               views={allViews}
+              step={30}
               startAccessor='startDate'
               endAccessor='endDate'
               localizer={localizer}
               defaultDate={new Date(2018, 10, 6)}
               onSelectEvent={event => alert(event.title)}
               onSelectSlot={props.handleSelect}
+              showMultiDayTimes
+              components={{
+                event: event,
+                agenda: {
+                event: eventAgenda
+             }
+}}
               />
               </div>
     </div>
