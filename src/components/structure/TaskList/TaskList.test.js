@@ -1,8 +1,9 @@
-import React from 'react'
-import TaskList from './index'
-import { getTestTaskListSmall } from '../../../test_resources/testutils'
-import { shallow, mount } from 'enzyme'
-import Model from '../../../model/Model'
+import React from 'react';
+import TaskList from './index';
+import { getTestTaskListSmall } from '../../../test_resources/testutils';
+import { shallow, mount } from 'enzyme';
+import Model from '../../../model/Model';
+import NewTaskButton from '../TaskList/NewTaskButton/index';
 
 describe('TaskList', () => {
     // this is also testing that it subscribes to task_key list changes...
@@ -10,7 +11,7 @@ describe('TaskList', () => {
         const model = new Model(true, getTestTaskListSmall());
         const tl = mount(<TaskList model={model}/>);
 
-        const allRenderedTasks = tl.find('.task');
+        const allRenderedTasks = tl.find('#tasklist').children();
         
         // verify there are the correct number of tasks are displayed
         expect(allRenderedTasks.length).toEqual(getTestTaskListSmall().length);
@@ -36,6 +37,16 @@ describe('TaskList', () => {
         expect(model.resources.currentTask.getData().key).toEqual(1);
     });
 
-    // FINISH THESE
+    it("should update when tasks are added", () => {
+        const model = new Model(true, getTestTaskListSmall());
+        const tl = mount(<TaskList model={model}/>);
+    });
 
+    it("should update when tasks are removed", () => {
+
+    });
+
+    it("should be updated when task titles are edited", () => {
+        // Not yet implemented...
+    });
 });

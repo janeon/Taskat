@@ -6,12 +6,30 @@ import View from "./View";
  */
 class TabList extends Component {
 
+    constructor(props) {
+        super(props);
+        this.tabList = props.tabList;
+        this.onTabClick = props.onTabClick;
+    }
+
+    /*
+     * A lifecycle method that tracks updates to 'props'
+     * (necessary because constructor is only called once)
+     */
+    componentWillReceiveProps(newProps) {
+        this.tabList = newProps.tabList;
+        this.onTabClick = newProps.onTabClick;
+    }
+
     render() {
-        // should convert list of tabs to html elements
-        const tabList = [{text: "today", key: 1}, {text: "calendar", key: 2}, {text: "analystics", key: 3},{text: "menu", key: 4}];
-        const tabElementList = tabList.map((el) => {
+        // convert list of tabs to html elements
+        const tabElementList = this.tabList.map((title, index) => {
             // this will (eventually) bind the function for displaying the tab as a callback to the model.
-            return <div className="tab" key={el.key}>{el.text}</div>;
+            return <div className="tab" 
+                        key={index}
+                        onClick={(e) => this.onTabClick(title)}>
+                            {title}
+                    </div>;
         });
 
         return <View tabElementList={tabElementList}/>;

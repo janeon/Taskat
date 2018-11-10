@@ -14,6 +14,9 @@ class TaskDisplay extends Component {
             currentTask: new InitialTask(),
             currentTabTitle: "welcome tab",
         };
+
+        // binding 'this' in onTabClick()
+        this.onTabClick = this.onTabClick.bind(this);
     }
 
     componentDidMount() {
@@ -28,6 +31,8 @@ class TaskDisplay extends Component {
     onChange(newCurrentTask) {
         this.setState((state) => {
             state.currentTask = newCurrentTask;
+            // TODO -> decide which tab should be opened when task is rendered :)
+            state.currentTabTitle = newCurrentTask.tabs[0].title;
             return state;
         });
     }
@@ -37,22 +42,38 @@ class TaskDisplay extends Component {
      * 
      * 'tabClicked' - a string that is the title of the clicked tab. 
      */
-    onClick(tabClicked) {
+    onTabClick(tabTitle) {
         this.setState((state) => {
-            state.currentTabTitle = tabClicked;
+            state.currentTabTitle = tabTitle;
             return state;
         })
     }
 
-    render() {
-        const tabList = this.state.currentTask.tabs.map((tab) => {
-            return tab.name;
+    /*
+     * Separates the tabs from the current_task into 'title' 'key' pairs.  
+     */
+    getTabList(task) {
+        return task.tabs.map( tab => {
+            return tab.title;
         });
-        const tabInfo = this.state.currentTask.tabs.filter(
-            tab => tab.title === this.state.currentTabTitle)[0];
+    }
+
+    /*
+     * Strips the info from the current task for the current tab.  
+     */
+    getTabInfo(task, tabTitle) {
+        return task.tabs.filter( tab => tab.title === tabTitle)[0].info;
+    }
+
+    render() {
+        const tabList = this.getTabList(this.state.currentTask);
+
+        const tabInfo = this.getTabInfo(this.state.currentTask, this.state.currentTabTitle);
         
         return < View 
                     tabList={tabList} 
+                    // TabList is going to wrap this onClick with the appropriate args.
+                    onTabClick={this.onTabClick}
                     tabToDisplay={this.state.currentTabTitle} 
                     tabInfo={tabInfo} 
                     registerFinalState={this.model.registerFinalState} />;

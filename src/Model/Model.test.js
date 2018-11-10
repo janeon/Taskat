@@ -1,6 +1,7 @@
 import Model from './Model';
-import { getTestTaskListSmall, getTestTitleKeyListSmall } from '../test_resources/testutils.js';
+import { getTestTaskListSmall, getTestTitleKeyListSmall, getNewTestTask } from '../test_resources/testutils.js';
 import { InitialTask } from '../utilities/general_content.js';
+import ObservableData from './ObservableData';
 
 describe('Model', () => {
     it('constructs a new Model', () => {
@@ -77,6 +78,36 @@ describe('Model', () => {
         model.updateCurrentTask(1);
 
         expect(obs.data).toEqual(model.resources.currentTask.getData());
+    });
+
+    it("should find maxkey from titlekeylist", () => {
+        const testing = true;
+        const model = new Model(testing, getTestTaskListSmall());
+
+        expect(model.findMaxKey(getTestTitleKeyListSmall())).toEqual(3);
+    });
+
+    it("should allow tasks to be added", () => {
+        const testing = true;
+        const model = new Model(testing, getTestTaskListSmall());
+
+        const newTask = "new task";
+
+        model.createTask(newTask);
+
+        const correctList = getTestTaskListSmall();
+
+        // this is what the correctly init'd task should look like.  
+        correctList.push({title: "new task", key: 4, tabs: [{title: "menu", info: []}]});
+
+        expect(model.resources.taskList.map(task => task.getData())).toEqual(correctList);
+    });
+
+    it("should filter duplicate titles when adding a task", () => {
+        const testing = true;
+        const model = new Model(testing, getTestTaskListSmall());
+
+        
     });
 
 });
