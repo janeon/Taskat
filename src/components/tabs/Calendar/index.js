@@ -44,7 +44,7 @@ class Calendar extends Component {
   {
       super(props);
       this.state = { events : events } ;
-      this.handleSelect.bind(this);
+      this.handleSelect = this.handleSelect.bind(this);
   }
 
 
@@ -52,12 +52,9 @@ class Calendar extends Component {
     //create an event
     const title = window.prompt('New Event name')
     if (title) {
-      // console.log("Your new event name", title);
       this.setState({ events: this.state.events.concat({startDate: start, endDate: end, title: title}) });
     }
   }
-
-
 
     render() {
         return(
