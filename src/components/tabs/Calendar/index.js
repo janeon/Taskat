@@ -44,11 +44,12 @@ class Calendar extends Component {
   {
       super(props);
       this.state = { events : events } ;
-      this.handleSelect = this.handleSelect.bind(this);
+      this.handleSelectSlot = this.handleSelectSlot.bind(this);
+      this.handleSelectToDelete = this.handleSelectToDelete.bind(this);
   }
 
 
-  handleSelect = ({ start, end }) => {
+  handleSelectSlot = ({ start, end }) => {
     //create an event
     const title = window.prompt('New Event name')
     if (title) {
@@ -56,10 +57,25 @@ class Calendar extends Component {
     }
   }
 
+  handleSelectToDelete = (pEvent) => {
+   const r = window.confirm("Would you like to remove this event?")
+   console.log('handling select to delete');
+   if(r === true){
+
+     this.setState((prevState, props) => {
+       const events = [...prevState.events]
+       const idx = events.indexOf(pEvent)
+       events.splice(idx, 1);
+       return { events };
+     });
+   }
+ }
+
     render() {
         return(
         <View
-        handleSelect = {this.handleSelect}
+        handleSelectSlot = {this.handleSelectSlot}
+        handleSelectToDelete = {this.handleSelectToDelete}
         Event = {this.Event}
         EventAgenda = {this.EventAgenda}
         events = {this.state.events}

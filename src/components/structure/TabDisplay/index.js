@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
 import View from './View';
+import Calendar from '../../tabs/Calendar';
 
 class TabDisplay extends Component {
 
     constructor(props) {
         super(props);
-        
+
         this.tabInfo = props.tabInfo;
         this.tabToDisplay = props.tabToDisplay;
         this.registerFinalStateFunc = props.registerFinalStateFunc;
-        // this is being passed the registerFinalState function, it just isn't passing it yet. 
+        // this is being passed the registerFinalState function, it just isn't passing it yet.
     }
 
     /*
@@ -33,13 +34,13 @@ class TabDisplay extends Component {
             case "journal":
                 console.log("display journal");
                 break;
-            case "menu": 
+            case "menu":
                 console.log("display menu");
                 break;
             case "welcome tab":
                 console.log("display welcome tab");
                 break;
-            default: 
+            default:
                 console.log(`TabDisplay parser didn't recognize ${this.tabToDisplay}`);
                 break;
         }

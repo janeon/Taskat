@@ -1,5 +1,5 @@
 import React from 'react';
-import Calendar from '../../tabs/Calendar';
+import ExTab from '../../tabs/Calendar';
 /* IMPORTANT: as I am committing, I have just been commenting out the line where we've been putting
  *
  * our code to debug/render it :)
@@ -17,11 +17,13 @@ import Calendar from '../../tabs/Calendar';
  * on tab clicks.
  */
 
-const View = ({}) => (
+const View = props => {
+  return (
     <div className="displayContainer">
-        {/* <ExTab /> */}
-        <Calendar />
+        {/* <Calendar /> */}
+        <ExTab />
     </div>
-);
+)
+}
 
 export default View;
