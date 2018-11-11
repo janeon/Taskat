@@ -2,13 +2,16 @@ import React, { Component } from 'react';
 import View from './View';
 import { InitialTask } from '../../../utilities/general_content';
 
+/*
+ * parses the 'currentTask' into its tablist and tabdisplay.  
+ */
 class TaskDisplay extends Component {
     constructor(props) {
         super(props);
 
         // This is the farthest down the tree the Model itself needs to go...
         this.model = props.model;
-    
+
         this.state = {
             // what to do here is up in the air, maybe the 'menu' tab? 
             currentTask: new InitialTask(),
@@ -37,7 +40,7 @@ class TaskDisplay extends Component {
         });
     }
 
-    /* 
+    /*
      * Clicks to tabList should cause a different tab to be loaded...
      * 
      * 'tabClicked' - a string that is the title of the clicked tab. 

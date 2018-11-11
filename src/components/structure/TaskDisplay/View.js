@@ -4,9 +4,9 @@ import TabDisplay from '../TabDisplay';
 import './TaskDisplay.css';
 
 /*
- * Render the TaskDisplay component, which renders the TabList and TabDisplay components. 
+ * Render the TaskDisplay component, which renders the TabList and TabDisplay components.
  *
- * This passes down the list of tabs, the title of the tab to display, and the info it will need from the 
+ * This passes down the list of tabs, the title of the tab to display, and the info it will need from the
  * current task.
  */
 const View = ({tabList, onTabClick, tabToDisplay, tabInfo, registerFinalState}) => {
