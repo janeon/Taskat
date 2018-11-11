@@ -1,3 +1,7 @@
+
+Git tips: to push your local branch to a remote branch that it's not tracking (say this currentState for instance), use 
+git push origin your_updated_branch_name:currentState
+
 /--------------------------------- THE TREE -----------------------------------/
  
  
