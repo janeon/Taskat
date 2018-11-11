@@ -9,10 +9,11 @@ class TaskList extends Component {
     constructor(props) {
         super(props);
         
+        // farthest down the model should go...
         this.model = props.model;
         // setting the initial state
         this.state = {
-            taskTitles: [ { key:-2, title: "no tasks to display..." } ]
+            titleKeyList: [ { key:-2, title: "no tasks to display..." } ]
         };
     }
 
@@ -31,12 +32,12 @@ class TaskList extends Component {
     }
 
     /*
-     * When the list of titles changes, this component should update its state to reflect 
-     * the new title list.
+     * When the list of title/keys changes, this component should update its state to reflect 
+     * the new titlekey list.
      */
-    onChange(newTitles) {
+    onChange(newTitleKeyList) {
         this.setState((state) => {
-            state.taskTitles = newTitles;
+            state.titleKeyList = newTitleKeyList;
             return state;
         });
     }
@@ -48,11 +49,10 @@ class TaskList extends Component {
         this.model.updateCurrentTask(parseInt(key));
     }
 
-    // TODO -> Create the button that adds new tasks, pass it an on click method
-
     render() {
-        // converting task objects to task elements
-        const taskTitleElementList = this.state.taskTitles.map((titleKeyPair) => {
+
+        // converting task objects to task html elements
+        const taskTitleElementList = this.state.titleKeyList.map((titleKeyPair) => {
             const key = titleKeyPair.key;
             return <div className="task" 
                         onClick={(e) => this.onClick(key)}
@@ -61,7 +61,7 @@ class TaskList extends Component {
                     </div>;
         });
 
-        return <View taskTitleElementList={taskTitleElementList}/>;
+        return <View createTask={this.model.createTask.bind(this.model)} taskTitleElementList={taskTitleElementList}/>;
     }
 }
 

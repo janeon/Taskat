@@ -6,11 +6,10 @@ import "./TaskList.css";
 import NewTaskButton from './NewTaskButton';
 
 // 'taskElementList' is a list of html elements that represent tasks. 
-const View = ({taskTitleElementList}) => (
+const View = ({createTask, taskTitleElementList}) => (
     <div id="tasklist_container">
-            <div className="task" id="addTask">
-                
-
+            <div className="task" id="newTaskButtonContainer">
+                <NewTaskButton createTask={createTask}/>
             </div>
             <div id="tasklist">
                 {taskTitleElementList}

@@ -40,4 +40,15 @@ describe('Resources', () => {
 
         expect(res.taskList.map(task => task.getData())).toEqual(correctList);
     });
+
+    it("removes a task", () => {
+        const res = new Resources(getTestTaskListSmall());
+
+        const taskToRemove = getTestTaskListSmall()[2];
+
+        res.removeTask(taskToRemove.key);
+
+        expect(res.taskList.length).toEqual(getTestTaskListSmall().length - 1);
+        expect(res.taskList.filter(task => task.key == taskToRemove.key)).toEqual([]);
+    });
 });

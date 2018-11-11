@@ -2,8 +2,10 @@ import Model from './Model';
 import { getTestTaskListSmall, getTestTitleKeyListSmall, getNewTestTask } from '../test_resources/testutils.js';
 import { InitialTask } from '../utilities/general_content.js';
 import ObservableData from './ObservableData';
+import { NO_DUPLICATE_TASK_TITLES } from '../utilities/constants';
 
 describe('Model', () => {
+
     it('constructs a new Model', () => {
         const testing = true;
         const model = new Model(testing, getTestTaskListSmall());
@@ -107,7 +109,28 @@ describe('Model', () => {
         const testing = true;
         const model = new Model(testing, getTestTaskListSmall());
 
-        
+        const duplicateTitle = getTestTaskListSmall()[2].title;
+
+        expect(model.createTask(duplicateTitle)).toEqual(false);
+    });
+
+    it("remove deleted tasks from titlekeylist", () => {
+        // and deletion should also change current task back to the welcome task
+        const testing = true;
+        const model = new Model(testing, getTestTaskListSmall());
+
+        const keyToRemove = 2;
+
+        model.deleteTask(keyToRemove);
+
+        const resultingTitleKeyList = model.resources.titleKeyList.getData();
+
+        expect(resultingTitleKeyList.length).toEqual(getTestTaskListSmall().length - 1);
+        expect(resultingTitleKeyList.filter(tk => tk.key === keyToRemove)).toEqual([]);
+    });
+
+    it("should reset current task to the InitialTask on deletion", () => {
+        const testing = true;
     });
 
 });
