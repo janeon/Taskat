@@ -9,15 +9,15 @@ import './TaskDisplay.css';
  * This passes down the list of tabs, the title of the tab to display, and the info it will need from the
  * current task.
  */
-const View = ({tabList, tabToDisplay, tabInfo, registerFinalState}) => {
+const View = ({tabList, onTabClick, tabToDisplay, tabInfo, registerFinalState}) => {
 
   return (
     <div id="taskdisplay">
-      <TabList tabList={tabList}/>
-      <TabDisplay
-            tabToDisplay={tabToDisplay}
-            tabInfo={tabInfo}
-            registerFinalState={registerFinalState}/>
+      <TabList tabList={tabList} onTabClick={onTabClick}/>
+      <TabDisplay 
+            tabToDisplay={tabToDisplay} 
+            tabInfo={tabInfo} 
+            registerFinalState={registerFinalState}/>  
     </div>)}
 
 export default View;

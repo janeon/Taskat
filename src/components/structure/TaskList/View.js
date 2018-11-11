@@ -3,11 +3,19 @@
  */
 import React from 'react';
 import "./TaskList.css";
+import NewTaskButton from './NewTaskButton';
 
 // 'taskElementList' is a list of html elements that represent tasks. 
 const View = ({taskTitleElementList}) => (
     <div id="tasklist_container">
-            {taskTitleElementList}
+            <div className="task" id="addTask">
+                
+
+            </div>
+            <div id="tasklist">
+                {taskTitleElementList}
+            </div>
+            
     </div>
 );
 
