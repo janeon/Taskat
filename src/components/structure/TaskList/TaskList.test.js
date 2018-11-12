@@ -1,11 +1,16 @@
 import React from 'react';
 import TaskList from './index';
-import { getTestTaskListSmall } from '../../../test_resources/testutils';
-import { shallow, mount } from 'enzyme';
+import { getTestTaskListSmall, getMockEvent } from '../../../test_resources/testutils';
+import { mount } from 'enzyme';
 import Model from '../../../model/Model';
-import NewTaskButton from '../TaskList/NewTaskButton/index';
+import { NO_DUPLICATE_TASK_TITLES } from '../../../utilities/constants';
 
 describe('TaskList', () => {
+
+    global.console = {
+        log: jest.fn()
+    }
+
     // this is also testing that it subscribes to task_key list changes...
     it('should display all tasks', () => {
         const model = new Model(true, getTestTaskListSmall());
@@ -40,13 +45,39 @@ describe('TaskList', () => {
     it("should update when tasks are added", () => {
         const model = new Model(true, getTestTaskListSmall());
         const tl = mount(<TaskList model={model}/>);
+
+        // verify there are the right number of tasks to start
+        // this slice is removing the new-button, which is styled as if it were a task
+        const tasksInListPre = tl.find('.task').slice(1);
+
+        expect(tasksInListPre.length).toEqual(getTestTaskListSmall().length);
+
+        // add a new task with new-task-button
+        const newTitle = "learn to somersault";
+        tl.find('#new-task-input').simulate('change', getMockEvent(newTitle));
+        tl.update();
+        tl.find('#new-task-button').find('form').simulate('submit', getMockEvent());
+
+        const tasksInListPost = tl.find('.task').slice(1);
+
+        // verify that task was added to the list. 
+        expect(tasksInListPost.length).toEqual(getTestTaskListSmall().length + 1);
+        expect(tasksInListPost.findWhere((task_el) => task_el.text() === newTitle));
+        
     });
 
-    it("should update when tasks are removed", () => {
+    it("shouldn't allow duplicate task titles", () => {
+        const model = new Model(true, getTestTaskListSmall());
+        const tl = mount(<TaskList model={model}/>);
 
-    });
+        const newTitle = getTestTaskListSmall()[2].title;
+        tl.find('#new-task-input').simulate('change', getMockEvent(newTitle));
+        tl.update();
+        tl.find('#new-task-button').find('form').simulate('submit', getMockEvent());
 
-    it("should be updated when task titles are edited", () => {
-        // Not yet implemented...
+        const tasksInListPost = tl.find('.task').slice(1);
+
+        expect(tasksInListPost.length).toEqual(getTestTaskListSmall().length);
+        expect(global.console.log).toHaveBeenCalledWith(NO_DUPLICATE_TASK_TITLES);
     });
 });

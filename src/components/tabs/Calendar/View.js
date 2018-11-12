@@ -33,7 +33,7 @@ const View = props => {
               localizer={localizer}
               defaultDate={new Date(2018, 10, 6)}
               onSelectEvent={event => props.handleSelectToDelete(event)}
-              onSelectSlot={props.handleSelectSlot}
+              onSelectSlot={event => props.handleSelectSlot(event)}
               showMultiDayTimes
               components={{
                 event: event,

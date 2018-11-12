@@ -44,7 +44,7 @@ import { InitialTask } from '../utilities/general_content';
      */
     refreshTitleKeyList() {
         const currentStateOfList = this.parseTasksToTitles();
-        if (currentStateOfList != this.titleKeyList.getData()) {
+        if (currentStateOfList !== this.titleKeyList.getData()) {
             this.titleKeyList.updateData(currentStateOfList);
         } 
         // it they are the same, then nothing needs to happen :)
@@ -57,5 +57,12 @@ import { InitialTask } from '../utilities/general_content';
         const obsWrapper = new ObservableData();
         obsWrapper.updateData(newTask);
         this.taskList.push(obsWrapper);
+    }
+
+    /*
+     * Remove a task (with the matching key)
+     */
+    removeTask(keyOfTaskToRemove) {
+        this.taskList = this.taskList.filter(taskObs => taskObs.getData().key !== keyOfTaskToRemove);
     }
  }

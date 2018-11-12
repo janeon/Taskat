@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import View from './View';
-// import events from 'events'
 import BigCalendar from 'react-big-calendar';
 import moment from 'moment'
 const localizer = BigCalendar.momentLocalizer(moment)
@@ -48,20 +47,61 @@ class Calendar extends Component {
       this.handleSelectToDelete = this.handleSelectToDelete.bind(this);
   }
 
+  addRecurringEvents(start,end) {
+    console.log("Start", start);
+    console.log("Start + 1", start+1);
+    console.log("End", end);
+    var frequency = window.prompt("Would you like for these to repeat daily, weekly, or monthly? (please type your selection exactly as the options appears)", "daily");
+    if (frequency) {
+      switch (frequency.toString()) {
+        case "daily":
+          frequency = "day";
+          break;
+        case "weekly":
+          frequency = "week";
+          break;
+        case "monthly":
+          frequency = "month"
+          break;
+        default:
+      }
+    }
+    if (!frequency) window.alert("Please select from the available units of time for repeated events")
+    else {
+      const every = !window.confirm("Every " + frequency +"?");
+      var gap = '';
+      if (every) gap = window.prompt("How many " + frequency + "s in between?", "2");
+      if (gap === '') window.prompt("For how many " + frequency + "s?", "10");
+      else {
+        const timesRepeating = window.prompt("Every " + gap + " " + frequency + "s, " + "how many times?", "10");
+      }
+    }
+
+  }
 
   handleSelectSlot = ({ start, end }) => {
     //create an event
-    const title = window.prompt('New Event name')
-    if (title) {
-      this.setState({ events: this.state.events.concat({startDate: start, endDate: end, title: title}) });
+    const title = window.prompt('New Event name');
+    var desc; var repeat;
+    if (title != null) {
+      desc = window.prompt('Event description', title);
+      repeat = window.confirm("Would you like for this to become a repeating event?");
+    }
+
+
+    if (repeat) {
+      // handling recurring events
+      this.addRecurringEvents(start,end);
+    }
+
+    if (title && !repeat) {
+      this.setState({ events: this.state.events.concat({startDate: start, endDate: end, title: title, desc:desc}) });
     }
   }
 
   handleSelectToDelete = (pEvent) => {
-   const r = window.confirm("Would you like to remove this event?")
-   console.log('handling select to delete');
+   const r = window.confirm("Event description: " +pEvent.desc + "\nWould you like to remove this event?")
    if(r === true){
-
      this.setState((prevState, props) => {
        const events = [...prevState.events]
        const idx = events.indexOf(pEvent)

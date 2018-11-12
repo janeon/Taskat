@@ -2,6 +2,12 @@ import React, { Component } from 'react';
 import View from './View';
 import { InitialTask } from '../../../utilities/general_content';
 
+<<<<<<< HEAD
+=======
+/*
+ * parses the 'currentTask' into its tablist and tabdisplay.  
+ */
+>>>>>>> 817f2fa32a52139491b7855e4b7fed4cc0fc200c
 class TaskDisplay extends Component {
     constructor(props) {
         super(props);
@@ -39,8 +45,13 @@ class TaskDisplay extends Component {
 
     /*
      * Clicks to tabList should cause a different tab to be loaded...
+<<<<<<< HEAD
      *
      * 'tabClicked' - a string that is the title of the clicked tab.
+=======
+     * 
+     * 'tabClicked' - a string that is the title of the clicked tab. 
+>>>>>>> 817f2fa32a52139491b7855e4b7fed4cc0fc200c
      */
     onTabClick(tabTitle) {
         this.setState((state) => {
@@ -74,8 +85,13 @@ class TaskDisplay extends Component {
                     tabList={tabList}
                     // TabList is going to wrap this onClick with the appropriate args.
                     onTabClick={this.onTabClick}
+<<<<<<< HEAD
                     tabToDisplay={this.state.currentTabTitle}
                     tabInfo={tabInfo}
+=======
+                    tabToDisplay={this.state.currentTabTitle} 
+                    tabInfo={tabInfo} 
+>>>>>>> 817f2fa32a52139491b7855e4b7fed4cc0fc200c
                     registerFinalState={this.model.registerFinalState} />;
     }
 

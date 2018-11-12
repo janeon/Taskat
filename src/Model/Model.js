@@ -114,16 +114,16 @@ class Model {
     /*
      * Create a new task
      * 'title' is the title of the new task. 
+     * returns - 'true' if it added, 'false' if it was a duplicate. 
      */
     createTask(title) {
 
         // look for duplicate titles
-        const duplicateTitles = this.resources.titleKeyList.getData().filter(titleKeyPair => titleKeyPair.key === title);
+        const duplicateTitles = this.resources.titleKeyList.getData().filter(titleKeyPair => titleKeyPair.title === title);
 
         if (duplicateTitles.length > 0) {
-            // make an alert and exit this function
-            throw new Error("woops, a task with that title already exists");
-
+            // there was a duplicate, handle it! (meaning make the alert in the outer component)
+            return false;
         } else {
             // find the key for the new task
             const maxKey = this.findMaxKey(this.resources.titleKeyList.getData());
@@ -136,11 +136,20 @@ class Model {
 
             // update the taskkey list
             this.resources.refreshTitleKeyList();
+
+            return true
         }
     }
 
-    findMaxKey(titleKeyList) {
+    /*
+     * Deletes the selected task, a deleted task cannot be recovered(!)
+     */
+    deleteTask(key) {
+        this.resources.removeTask(key);
+        this.resources.refreshTitleKeyList();
+    }
 
+    findMaxKey(titleKeyList) {
         const reducer = (sofar, newTK) => {
             const newKey = newTK.key;
             if (newKey > sofar) {
@@ -149,7 +158,6 @@ class Model {
                 return sofar;
             }
         };
-
         return titleKeyList.reduce(reducer, 0);
     }
 }

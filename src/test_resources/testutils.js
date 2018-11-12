@@ -35,3 +35,21 @@ export function getNewTestTask() {
         }]
     };
 }
+<<<<<<< HEAD
+=======
+
+/*
+ * Returns a mock event for manipulating forms. 
+ */
+export function getMockEvent(initialValue) {
+    return {
+        target: { value: initialValue},
+        persist() {
+            // don't do anything...
+        },
+        preventDefault() {
+            // don't do anything...
+        }
+    }
+}
+>>>>>>> 817f2fa32a52139491b7855e4b7fed4cc0fc200c
