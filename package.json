@@ -3,13 +3,18 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "chart.js": "^2.7.3",
+    "electron-chartjs": "^1.0.0",
     "moment": "^2.22.2",
+    "plotly": "^1.0.6",
     "react": "^16.6.0",
     "react-big-calendar": "^0.20.1",
     "react-big-calendar-like-google": "0.0.3",
     "react-calendar": "^2.17.5",
+    "react-chartjs-2": "^2.7.4",
     "react-dom": "^16.6.0",
-    "react-scripts": "2.0.5"
+    "react-scripts": "2.0.5",
+    "victory": "^30.6.0"
   },
   "homepage": "./",
   "main": "src/scripts/electron-start.js",

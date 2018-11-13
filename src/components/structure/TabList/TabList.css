@@ -1,12 +1,12 @@
 #tablist_container {
     width: auto;
-    height: 4%;
+    height: 5%;
     display: flex;
     flex-direction: row;
-    
-    padding: 10px;
-    background: cornflowerblue;
 
+    padding: 5px;
+    background: cornflowerblue;
+    margin-bottom: 5px;
     border-bottom: var(--pinkborder);
 }
 

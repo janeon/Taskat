@@ -89,7 +89,7 @@ describe('ObservableData', () => {
         expect(od.data).toEqual(originalTitle);
     });
 
-    it('call \'obs.onChange(newData)\' with a shallow copy of data when data is an object', () => {
+    it('calls \'obs.onChange(newData)\' with a shallow copy of data when data is an object', () => {
         const od = new ObservableData();
         var originalData = {
             title: "tomatoes",
