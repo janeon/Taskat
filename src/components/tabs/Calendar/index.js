@@ -21,9 +21,7 @@ var events = [
 class Calendar extends Component {
   /*
   TODO: Things to fix
-  - be able to store event start and end times into localizer
-  = be able to add reoccuring events
-  https://www.reddit.com/r/reactjs/comments/8ig9q3/using_reactbigcalendar_is_there_an_easy_way_to/
+  - be able to store event start and end times into model via registerFinalStateFunc
   */
 
   constructor(props)
