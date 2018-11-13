@@ -1,3 +1,9 @@
+Possible goals for Wednesday's meeting:
+1. Find Sage's branch publicly
+2. Be able to add tabs from menu / welcome page
+3. Persist states from each tab to the current task via the registerFinalStateFunc
+4. Integrate information across multiple tabs 
+
 Git tips: to push your local branch to a remote branch that it's not tracking (say currentState for instance), use 
 git push origin your_updated_branch_name:currentState
 
