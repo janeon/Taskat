@@ -1,9 +1,4 @@
-<<<<<<< HEAD
-Git tips: to push your local branch to a remote branch that it's not tracking (say currentState for instance), use 
-=======
-
 Git tips: to push your local branch to a remote branch that it's not tracking (say this currentState for instance), use 
->>>>>>> 817f2fa32a52139491b7855e4b7fed4cc0fc200c
 git push origin your_updated_branch_name:currentState
 
 /--------------------------------- THE TREE -----------------------------------/
