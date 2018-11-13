@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import View from './View';
-import Calendar from '../../tabs/Calendar';
+// import Calendar from '../../tabs/Calendar';
 
 class TabDisplay extends Component {
 
@@ -10,6 +10,7 @@ class TabDisplay extends Component {
         this.tabInfo = props.tabInfo;
         this.tabToDisplay = props.tabToDisplay;
         this.registerFinalStateFunc = props.registerFinalStateFunc;
+        // console.log("TabDisplay's prop function", props.registerFinalState); // testing funtion in tabdisplay
         // this is being passed the registerFinalState function, it just isn't passing it yet.
     }
 
@@ -20,6 +21,7 @@ class TabDisplay extends Component {
         this.tabInfo = newProps.tabInfo;
         this.tabToDisplay = newProps.tabToDisplay;
         this.registerFinalStateFunc = newProps.registerFinalStateFunc;
+
     }
 
     render() {
@@ -44,7 +46,8 @@ class TabDisplay extends Component {
                 console.log(`TabDisplay parser didn't recognize ${this.tabToDisplay}`);
                 break;
         }
-        return <View />;
+        return <View
+          registerFinalState={this.registerFinalStateFunc}/>;
     }
 
 }

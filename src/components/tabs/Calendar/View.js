@@ -1,6 +1,11 @@
-import React, { Component } from 'react'; // This begins as an empty container, but we will have a function that fills it on tab clicks.
+import React from 'react'; // This begins as an empty container, but we will have a function that fills it on tab clicks.
 import BigCalendar from 'react-big-calendar';
-import BigCalendarCSS from 'react-big-calendar/lib/css/react-big-calendar.css';
+import 'react-big-calendar/lib/css/react-big-calendar.css';
+import withDragAndDrop from 'react-big-calendar/lib/addons/dragAndDrop'
+
+import 'react-big-calendar/lib/addons/dragAndDrop/styles.less'
+
+const DragAndDropCalendar = withDragAndDrop(BigCalendar)
 
 /* The current version of big calendar implemented here is the most basic, the package also allows:
 - event creation
@@ -16,32 +21,57 @@ let allViews = Object.keys(BigCalendar.Views).map(k => BigCalendar.Views[k])
 const View = props => {
   const event = props.Event;
   const eventAgenda = props.EventAgenda;
+  var today = new Date();
   // console.log("this is the list of events", props.events);
-  var events = props.events;
-  const localizer = props.localizer;
   return (
     <div className="displayContainer">
       <div className="rbc-calendar">
+      <DragAndDropCalendar
+      selectable
+      events={props.events}
+      defaultView={BigCalendar.Views.DAY}
+      defaultDate={today}
+      views={allViews}
+      step={30}
+      startAccessor='start'
+      endAccessor='end'
+      localizer={props.localizer}
+      onEventDrop={props.onEventDrop}
+      onSelectEvent={event => props.handleSelectToDelete(event)}
+      onSelectSlot={event => props.handleSelectSlot(event)}
+      resourceIdAccessor="resourceId"
+      resourceTitleAccessor="resourceTitle"
+      defaultView="day"
+      resizable
+      onEventResize={props.onEventResize}
+      showMultiDayTimes
+      components={{
+        event: event,
+        agenda: {event: eventAgenda}
+      }}
+      />
+      {/*
               <BigCalendar
               selectable
-              events={events}
+              events={props.events}
               defaultView={BigCalendar.Views.DAY}
               views={allViews}
               step={30}
-              startAccessor='startDate'
-              endAccessor='endDate'
-              localizer={localizer}
-              defaultDate={new Date(2018, 10, 6)}
+              startAccessor='start'
+              endAccessor='end'
+              localizer={props.localizer}
+              defaultDate={today}
               onSelectEvent={event => props.handleSelectToDelete(event)}
               onSelectSlot={event => props.handleSelectSlot(event)}
+              resizable
+              onEventResize={props.onEventResize}
               showMultiDayTimes
               components={{
                 event: event,
-                agenda: {
-                event: eventAgenda
-             }
-}}
+                agenda: {event: eventAgenda}
+              }}
               />
+              */}
               </div>
     </div>
 )}
