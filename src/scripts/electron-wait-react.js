@@ -1,7 +1,7 @@
 /* electron-wait-react.js 
  *
  * This is a script that waits for the React dev server to start 
- * before starts Electron.
+ * before it starts Electron.
  */
 
 const net = require('net');
