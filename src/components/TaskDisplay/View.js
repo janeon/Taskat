@@ -4,6 +4,11 @@ import TabDisplay from '../TabDisplay';
 import './TaskDisplay.css';
 import BigCalendar from 'react-big-calendar-like-google';
 import 'react-big-calendar/lib/css/react-big-calendar.css'
+
+/* emily's additions */
+import Analytics from '../Analytics';
+/* end emily's additions */
+
 // https://github.com/intljusticemission/react-big-calendar/issues/234
 /* The current version of big calendar implemented here is the most basic, the package also allows:
 - event creation
@@ -38,15 +43,6 @@ const View = props => {
     <div id="taskdisplay">
     <TabList />
       <TabDisplay />
-        <div className="rbc-calendar">
-        <BigCalendar
-        events={myEventsList}
-        views={allViews}
-        startAccessor='startDate'
-        endAccessor='endDate'
-        localizer='localizer'
-        />
-        </div>
     </div>)}
 
 export default View;
