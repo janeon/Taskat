@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom'
+// import ReactDOM from 'react-dom'
 import View from './View';
 
 export default class Journal extends Component {
@@ -21,7 +21,7 @@ export default class Journal extends Component {
         this.setState({value: event.target.value});
     }
 
-    handleSubmit(event) { 
+    handleSubmit(event) {
         const itemToAdd = this.state.value;
         const entries = this.state.entries;
         this.setState({
@@ -45,4 +45,3 @@ export default class Journal extends Component {
     }
 
 }
-

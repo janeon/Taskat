@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import View from './View';
 import BigCalendar from 'react-big-calendar';
 import moment from 'moment'
-import withDragAndDrop from 'react-big-calendar/lib/addons/dragAndDrop'
+// import withDragAndDrop from 'react-big-calendar/lib/addons/dragAndDrop'
 
 import 'react-big-calendar/lib/addons/dragAndDrop/styles.less'
 
-const DragAndDropCalendar = withDragAndDrop(BigCalendar)
+// const DragAndDropCalendar = withDragAndDrop(BigCalendar)
 
 const localizer = BigCalendar.momentLocalizer(moment)
 var events = [

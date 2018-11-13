@@ -1,6 +1,8 @@
 import React from 'react';
-// import ExTab from '../../tabs/ExTab';
+import ExTab from '../../tabs/ExTab';
 import Calendar from '../../tabs/Calendar';
+// import Analytics from '../../../Analytics';
+import Journal from '../../Journal';
 /* IMPORTANT: as I am committing, I have just been commenting out the line where we've been putting
  *
  * our code to debug/render it :)
@@ -20,10 +22,28 @@ import Calendar from '../../tabs/Calendar';
 
 const View = props => {
   // console.log("Props for TabDisplay",props); // testing what props look like as passed from tabdisplay
+  var ret;
+  switch (props.tabType) {
+    case "analytics":
+      ret = <ExTab/>;
+      break;
+    case "calendar":
+      ret = <Calendar/>;
+      break;
+    case "journal":
+      ret = <Journal/>;
+      break;
+    case "menu":
+      ret = <ExTab/>;
+      break;
+    default:
+
+  }
   return (
     <div className="displayContainer">
         {/* <ExTab /> */}
-        <Calendar />
+        {/* <Calendar /> */}
+        {ret}
     </div>
 )
 }

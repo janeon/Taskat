@@ -2,7 +2,6 @@ import React from 'react'; // This begins as an empty container, but we will hav
 import BigCalendar from 'react-big-calendar';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import withDragAndDrop from 'react-big-calendar/lib/addons/dragAndDrop'
-
 import 'react-big-calendar/lib/addons/dragAndDrop/styles.less'
 
 const DragAndDropCalendar = withDragAndDrop(BigCalendar)
@@ -41,7 +40,6 @@ const View = props => {
       onSelectSlot={event => props.handleSelectSlot(event)}
       resourceIdAccessor="resourceId"
       resourceTitleAccessor="resourceTitle"
-      defaultView="day"
       resizable
       onEventResize={props.onEventResize}
       showMultiDayTimes

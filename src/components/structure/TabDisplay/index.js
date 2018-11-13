@@ -25,31 +25,11 @@ class TabDisplay extends Component {
     }
 
     render() {
-        // TODO -> parse tabinfo to decide what to render...
-        switch(this.tabToDisplay) {
-            case "analytics":
-                console.log("display analytics");
-                break;
-            case "calendar":
-                console.log("display calendar");
-                break;
-            case "journal":
-                console.log("display journal");
-                break;
-            case "menu":
-                console.log("display menu");
-                break;
-            case "welcome tab":
-                console.log("display welcome tab");
-                break;
-            default:
-                console.log(`TabDisplay parser didn't recognize ${this.tabToDisplay}`);
-                break;
-        }
         return <View
-          registerFinalState={this.registerFinalStateFunc}/>;
+          registerFinalState={this.registerFinalStateFunc}
+          tabToDisplay={this.tabToDisplay} 
+          />;
     }
-
 }
 
 export default TabDisplay;
