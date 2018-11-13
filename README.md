@@ -1,6 +1,7 @@
 Possible goals for Wednesday's meeting:
+0. Know initialized state for each tab (before meeting)
 1. Find Sage's branch publicly
-2. Be able to add tabs from menu / welcome page
+2. Be able to add tabs from menu / welcome page, or anywhere
 3. Persist states from each tab to the current task via the registerFinalStateFunc
 4. Integrate information across multiple tabs 
 
