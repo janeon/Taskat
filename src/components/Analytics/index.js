@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import View from './View';
-import {Line} from 'react-chartjs-2';
+// import {Line} from 'react-chartjs-2';
 
 class Analytics extends Component {
   constructor(props) {
@@ -41,7 +41,6 @@ class Analytics extends Component {
       data: data.concat(dataToAdd),
       labels: labels.concat(labelToAdd)
     })
-
   }
 
   render() {
