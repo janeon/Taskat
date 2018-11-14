@@ -1,6 +1,7 @@
 import React from 'react';
 
 
+
 const View = ({value, entries, handleSubmit, handleChange}) => (
 	<div>
 		<form onSubmit={handleSubmit}>
