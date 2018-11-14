@@ -1,3 +1,13 @@
+/ ------------------------------- IMPORTANT -----------------------------------/
+
+Anytime you would have used "npm", you now use 'yarn' instead.  
+
+To preview the project, you can run 'yarn dev'.  
+
+
+
+/ --------------------------------- TODOS --------------------------------------/
+
 Possible goals for Wednesday's meeting:
 1. Find Sage's branch publicly
 2. Be able to add tabs from menu / welcome page
@@ -77,4 +87,9 @@ THE TREE... (structure of the html elements)
                 your individual component, passed in through the 'props' argument in the constructor.  ***
 
 /------------------------------- OTHER STUFF? -------------------------------/
+
+dependencies....
+ 'react-chartjs-2' 
+ 'react-big-calendar'
+ 'electron-store'
 

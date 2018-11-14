@@ -13,7 +13,7 @@ const View = (
     {tabList, onTabClick, tabToDisplay, tabInfo, registerFinalState, taskKey, deleteTaskOnClick}
   ) => {
       return (
-        <div id="taskdisplay">
+        <div id="task-display">
           <TabList tabList={tabList} onTabClick={onTabClick}/>
           <TabDisplay 
                 tabToDisplay={tabToDisplay} 
