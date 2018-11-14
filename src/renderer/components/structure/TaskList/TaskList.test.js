@@ -16,7 +16,7 @@ describe('TaskList', () => {
         const model = new Model(true, getTestTaskListSmall());
         const tl = mount(<TaskList model={model}/>);
 
-        const allRenderedTasks = tl.find('#tasklist').children();
+        const allRenderedTasks = tl.find('#task-list').children();
         
         // verify there are the correct number of tasks are displayed
         expect(allRenderedTasks.length).toEqual(getTestTaskListSmall().length);
