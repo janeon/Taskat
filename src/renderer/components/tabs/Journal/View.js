@@ -2,7 +2,7 @@ import React from 'react';
 
 
 
-const View = ({value, entries, handleSubmit, handleChange}) => (
+const View = ({value, entries, handleSubmit, handleChange, handleDelete}) => (
 	<div>
 		<form onSubmit={handleSubmit}>
 	        <label>
@@ -12,7 +12,8 @@ const View = ({value, entries, handleSubmit, handleChange}) => (
 	        <div onClick={handleSubmit}> submit</div>
 	      </form>
     	<div>
-	      {entries.map((txt, index) => <p key={index}>{txt}</p>)}
+
+	      	{entries.map((txt, index) => <div key={index}>{txt} <p onClick={() => { handleDelete(txt)}}>delete</p></div>)}
 	   	</div>
      </div>
 );

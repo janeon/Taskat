@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
 import View from './View';
-import {Line} from 'react-chartjs-2';
 
 class Analytics extends Component {
   constructor(props) {
     super(props);
+
+    var today = new Date(),
+            date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+
     this.state = {
+      date: date,
       dataValue: 0,
       labelValue: 'enter label',
       chartData : {
@@ -21,33 +25,59 @@ class Analytics extends Component {
       }
     };
 
-    this.handleChange = this.handleChange.bind(this);
+    this.handleDataChange = this.handleDataChange.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   };
 
-  handleChange(event) {
-    this.setState({dataValue: event.target.dataValue});
-    this.setState({labelValue: event.target.labelValue});
+  handleDataChange(event) {
+    this.setState({dataValue: event.target.value});
+    console.log("handling data change: " + event.target.value);
+  }
+
+  handleDelete(event) {
+    const data = this.state.chartData.datasets[0].data;
+    const labels = this.state.chartData.labels;
+    this.setState({
+      data: data.pop(),
+      labels: labels.pop()
+    });
   }
 
   handleSubmit(event) {
-    const dataToAdd = this.state.labelValue;
-    const labelToAdd = this.state.labelValue;
-    const data = this.state.chartData.datasets.data;
+    event.persist();
+    const dataToAdd = this.state.dataValue;
+    const labelToAdd = this.state.date;
+    const data = this.state.chartData.datasets[0].data;
     const labels = this.state.chartData.labels;
-    this.setState({
-      dataValue: 'data entered.',
-      labelValue: 'label entered.',
-      data: data.concat(dataToAdd),
-      labels: labels.concat(labelToAdd)
-    })
 
+    console.log(parseInt(dataToAdd));
+    console.log(labelToAdd);
+
+    this.setState({
+      data: data.push(parseInt(dataToAdd)),
+      labels: labels.push(labelToAdd)
+    });
+    console.log(this.state.chartData.datasets[0].data);
+    console.log(this.state.chartData.labels);
+    event.preventDefault();
   }
 
   render() {
-        return <View dataValue={this.state.dataValue} labelValue={this.state.labelValue} chartData={this.state.chartData} handleSubmit={this.handleSubmit} handleChange = {this.handleChange}/>;
+        return <View value={this.state.value}
+        dataValue={this.state.dataValue}
+        labelValue={this.state.labelValue}
+        chartData={this.state.chartData}
+        handleSubmit={this.handleSubmit}
+        handleDataChange = {this.handleDataChange}
+        handleDelete = {this.handleDelete} />;
 
   }
 }
 
 export default Analytics;
+
+
+
+/*dataValue: 'data entered.',
+labelValue: 'label entered.',*/
