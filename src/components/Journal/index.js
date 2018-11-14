@@ -8,12 +8,13 @@ export default class Journal extends Component {
         super(props);
 
         this.state = {
-            value: 'enter ur entry',
-            entries: ["this is my first entry", "this is a second entry", "i also wrote this lol"]
+            value: 'type a journal entry',
+            entries: []
         };
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleDelete = this.handleDelete.bind(this);
 
     }
 
@@ -25,12 +26,16 @@ export default class Journal extends Component {
         const itemToAdd = this.state.value;
         const entries = this.state.entries;
         this.setState({
-            value: "enter ur entryyyy",
+            value: "type a journal entry",
             entries: entries.concat(itemToAdd)
         });
-        console.log(entries.concat(itemToAdd));
-
       }
+
+    handleDelete(txt) {        
+        this.setState({
+            entries: this.state.entries.filter(el => el !== txt)
+        });
+    }
 
     componentWillUnmount() {
         // this is where you record your final state to the model
@@ -39,9 +44,7 @@ export default class Journal extends Component {
     }
 
     render() {
-        console.log("rendering");
-        console.log(this.state);
-        return <View value={this.state.value} entries={this.state.entries} handleSubmit={this.handleSubmit} handleChange = {this.handleChange}/>;
+        return <View value={this.state.value} entries={this.state.entries} handleSubmit={this.handleSubmit} handleChange = {this.handleChange} handleDelete = {this.handleDelete}/>;
     }
 
 }
