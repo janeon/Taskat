@@ -10,7 +10,7 @@ body {
   padding: 0;
 }
 
-#appContainer {
+#app-container {
   background: var(--offwhite-bg);
   width: 100%;
   height: 100%;

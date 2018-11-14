@@ -5,7 +5,7 @@ import ExTab from '../../tabs/ExTab';
 // on tab clicks.  
 
 const View = ({taskKey, deleteTaskOnClick}) => (
-    <div className="displayContainer">
+    <div className="tab-display">
         <ExTab taskKey={taskKey} deleteTaskOnClick={deleteTaskOnClick}/>
     </div>
 );
