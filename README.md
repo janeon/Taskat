@@ -8,7 +8,6 @@ Possible goals for Wednesday's meeting:
 4. Integrate information across multiple tabs
 
 Git tips: to push your local branch to a remote branch that it's not tracking (say currentState for instance), use
->>>>>>> .merge_file_WSgFLu
 git push origin your_updated_branch_name:currentState
 
 /--------------------------------- THE TREE -----------------------------------/
