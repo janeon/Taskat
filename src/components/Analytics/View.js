@@ -4,23 +4,26 @@ import {Line} from 'react-chartjs-2';
 /*<button onClick={this.addData}>Change data!</button>*/
 /*{this.addData()}*/
 /*<Line data={this.data} />*/
-const View = ({dataValue, labelValue, chartData, handleChange, handleSubmit}) => (
+const View = ({value, dataValue, labelValue, chartData, handleDataChange, handleLabelChange, handleSubmit}) => (
 <div id="displayContainer" className="displayContainer">
 <div id="chartContainer">
 
-<Line data={chartData} />
+<Line data={chartData} redraw />
 
 <form onSubmit={handleSubmit}>
   <label>
     Data for today:
-    <input type="number" value={dataValue} onChange={handleChange} />
-    <input type="text" value={labelValue} onChange={handleChange} />
+    <input type="number" value={dataValue} onChange={handleDataChange} />
+
   </label>
-  <input type="submit" value="Submit" />
+  <div onClick={handleSubmit}>Submit</div>
 </form>
+
 </div>
 </div>
 
 );
 
 export default View;
+/*<input type="text" value={value} onChange={handleLabelChange} />*/
+/*<div onClick={handleDelete}>Delete</div>*/
