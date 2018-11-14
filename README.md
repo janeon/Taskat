@@ -1,4 +1,3 @@
-=======
 Possible goals for Wednesday's meeting:
 
 0. Know initialized state for each tab (before meeting)
