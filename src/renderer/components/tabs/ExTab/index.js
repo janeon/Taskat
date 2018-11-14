@@ -27,8 +27,6 @@ export default class ExTab extends Component {
          * then ExTab's 'props' would have a property called 'props.title', with whatever value 'mytitle' was. 
          */
 
-        
-
         // This is a good spot to initialize the 'state' of this component. 
         // You have to provide an initial value for 'state' if you are going to use it, it will probably be passed in via 
         // the 'props'.  
@@ -49,7 +47,7 @@ export default class ExTab extends Component {
 
     componentWillReceiveProps(newProps) {
         this.key = newProps.taskKey
-        console.log(this.key)
+        //console.log(this.key)
     }
 
     /*

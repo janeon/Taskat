@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import View from './View';
 
+import Analytics from '../../tabs/Analytics';
+import Calendar from '../../tabs/Calendar';
+import Journal from '../../tabs/Journal';
+
 class TabDisplay extends Component {
 
     constructor(props) {
@@ -32,16 +36,13 @@ class TabDisplay extends Component {
         // TODO -> parse tabToDisplay and tabInfo to decide what to render...
         switch(this.tabToDisplay) {
             case "analytics":
-                //console.log("display analytics");
-                break;
+                return <Analytics />;
             case "calendar":
-                //console.log("display calendar");
-                break;
+                return <Calendar />;
             case "journal":
-                //console.log("display journal");
-                break;
+                return <Journal />;
             case "menu": 
-                //console.log("display menu");
+                console.log("display menu");
                 break;
             case "welcome tab":
                 //console.log("display welcome tab");
