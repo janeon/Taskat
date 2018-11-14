@@ -12,8 +12,18 @@ const View = ({task, registerFinalState}) => {
 
   return (
     <div id="taskdetail">
-      {task} 
-      {registerFinalState}/>  
+      {task, registerFinalState}/> 
+     <form onSubmit={handleSubmit}>
+  	<label>
+    	Task Name:
+    	<input type="text" value={taskName} onChange={handleChange} />
+  	</label>
+  	<label>
+    	Task Description:
+    	<input type="text" value={taskName} onChange={handleChange} />
+  	</label>
+  <input type="submit" value="Submit" />
+</form>
     </div>)}
 
 export default View;
