@@ -18,11 +18,6 @@ class Analytics extends Component {
           {
             label: 'My data!',
             data: [65, 59, 80, 81, 56, 55, 40],
-            options: {
-                animation: {
-                    duration: 0
-                }
-            },
             fill: false,
             lineTension: 0.1
           }
@@ -31,7 +26,7 @@ class Analytics extends Component {
     };
 
     this.handleDataChange = this.handleDataChange.bind(this);
-    /*this.handleLabelChange = this.handleLabelChange.bind(this);*/
+    this.handleDelete = this.handleDelete.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   };
 
@@ -40,9 +35,14 @@ class Analytics extends Component {
     console.log("handling data change: " + event.target.value);
   }
 
-  /*handleLabelChange(event) {
-    this.setState({labelValue: event.target.value})
-  }*/
+  handleDelete(event) {
+    const data = this.state.chartData.datasets[0].data;
+    const labels = this.state.chartData.labels;
+    this.setState({
+      data: data.pop(),
+      labels: labels.pop()
+    });
+  }
 
   handleSubmit(event) {
     event.persist();
@@ -69,7 +69,8 @@ class Analytics extends Component {
         labelValue={this.state.labelValue}
         chartData={this.state.chartData}
         handleSubmit={this.handleSubmit}
-        handleDataChange = {this.handleDataChange} />;
+        handleDataChange = {this.handleDataChange}
+        handleDelete = {this.handleDelete} />;
 
   }
 }
