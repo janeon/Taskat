@@ -34,13 +34,27 @@ class TabDisplay extends Component {
 
     render() {
         // TODO -> parse tabToDisplay and tabInfo to decide what to render...
+        var wrapper = <div id="tab-display"></div>;
+
         switch(this.tabToDisplay) {
             case "analytics":
-                return <Analytics />;
+                return (
+                    <div id="tab-display">
+                        <Analytics/>
+                    </div>
+                );
             case "calendar":
-                return <Calendar />;
+                return (
+                    <div id="tab-display">
+                        <Calendar/>
+                    </div>
+                );
             case "journal":
-                return <Journal />;
+                return (
+                    <div id="tab-display">
+                        <Analytics/>
+                    </div>
+                );
             case "menu": 
                 console.log("display menu");
                 break;
@@ -51,7 +65,7 @@ class TabDisplay extends Component {
                 console.log(`TabDisplay parser didn't recognize ${this.tabToDisplay}`);
                 break;
         }
-        return <View taskKey={this.taskKey} deleteTaskOnClick={this.deleteTaskOnClick}/>;
+        return wrapper;
     }
 
 }
