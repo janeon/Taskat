@@ -33,8 +33,13 @@ class TabDisplay extends Component {
     }
 
     render() {
-        // TODO -> parse tabToDisplay and tabInfo to decide what to render...
-        var wrapper = <div id="tab-display"></div>;
+        
+        //var wrapper = <div id="tab-display"></div>;
+
+        return (
+            <div id="tab-display">
+                <Journal/>
+            </div>);
 
         switch(this.tabToDisplay) {
             case "analytics":
@@ -52,7 +57,7 @@ class TabDisplay extends Component {
             case "journal":
                 return (
                     <div id="tab-display">
-                        <Analytics/>
+                        <Journal/>
                     </div>
                 );
             case "menu": 
