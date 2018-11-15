@@ -18,6 +18,8 @@ window.require = (string) => {
     }
 }
 
+//jest.mock('react-chartjs2', () => 'Chart');
+
 class Store {
     get() {
         console.log("reading");
