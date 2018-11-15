@@ -8,7 +8,7 @@ export default class Journal extends Component {
         super(props);
 
         this.state = {
-            value: 'type a journal entry',
+            value: '',
             entries: []
         };
 
@@ -25,7 +25,7 @@ export default class Journal extends Component {
         const itemToAdd = this.state.value;
         const entries = this.state.entries;
         this.setState({
-            value: "type a journal entry",
+            value: "",
             entries: entries.concat(itemToAdd)
         });
       }
