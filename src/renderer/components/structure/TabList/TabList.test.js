@@ -1,6 +1,7 @@
 import React from 'react';
 import TabList from './index';
 import {shallow, mount} from 'enzyme';
+import allTabs from '../../'
 
 describe('TabList', () => {
 
@@ -31,6 +32,19 @@ describe('TabList', () => {
         tabToClick.simulate('click');
 
         expect(listener.currentTab).toEqual(tabs[3]);
+    });
+
+    it('should add tab button', () => {
+
+    });
+
+    it('should determine which tabs to have as options', () => {
+        const tabs = ["analytics", "calendar"];
+        const tl = shallow(<TabList tabList={tabs} onTabCLick={jest.fn()}/>);
+
+        const tabOptions = tl.instance().parseOptions();
+
+        expect(tabOptions).toEqual(ALL_TABS.filter(tab => !tabs.includes(tab)));
     });
 
 });

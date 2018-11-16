@@ -22,6 +22,10 @@ class TabList extends Component {
     }
 
     render() {
+
+        // This is the list that appears in the drop down...
+        const tabOptions = ["spaghetti"];
+
         // convert list of tabs to html elements
         const tabElementList = this.tabList.map((title, index) => {
             // this will (eventually) bind the function for displaying the tab as a callback to the model.

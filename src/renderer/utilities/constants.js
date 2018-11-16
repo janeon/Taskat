@@ -10,13 +10,6 @@ export const NO_EMPTY_TASK_TITLES = "a task's title needs to contain at least on
 // the message to output when the user tries to create a task with a duplicate title.
 export const NO_DUPLICATE_TASK_TITLES = "a task with that title already exists...";
 
-/* ----------------------------------- IPC COMMUNICATIONS ------------------------------------- */
+/* ----------------------------------- CONSTANTS ------------------------------------- */
 
-
-export const READ_ALL_TASKS_REQUEST = "read-all-tasks-request";
-
-export const READ_ALL_TASKS_RESPONSE = "read-all-tasks-response";
-
-export const WRITE_ALL_TASKS_REQUEST = "write-all-tasks-request";
-
-export const WRITE_ALL_TASKS_RESPONSE = "write-all-tasks-response";
+export const ALL_TABS = ["calendar", "analytics", "journal"];

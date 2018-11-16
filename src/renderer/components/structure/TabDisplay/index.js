@@ -36,22 +36,17 @@ class TabDisplay extends Component {
         
         //var wrapper = <div id="tab-display"></div>;
 
-        return (
-            <div id="tab-display">
-                <Journal/>
-            </div>);
-
         switch(this.tabToDisplay) {
             case "analytics":
                 return (
                     <div id="tab-display">
-                        <Analytics/>
+                        <Analytics />
                     </div>
                 );
             case "calendar":
                 return (
                     <div id="tab-display">
-                        <Calendar/>
+                        <Calendar />
                     </div>
                 );
             case "journal":
@@ -70,7 +65,7 @@ class TabDisplay extends Component {
                 console.log(`TabDisplay parser didn't recognize ${this.tabToDisplay}`);
                 break;
         }
-        return wrapper;
+        return <View />;
     }
 
 }
