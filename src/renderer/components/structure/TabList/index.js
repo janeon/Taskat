@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import View from "./View";
+import { ALL_TABS } from "../../../utilities/constants";
 
 /*
  * This component renders the list of tabs for the 'current_task'.
@@ -21,7 +22,19 @@ class TabList extends Component {
         this.onTabClick = newProps.onTabClick;
     }
 
+    /*
+     * Figure out which tabs aren't already available for the current task.
+     */
+    parseTabOptions(listOfTabs) {
+        return ALL_TABS.filter(tab => ! listOfTabs.includes(tab));
+    }
+
+    // ABSTRACT WRAP METHOD
+
     render() {
+
+        const newTabButtonTabs = this.parseTabOptions(this.tabList);
+
         // convert list of tabs to html elements
         const tabElementList = this.tabList.map((title, index) => {
             // this will (eventually) bind the function for displaying the tab as a callback to the model.
@@ -32,7 +45,7 @@ class TabList extends Component {
                     </div>;
         });
 
-        return <View tabElementList={tabElementList}/>;
+        return <View tabElementList={tabElementList} newTabButtonTabs={newTabButtonTabs}/>;
     }
 
 }

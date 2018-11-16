@@ -1,6 +1,7 @@
 import React from 'react';
 import TabList from './index';
 import {shallow, mount} from 'enzyme';
+import { ALL_TABS } from '../../../utilities/constants';
 
 describe('TabList', () => {
 
@@ -31,6 +32,41 @@ describe('TabList', () => {
         tabToClick.simulate('click');
 
         expect(listener.currentTab).toEqual(tabs[3]);
+    });
+
+    it("should render new-tab-button", () => {
+
+        const tl = mount(<TabList tabList={tabs}/>);
+
+        const button = tl.find('#new-tab-button');
+
+        expect(button.length).toEqual(1);
+    });
+
+    it("should parse options for newTabButton", () => {
+        const tabs = ["analytics", "calendar"];
+
+        const tlInst = shallow(<TabList tabList={tabs} />).instance();
+
+        const correctOptions = ALL_TABS.filter(tab => ! tabs.includes(tab));
+
+        expect(tlInst.parseTabOptions(tabs)).toEqual(correctOptions);
+    });
+
+    it("should wrap tab options", () => {
+        const tabs = ["journal", "calendar"];
+
+        const tlInst = shallow(<TabList tabList={tabs}/>).instance();
+
+        const options = tlInst.parseTabOptions(tabs);
+
+        const wrappedOptions = tlInst.wrapTabOptions(options);
+
+        const correct = options.map(option => {
+            return (<option className=".tab-option">{option}</option>);
+        });
+
+        expect(wrappedOptions).toEqual(correct);
     });
 
 });
