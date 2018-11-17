@@ -70,5 +70,5 @@ THE TREE... (structure of the html elements)
                 *** For now, just pretend that you have access to all of the data from the currentTask that has to do with
                 your individual component, passed in through the 'props' argument in the constructor.  ***
 
-/------------------------------- OTHER STUFF? -------------------------------/
+
 
