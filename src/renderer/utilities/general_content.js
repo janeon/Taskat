@@ -26,7 +26,7 @@ export function getInitialState(tabTitle) {
         case ("analytics"):
 
             return {
-                date: date,
+                date: null,
                 dataValue: 0,
                 labelValue: 'enter label',
                 chartData : {
