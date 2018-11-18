@@ -13,13 +13,10 @@ class TaskDisplay extends Component {
             // what to do here is up in the air, maybe the 'menu' tab?
             currentTask: new InitialTask(),
             currentTabTitle: "welcome tab",
-            tabListToDisplay: [],
         };
-
-        // binding 'this' in onSwitchTab()
-        var task = this.state.currentTask;
+    
         // this.state.tabListToDisplay = task.tabListToDisplay;
-        console.log("What's the current task like?", this.state.tabListToDisplay);
+        // console.log("What's the current task like?", this.state.tabListToDisplay);
         this.onSwitchTab = this.onSwitchTab.bind(this);
         this.onDeleteTab = this.onDeleteTab.bind(this);
     }
@@ -66,7 +63,11 @@ class TaskDisplay extends Component {
       //   // console.log("current first tab", tabList[0].title);
       //   newCurrentTabTitle = tabList[0].title;
       // }
-      if (tabTitle === "menu") {
+      const sure = window.confirm("Are you sure you want to delete " + tabTitle + "?");
+      if (!sure) {
+        newCurrentTabTitle = this.state.currentTabTitle;
+      }
+      else if (tabTitle === "menu") {
         newCurrentTabTitle = tabTitle;
       }
       else { // if we are displaying the first tab and list is greater than 1 tab, remove first and display second tab
@@ -96,7 +97,6 @@ class TaskDisplay extends Component {
         });
     }
 
-
     /*
      * Strips the info from the current task for the current tab.
      */
@@ -111,35 +111,30 @@ class TaskDisplay extends Component {
         // console.log("THIS IS THE currentTask", this.state.currentTask);
         var tabInfo = this.getTabInfo(this.state.currentTask, this.state.currentTabTitle);
 
-        return < View
-                    tabList={tabList}
-                    // TabList is going to wrap this onClick with the appropriate args.
-                    onSwitchTab={this.onSwitchTab}
-                    tabToDisplay={this.state.currentTabTitle}
-                    tabInfo={tabInfo}
-                    registerFinalState={this.model.registerFinalState}
-                    taskKey={this.state.currentTask.key}
-                    deleteTaskOnClick={this.model.deleteTask}
-                    currentTaskTabList={this.state.currentTask.tabs}
-                    onDeleteTab={this.onDeleteTab}
-                    />;
+        // decide whether or not this needs to load the NewTabButton...
         const displayNewTabButton = (this.state.currentTabTitle != "welcome tab");
 
         return < View
-                    // Tab list...
+                    // TabList ...
                     tabList={tabList}
-                    displayNewTabButton={displayNewTabButton}
+                    currentTaskTabList={this.state.currentTask.tabs}
+                    onDeleteTab={this.onDeleteTab}
                     addTabToTask={this.model.addTabToTask}
-                    // TabList is going to wrap this onClick with the appropriate args.
+                    displayNewTabButton={displayNewTabButton}
+                    // TabList is going to wrap this onSwitchTab with the appropriate args.
                     onSwitchTab={this.onSwitchTab}
 
-                    // Tab Display....
+                    // TabDisplay
                     tabToDisplay={this.state.currentTabTitle}
                     tabInfo={tabInfo}
                     registerFinalState={this.model.registerFinalState}
-                    taskKey={this.state.currentTask.key}
+                    
                     deleteTaskOnClick={this.model.deleteTask}
-                    />
+
+                    // both 
+                    taskKey={this.state.currentTask.key}
+                    />;
+                    
     }
 
 }

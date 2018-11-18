@@ -22,7 +22,8 @@ class Calendar extends Component {
   /*
   TODO: Things to fix
   - be able to store event start and end times into localizer
-  = be able to add reoccuring events
+  - fix prompts for creating and adding nextEvents
+  - make edit time via selection tool actaully work
   https://www.reddit.com/r/reactjs/comments/8ig9q3/using_reactbigcalendar_is_there_an_easy_way_to/
   */
 
@@ -30,7 +31,7 @@ class Calendar extends Component {
   {
       super(props);
       this.state = { events : events } ;
-      
+
       this.handleSelectSlot = this.handleSelectSlot.bind(this);
       this.handleSelectToDelete = this.handleSelectToDelete.bind(this);
       this.addRecurringEvents = this.addRecurringEvents.bind(this);
