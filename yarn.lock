@@ -8450,9 +8450,9 @@ sax@^1.2.4, sax@~1.2.1, sax@~1.2.4:
   integrity sha512-NqVDv9TpANUjFm0N8uM5GxL36UgKi9/atZw+x7YFnQ8ckwFGKrl4xX4yWtrey3UJm5nP1kUbnYgLopqWNSRhWw==
 
 scheduler@^16.6.2:
-  version "0.11.2"
-  resolved "https://registry.yarnpkg.com/scheduler/-/scheduler-0.11.2.tgz#a8db5399d06eba5abac51b705b7151d2319d33d3"
-  integrity sha512-+WCP3s3wOaW4S7C1tl3TEXp4l9lJn0ZK8G3W3WKRWmw77Z2cIFUW2MiNTMHn5sCjxN+t7N43HAOOgMjyAg5hlg==
+  version "0.12.0-alpha.2"
+  resolved "https://registry.yarnpkg.com/scheduler/-/scheduler-0.12.0-alpha.2.tgz#2a8bc8dc6ecdb75fa6480ceeedc1f187c9539970"
+  integrity sha512-bfqFzGH18MjjhePIzYQNR0uGQ1wMCX6Q83c2s+3fzyuqKT6zBI2wNQTpq01q72C7QItAp8if5w2LfMiXnI2SYw==
   dependencies:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
@@ -9298,6 +9298,16 @@ typedarray@^0.0.6:
   version "0.0.6"
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
+
+typeface-oswald@^0.0.54:
+  version "0.0.54"
+  resolved "https://registry.yarnpkg.com/typeface-oswald/-/typeface-oswald-0.0.54.tgz#1e253011622cdd50f580c04e7d625e7f449763d7"
+  integrity sha512-U1WMNp4qfy4/3khIfHMVAIKnNu941MXUfs3+H9R8PFgnoz42Hh9pboSFztWr86zut0eXC8byalmVhfkiKON/8Q==
+
+typeface-roboto@^0.0.54:
+  version "0.0.54"
+  resolved "https://registry.yarnpkg.com/typeface-roboto/-/typeface-roboto-0.0.54.tgz#8f02c9a18d1cfa7f49381a6ff0d21ff061f38ad2"
+  integrity sha512-sOFA1FXgP0gOgBYlS6irwq6hHYA370KE3dPlgYEJHL3PJd5X8gQE0RmL79ONif6fL5JZuGDj+rtOrFeOqz5IZQ==
 
 uglify-es@^3.3.4:
   version "3.3.9"
