@@ -1,11 +1,15 @@
 import React from 'react';
 import TabList from './index';
 import {shallow, mount} from 'enzyme';
+<<<<<<< HEAD
 import allTabs from '../../'
+=======
+import { ALL_TABS } from '../../../utilities/constants';
+>>>>>>> new-tab-button
 
 describe('TabList', () => {
 
-    const tabs = ["analytics", "journal", "calendar", "horoscope"];
+    const tabs = ["analytics", "journal", "dancing", "horoscope"];
 
     it('should inflate all tabs with title', () => {
         const tl = mount(<TabList tabList={tabs}/>);
@@ -21,7 +25,7 @@ describe('TabList', () => {
         });
     });
 
-    it('should attach onClick methods', () => {
+    it('should attach onClick methods to tabs', () => {
         const listener = new MockOnClickListener();
         const onClickMock = listener.onClick;
 
@@ -34,6 +38,7 @@ describe('TabList', () => {
         expect(listener.currentTab).toEqual(tabs[3]);
     });
 
+<<<<<<< HEAD
     it('should add tab button', () => {
 
     });
@@ -45,6 +50,41 @@ describe('TabList', () => {
         const tabOptions = tl.instance().parseOptions();
 
         expect(tabOptions).toEqual(ALL_TABS.filter(tab => !tabs.includes(tab)));
+=======
+    it("should render new-tab-button when 'displayNewTabButton' is true", () => {
+        const tl = mount(<TabList tabList={tabs} displayNewTabButton={true}/>);
+
+        const button = tl.find('#new-tab-button');
+
+        expect(button.length).toEqual(1);
+    });
+
+    it("should not render new-tab-button when 'displayNewTabButton' is false", () => {
+        const tl = mount(<TabList tabList={tabs} displayNewTabButton={false}/>);
+
+        const button = tl.find('#new-tab-button');
+
+        expect(button.length).toEqual(0);
+    });
+
+    it("should not render new-tab-button when 'newTabButtonTabs' is empty", () => {
+        const fullTabList = ALL_TABS;
+        const tl = mount(<TabList tabList={fullTabList} displayNewTabButton={true}/>);
+
+        const button = tl.find('#new-tab-button');
+
+        expect(button.length).toEqual(0);
+    })
+
+    it("should parse options for newTabButton", () => {
+        const tabs = ["analytics", "calendar"];
+
+        const tlInst = shallow(<TabList tabList={tabs} />).instance();
+
+        const correctOptions = ALL_TABS.filter(tab => ! tabs.includes(tab));
+
+        expect(tlInst.parseTabOptions(tabs)).toEqual(correctOptions);
+>>>>>>> new-tab-button
     });
 
 });

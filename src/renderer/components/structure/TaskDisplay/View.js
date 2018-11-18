@@ -10,17 +10,23 @@ import './TaskDisplay.css';
  * current task.
  */
 const View = (
-    {tabList, onTabClick, tabToDisplay, tabInfo, registerFinalState, taskKey, deleteTaskOnClick}
+    {tabList, displayNewTabButton, addTabToTask, onTabClick, 
+      tabToDisplay, tabInfo, registerFinalState, taskKey, deleteTaskOnClick}
   ) => {
       return (
         <div id="task-display">
-          <TabList tabList={tabList} onTabClick={onTabClick}/>
+          <TabList 
+            tabList={tabList} 
+            onTabClick={onTabClick} 
+            displayNewTabButton={displayNewTabButton}
+            taskKey={taskKey}
+            addTabToTask={addTabToTask}/>
           <TabDisplay 
-                tabToDisplay={tabToDisplay} 
-                tabInfo={tabInfo} 
-                registerFinalState={registerFinalState}
-                taskKey={taskKey}
-                deleteTaskOnClick={deleteTaskOnClick}/>  
+            tabToDisplay={tabToDisplay} 
+            tabInfo={tabInfo} 
+            registerFinalState={registerFinalState}
+            taskKey={taskKey}
+            deleteTaskOnClick={deleteTaskOnClick}/>  
         </div>)}
 
 export default View;

@@ -131,6 +131,35 @@ describe('Model', () => {
 
     it("should reset current task to the InitialTask on deletion", () => {
         const testing = true;
+
+
+    });
+
+    it("should edit tasks", () => {
+        const model = new Model(true, getTestTaskListSmall());
+
+        const task = getTestTaskListSmall()[1];
+
+        // remove the calendar tab
+        task.tabs = task.tabs.filter(tab => tab.title !== "calendar");
+
+        model.updateTask(task);
+
+        expect(model.resources.taskList.filter(taskObs => taskObs.getData().key === 1)[0].getData()).toEqual(task);
+    });
+
+    it("should add tabs to task", () => {
+        const model = new Model(true, getTestTaskListSmall());
+
+        // 'get pizza', it doesn't have a calendar
+        const task = getTestTaskListSmall()[0];
+
+        model.addTabToTask(task.key, "calendar");
+
+        const correctTabs = getTestTaskListSmall()[0].tabs.map(tab => tab.title);
+        correctTabs.push("calendar");
+
+        expect(model.resources.getTask(task.key).tabs.map(tab => tab.title)).toEqual(correctTabs);
     });
 
 });
