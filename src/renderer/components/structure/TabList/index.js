@@ -37,16 +37,11 @@ class TabList extends Component {
 
     render() {
 
-<<<<<<< HEAD
-        // This is the list that appears in the drop down...
-        const tabOptions = ["spaghetti"];
-=======
         const newTabButtonTabs = this.parseTabOptions(this.tabList);
 
         if (newTabButtonTabs.length === 0) {
             this.displayNewTabButton = false;
         }
->>>>>>> new-tab-button
 
         // convert list of tabs to html elements
         const tabElementList = this.tabList.map((title, index) => {

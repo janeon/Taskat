@@ -10,16 +10,9 @@
     border-bottom: var(--pinkborder);
 }
 
-<<<<<<< HEAD
-#tab-list{
-    display: flex;
-    flex-direction: row;
-    padding-right: 10px;
-=======
 #tab-list {
     display: flex;
     flex-direction: row;
->>>>>>> new-tab-button
 }
 
 .tab {
