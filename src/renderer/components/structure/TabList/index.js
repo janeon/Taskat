@@ -45,13 +45,10 @@ class TabList extends Component {
 
 
     render() {
-
         const newTabButtonTabs = this.parseTabOptions(this.tabList);
-
         if (newTabButtonTabs.length === 0) {
             this.displayNewTabButton = false;
         }
-
 
         // convert list of tabs to html elements
         var tabElementList = this.tabList.map((title, index) => {
@@ -66,9 +63,9 @@ class TabList extends Component {
               return <div className="tab"
                           key={index}>
                           <div onClick={(e) => this.onSwitchTab(title)}>{title}</div>
-                          <div className="delete" onClick={(event) => this.onDeleteTab(title)}>
-                            <i className="fa fa-times"></i>
-                          </div>
+                            <div className="delete" onClick={(event) => this.onDeleteTab(title)}>
+                              <i className="fa fa-times"></i>
+                            </div>
                       </div>
             };
         });
