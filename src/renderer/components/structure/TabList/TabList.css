@@ -25,6 +25,8 @@
     text-align: center;
     vertical-align: middle;
     display: flex;
+    font-family:oswald;
+    font-size: 20px;
 }
 
 .tab:hover {

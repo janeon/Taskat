@@ -16,7 +16,9 @@
       "\\.(css|less|sass|scss)$": "identity-obj-proxy"
     },
     "setupTestFrameworkScriptFile": "<rootDir>/src/renderer/setupTests.js",
-    "setupFiles": ["jest-canvas-mock"]
+    "setupFiles": [
+      "jest-canvas-mock"
+    ]
   },
   "scripts": {
     "test": "yarn jest",
@@ -38,7 +40,8 @@
     "react-bootstrap": "^0.32.4",
     "react-chartjs-2": "^2.7.4",
     "react-dom": "^16.6.2",
-    "source-map-support": "^0.5.9"
+    "source-map-support": "^0.5.9",
+    "typeface-roboto": "^0.0.54"
   },
   "homapage": "./",
   "devDependencies": {
@@ -61,6 +64,7 @@
     "identity-obj-proxy": "^3.0.0",
     "jest-canvas-mock": "^1.1.0",
     "react-test-renderer": "^16.6.2",
+    "typeface-oswald": "^0.0.54",
     "webpack": "^4.24.0"
   }
 }

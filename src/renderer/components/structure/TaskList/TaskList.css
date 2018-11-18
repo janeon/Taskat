@@ -12,4 +12,6 @@
     background: lavender;
     padding: 10px;
     border-bottom: 2px solid var(--pinkline);
+    font-family:oswald;
+    cursor:pointer;
 }

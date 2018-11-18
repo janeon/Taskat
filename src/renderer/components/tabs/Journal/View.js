@@ -3,17 +3,23 @@ import React from 'react';
 
 
 const View = ({value, entries, handleSubmit, handleChange, handleDelete}) => (
-	<div>
+	<div className="journal">
 		<form onSubmit={handleSubmit}>
 	        <label>
-	          Essay:
+	          <p>Write a new entry</p>
 	          <textarea value={value} onChange={handleChange} />
 	        </label>
-	        <div onClick={handleSubmit}> submit</div>
+	        <br /><div className="button" onClick={handleSubmit}> submit</div>
 	      </form>
     	<div>
 
-	      	{entries.map((txt, index) => <div key={index}>{txt} <p onClick={() => { handleDelete(txt)}}>delete</p></div>)}
+	      	<p>Journal entries:</p>
+	      	<div>
+                {(entries.length==0) &&
+                        <p>You have no entries. Write a new one above!</p>}
+
+                        {entries.map((txt, index) => <div key={index}>{txt} <p className="button" onClick={() => { handleDelete(txt)}}>delete</p></div>)}
+               </div>
 	   	</div>
      </div>
 );

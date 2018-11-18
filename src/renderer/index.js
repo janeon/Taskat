@@ -6,6 +6,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App/App';
+import "typeface-roboto";
+import "typeface-oswald";
 
 // Grab a reference to the element from the div 
 const appContainer = document.getElementById("app");
