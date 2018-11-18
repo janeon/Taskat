@@ -6,7 +6,7 @@ class Analytics extends Component {
     super(props);
 
     var today = new Date(),
-            date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+    date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
 
     this.state = {
       date: date,

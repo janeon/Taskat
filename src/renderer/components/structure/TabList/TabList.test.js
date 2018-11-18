@@ -25,13 +25,18 @@ describe('TabList', () => {
         const listener = new MockOnClickListener();
         const onClickMock = listener.onClick;
 
+        const tabs = ["analytics", "calendar"];
+
         const tl = mount(<TabList tabList={tabs} onSwitchTab={onClickMock}/>);
 
-        const tabToClick = tl.findWhere((el) => el.text() === tabs[3]);
+        // This filters the result of that search so that only the clickable part is grabbed
+        const tabToClick = tl.find(".tab").findWhere((el) => el.text() === tabs[1]).at(1);
+
+        console.log(tabToClick);
 
         tabToClick.simulate('click');
 
-        expect(listener.currentTab).toEqual(tabs[3]);
+        expect(listener.currentTab).toEqual(tabs[1]);
     });
 
     it("should render new-tab-button when 'displayNewTabButton' is true", () => {
