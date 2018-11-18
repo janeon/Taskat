@@ -162,6 +162,19 @@ describe('Model', () => {
         expect(model.resources.getTask(task.key).tabs.map(tab => tab.title)).toEqual(correctTabs);
     });
 
+    it("should remove tabs from task", () => {
+        const model = new Model(true, getTestTaskListSmall());
+
+        // 'get pizza' has a 'journal' tab
+        const task = getTestTaskListSmall()[0];
+
+        model.removeTabFromTask(task.key, "journal");
+
+        const correctTabs = getTestTaskListSmall()[0].tabs.filter(tab => tab.title != "journal");
+
+        expect(model.resources.getTask(task.key).tabs).toEqual(correctTabs);
+    })
+
 });
 
 /*

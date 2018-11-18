@@ -166,7 +166,11 @@ class Model {
      * Remove a tab from the task with the given 'key' 
      */
     removeTabFromTask(key, tabTitle) {
+        const task = this.resources.getTask(key);
 
+        task.tabs = task.tabs.filter(tab => tab.title != tabTitle);
+
+        this.resources.updateTask(task);
     }
 
     /*
