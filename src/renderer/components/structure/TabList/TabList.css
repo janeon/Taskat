@@ -13,21 +13,31 @@
     flex-direction: row;
 }
 
+.tab-wrapper {
+  display: flex;
+}
+
 .tab {
     background: salmon;
-    margin-right: 10px;
+    margin-right: 0.5em;
     padding: 10px;
-    padding-right: 20px;
+    padding-right: 2.25em;
     text-align: center;
     vertical-align: middle;
     display: flex;
 }
 
+.tab:hover {
+  background-color: white;
+}
+
 .delete {
-  /* float: right; */
+  float: right;
+  display: flex;
   max-height: 1em;
-  margin-left: 1em;
-  margin-right: -1em;
+  /* margin-left: 1em; */
+  margin-right: 0.75em;
+  margin-top: -1.8em;
   color: black;
   padding: 2px;
   z-index: 400;

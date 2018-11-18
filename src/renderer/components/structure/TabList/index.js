@@ -54,15 +54,13 @@ class TabList extends Component {
         var tabElementList = this.tabList.map((title, index) => {
 
             if (title === "menu") {
-              return <div className="tab"
-                            key={index}>
-                            <div onClick={(e) => this.onSwitchTab(title)}>{title}</div>
+              return <div className="tab-wrapper" key={index}>
+                            <div className="tab" onClick={(e) => this.onSwitchTab(title)}>{title}</div>
                         </div>
               }
             else {
-              return <div className="tab"
-                          key={index}>
-                          <div onClick={(e) => this.onSwitchTab(title)}>{title}</div>
+              return <div key={index}>
+                          <div className="tab" onClick={(e) => this.onSwitchTab(title)}>{title}</div>
                             <div className="delete" onClick={(event) => this.onDeleteTab(title)}>
                               <i className="fa fa-times"></i>
                             </div>
