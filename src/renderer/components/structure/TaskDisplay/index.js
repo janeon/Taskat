@@ -110,6 +110,7 @@ class TaskDisplay extends Component {
         // console.log("THIS IS THE currentTask", this.state.currentTask);
         var tabInfo = this.getTabInfo(this.state.currentTask, this.state.currentTabTitle);
 
+// <<<<<<< HEAD
         return < View
                     tabList={tabList}
                     // TabList is going to wrap this onClick with the appropriate args.
@@ -122,6 +123,25 @@ class TaskDisplay extends Component {
                     currentTaskTabList={this.state.currentTask.tabs}
                     onDeleteTab={this.onDeleteTab}
                     />;
+// =======
+        const displayNewTabButton = (this.state.currentTabTitle != "welcome tab");
+
+        return < View
+                    // Tab list...
+                    tabList={tabList}
+                    displayNewTabButton={displayNewTabButton}
+                    addTabToTask={this.model.addTabToTask}
+                    // TabList is going to wrap this onClick with the appropriate args.
+                    onSwitchTab={this.onSwitchTab}
+
+                    // Tab Display....
+                    tabToDisplay={this.state.currentTabTitle}
+                    tabInfo={tabInfo}
+                    registerFinalState={this.model.registerFinalState}
+                    taskKey={this.state.currentTask.key}
+                    deleteTaskOnClick={this.model.deleteTask}
+                    />
+// >>>>>>> baaadca39c86c7d411f4853ea0037751b117c838
     }
 
 }

@@ -15,4 +15,51 @@ export class InitialTask {
     }
 }
 
+<<<<<<< HEAD
 // Is this where all tabs' initial states should be catalogued?
+=======
+// INITIAL STATES
+
+export function getInitialState(tabTitle) {
+
+    switch(tabTitle) {
+        case ("analytics"):
+            
+            return {
+                date: date,
+                dataValue: 0,
+                labelValue: 'enter label',
+                chartData : {
+                  labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+                  datasets: [
+                    {
+                      label: 'My data!',
+                      data: [65, 59, 80, 81, 56, 55, 40],
+                      fill: false,
+                      lineTension: 0.1
+                    }
+                  ]
+                }
+              };
+        case ("calendar"):
+            return { 
+                events: [
+                    {
+                        end: new Date('November 11, 2018 20:00:00'),
+                        start: new Date('November 11, 2018 06:00:00'),
+                        title: 'Happy 11/11',
+                        desc: 'Big conference for important people'
+                    }
+                ]
+            };
+        case ("journal"):
+            return {
+                value: 'type a journal entry',
+                entries: []
+            };
+        default: 
+            alert("you can't get that initial state!");
+            break;
+    }
+}
+>>>>>>> baaadca39c86c7d411f4853ea0037751b117c838

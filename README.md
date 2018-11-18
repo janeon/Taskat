@@ -17,8 +17,7 @@ To preview the project, you can run 'yarn dev'.
 Git tips: to push your local branch to a remote branch that it's not tracking (say currentState for instance), use
 git push origin your_updated_branch_name:currentState
 
-One more dependency to add/install as of 11/17
-yarn add font-awesome
+
 
 /--------------------------------- THE TREE -----------------------------------/
 
@@ -89,9 +88,11 @@ THE TREE... (structure of the html elements)
                 *** For now, just pretend that you have access to all of the data from the currentTask that has to do with
                 your individual component, passed in through the 'props' argument in the constructor.  ***
 
+
 /------------------------------- OTHER STUFF? -------------------------------/
 
 dependencies....
  'react-chartjs-2'
  'react-big-calendar'
  'electron-store'
+ font-awesome

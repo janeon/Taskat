@@ -45,21 +45,15 @@ class Analytics extends Component {
   }
 
   handleSubmit(event) {
-    event.persist();
     const dataToAdd = this.state.dataValue;
     const labelToAdd = this.state.date;
     const data = this.state.chartData.datasets[0].data;
     const labels = this.state.chartData.labels;
 
-    console.log(parseInt(dataToAdd));
-    console.log(labelToAdd);
-
     this.setState({
       data: data.push(parseInt(dataToAdd)),
       labels: labels.push(labelToAdd)
     });
-    console.log(this.state.chartData.datasets[0].data);
-    console.log(this.state.chartData.labels);
     event.preventDefault();
   }
 

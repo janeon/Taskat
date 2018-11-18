@@ -52,6 +52,14 @@ import { InitialTask } from '../utilities/general_content';
     }
 
     /*
+     * Return all data for the task with the given key, 
+     * or null if that task doesn't exist.
+     */
+    getTask(key) {
+        return this.taskList.filter(taskObs => taskObs.getData().key === key)[0].getData();
+    }
+
+    /*
      * Add a new task
      */
     addTask(newTask) {
@@ -65,6 +73,19 @@ import { InitialTask } from '../utilities/general_content';
      */
     removeTask(keyOfTaskToRemove) {
         this.taskList = this.taskList.filter(taskObs => taskObs.getData().key !== keyOfTaskToRemove);
+    }
+
+    /*
+     * Replace an existing task's info
+     */
+    updateTask(newTaskData) {
+        const taskToUpdate = this.taskList.filter(taskObs => taskObs.getData().key === newTaskData.key)[0];
+        taskToUpdate.updateData(newTaskData);
+        // if the task that just updated is the current task (which should always be the case
+        // then 'flash' the currentTask's data (to re-render the tree)
+        if (this.currentTask.getData().key === newTaskData.key) {
+            this.currentTask.updateData(taskToUpdate.getData());
+        }
     }
 
     getUnwrappedTaskList() {

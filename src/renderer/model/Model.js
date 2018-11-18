@@ -1,5 +1,6 @@
 import Resources from './Resources';
 import PersistentData from './PersistentData';
+import { getInitialState } from '../utilities/general_content';
 
 /*
  * This manages connections between components, data, and actions (updates, edits, deletion, etc.).
@@ -25,11 +26,13 @@ class Model {
         
         this.resources = new Resources(initTaskList);
 
-        // binding the 'this' of that function to be the Model reference. 
+        // binding the 'this' of the functions that get dispersed throughout the app. 
         this.registerFinalState = this.registerFinalState.bind(this);
         this.writeAppState = this.writeAppState.bind(this);
         this.createTask = this.createTask.bind(this);
         this.deleteTask = this.deleteTask.bind(this);
+
+        this.addTabToTask = this.addTabToTask.bind(this);
     }
 
     writeAppState() {
@@ -105,7 +108,8 @@ class Model {
     }
 
     /*
-     * Update the current task, it gets called by the TaskList's task_key items.  
+     * Update the current task, it gets called by the TaskList's task_key items, it changes  
+     * currentTask's value to be that of the task with the 'key' passed in to it.  
      */
     updateCurrentTask(key) {
         // this should never be size greater than 1...
@@ -115,8 +119,58 @@ class Model {
         if (newCurrentTask !== null) {
             this.resources.currentTask.updateData(newCurrentTask.getData());
         } else {
+            // this shouldn't ever happen...
             throw Error("model.updateCurrentTask() was called with a null task...");
         }
+    }
+
+    /*
+     * Update the contents of the task (it finds it by key)
+     *
+     * It just replaces whatever was there, so be careful that you 
+     * pass in all the task data, not just the thing you want to change.  
+     */
+    updateTask(newTaskData) {
+        this.resources.updateTask(newTaskData);
+        this.resources.refreshTitleKeyList();
+    }
+
+    /*
+     * Initialize a new tab for the task with the given 'key'
+     */
+    addTabToTask(key, tabTitle) {
+        const task = this.resources.getTask(key);
+
+        var newTab = {title: tabTitle};
+
+        // figure out initial state...
+        switch(tabTitle) {
+            case ("analytics"):
+                newTab.info = getInitialState("analytics");
+                break;
+            case ("calendar"):
+                newTab.info = getInitialState("calendar");
+                break;
+            case("journal"): 
+                newTab.info = getInitialState("journal");
+                break;
+            default: 
+                throw new Error(`I don't know how to init the ${tabTitle} tab... `);
+        }
+
+        task.tabs.push(newTab);
+        this.resources.updateTask(task);
+    }
+
+    /*
+     * Remove a tab from the task with the given 'key' 
+     */
+    removeTabFromTask(key, tabTitle) {
+        const task = this.resources.getTask(key);
+
+        task.tabs = task.tabs.filter(tab => tab.title != tabTitle);
+
+        this.resources.updateTask(task);
     }
 
     /*
@@ -125,7 +179,6 @@ class Model {
      * returns - 'true' if it added, 'false' if it was a duplicate. 
      */
     createTask(title) {
-
         // look for duplicate titles
         const duplicateTitles = this.resources.titleKeyList.getData().filter(titleKeyPair => titleKeyPair.title === title);
 
@@ -153,8 +206,6 @@ class Model {
      * Deletes the selected task, a deleted task cannot be recovered(!)
      */
     deleteTask(key) {
-        //console.log(`removing task with key: ${key}`);
-
         this.resources.removeTask(key);
         this.resources.refreshTitleKeyList();
     }

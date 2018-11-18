@@ -15,7 +15,7 @@ const View = ({value, dataValue, labelValue, chartData, handleDataChange, handle
 
 <Line data={chartData} redraw />
 
-<form onSubmit={handleSubmit}>
+<form >
   <label>
     Data for today:
     <input type="number" value={dataValue} onChange={handleDataChange} />

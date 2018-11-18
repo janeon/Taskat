@@ -1,4 +1,4 @@
-#tab-list{
+#tab-list-container{
     width: auto;
     height: 4%;
     display: flex;
@@ -6,6 +6,11 @@
     padding: 10px;
     background: cornflowerblue;
     border-bottom: var(--pinkborder);
+}
+
+#tab-list {
+    display: flex;
+    flex-direction: row;
 }
 
 .tab {
