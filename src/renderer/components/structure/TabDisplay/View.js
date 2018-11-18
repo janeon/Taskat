@@ -7,6 +7,17 @@ import ExTab from '../../tabs/ExTab';
 
 
 // <<<<<<< HEAD
+/*
+// =======
+// // DEPRECATED
+//
+// const View = ({taskKey, deleteTaskOnClick}) => (
+//     <div className="tab-display">
+//         <ExTab taskKey={taskKey} deleteTaskOnClick={deleteTaskOnClick}/>
+// >>>>>>> baaadca39c86c7d411f4853ea0037751b117c838
+//     </div>
+// )
+*/
 const View = props => {
   // console.log("Props for TabDisplay",props.tabToDisplay); // testing what props look like as passed from tabdisplay
   var ret;
@@ -28,17 +39,8 @@ const View = props => {
         {/* <ExTab /> */}
         {/* <Calendar /> */}
         {ret}
-{/*
-// =======
-// // DEPRECATED
-//
-// const View = ({taskKey, deleteTaskOnClick}) => (
-//     <div className="tab-display">
-//         <ExTab taskKey={taskKey} deleteTaskOnClick={deleteTaskOnClick}/>
-// >>>>>>> baaadca39c86c7d411f4853ea0037751b117c838
-//     </div>
-// )
-*/}
+        </div>
+)
 }
 
 export default View;

@@ -10,26 +10,6 @@ import './TaskDisplay.css';
  * current task.
  */
 const View = (
-// <<<<<<< HEAD
-//     {tabList, onSwitchTab, tabToDisplay, tabInfo, registerFinalState,
-//       taskKey, deleteTaskOnClick, currentTaskTabList, onDeleteTab}) => {
-//     // console.log("tabToDisplay in view of TaskDisplay", tabToDisplay);
-//       return (
-//         <div id="task-display">
-//           <TabList tabList={tabList}
-//                    onSwitchTab={onSwitchTab}
-//                    currentTaskTabList={currentTaskTabList}
-//                    tabToDisplay={tabToDisplay}
-//                    onDeleteTab={onDeleteTab}
-//           />
-//           <TabDisplay
-//                 tabToDisplay={tabToDisplay}
-//                 tabInfo={tabInfo}
-//                 registerFinalState={registerFinalState}
-//                 taskKey={taskKey}
-//                 deleteTaskOnClick={deleteTaskOnClick}
-//                 />
-// // =======
     {tabList, displayNewTabButton, addTabToTask, onSwitchTab,
       tabToDisplay, tabInfo, registerFinalState, taskKey, deleteTaskOnClick, currentTaskTabList, onDeleteTab}
   ) => {
@@ -50,7 +30,6 @@ const View = (
             registerFinalState={registerFinalState}
             taskKey={taskKey}
             deleteTaskOnClick={deleteTaskOnClick}/>
-// >>>>>>> baaadca39c86c7d411f4853ea0037751b117c838
         </div>)}
 
 export default View;

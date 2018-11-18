@@ -15,16 +15,16 @@ export class InitialTask {
     }
 }
 
-<<<<<<< HEAD
+
 // Is this where all tabs' initial states should be catalogued?
-=======
+
 // INITIAL STATES
 
 export function getInitialState(tabTitle) {
 
     switch(tabTitle) {
         case ("analytics"):
-            
+
             return {
                 date: date,
                 dataValue: 0,
@@ -42,7 +42,7 @@ export function getInitialState(tabTitle) {
                 }
               };
         case ("calendar"):
-            return { 
+            return {
                 events: [
                     {
                         end: new Date('November 11, 2018 20:00:00'),
@@ -57,9 +57,8 @@ export function getInitialState(tabTitle) {
                 value: 'type a journal entry',
                 entries: []
             };
-        default: 
+        default:
             alert("you can't get that initial state!");
             break;
     }
 }
->>>>>>> baaadca39c86c7d411f4853ea0037751b117c838

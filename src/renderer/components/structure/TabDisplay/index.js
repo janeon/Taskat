@@ -14,13 +14,6 @@ class TabDisplay extends Component {
           //THIS IS NOT USUALLY PASSED TO A TASK!!
           deleteTaskOnClick : props.deleteTaskOnClick
         };
-        // this.state.tabInfo = props.tabInfo;
-        // this.state.tabToDisplay = props.tabToDisplay;
-        // this.state.registerFinalStateFunc = props.registerFinalStateFunc;
-        // this.state.taskKey = props.taskKey;
-        //
-        // //THIS IS NOT USUALLY PASSED TO A TASK!!
-        // this.state.deleteTaskOnClick = props.deleteTaskOnClick;
     }
 
     /*

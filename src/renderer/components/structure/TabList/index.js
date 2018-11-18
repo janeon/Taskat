@@ -28,12 +28,9 @@ class TabList extends Component {
      */
     componentWillReceiveProps(newProps) {
         this.tabList = newProps.tabList;
-// <<<<<<< HEAD
         this.onSwitchTab = newProps.onSwitchTab;
         this.tabToDisplay = newProps.tabToDisplay;
         this.onDeleteTab = newProps.onDeleteTab;
-// =======
-        // this.onTabClick = newProps.onTabClick;
         this.displayNewTabButton = newProps.displayNewTabButton;
         // don't need to refresh addTabToTask method...
         this.taskKey = newProps.taskKey;
