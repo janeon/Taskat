@@ -63,15 +63,14 @@ class TaskDisplay extends Component {
       //   // console.log("current first tab", tabList[0].title);
       //   newCurrentTabTitle = tabList[0].title;
       // }
-      if (tabList.length > 1){ // if we are displaying the first tab and list is greater than 1 tab, remove first and display second tab
+      if (tabTitle === "menu") {
+        newCurrentTabTitle = tabTitle;
+      }
+      else { // if we are displaying the first tab and list is greater than 1 tab, remove first and display second tab
         (targetIndex !== 0) ? newCurrentTabTitle = tabList[0].title : newCurrentTabTitle = tabList[nextTabIndex].title;
         tabList.splice(targetIndex, 1);
       }
-      else {
-         tabList.splice(targetIndex, 1);
-         tabList.push("welcome tab");
 
-        }
 
       this.setState((state) => {
           this.state.currentTabTitle = newCurrentTabTitle;
