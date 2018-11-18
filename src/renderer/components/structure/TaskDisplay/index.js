@@ -66,7 +66,7 @@ class TaskDisplay extends Component {
       //   // console.log("current first tab", tabList[0].title);
       //   newCurrentTabTitle = tabList[0].title;
       // }
-      if (tabTitle === "welcome tab") {
+      if (tabTitle === "menu") {
         newCurrentTabTitle = tabTitle;
       }
       else { // if we are displaying the first tab and list is greater than 1 tab, remove first and display second tab

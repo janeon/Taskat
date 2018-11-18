@@ -11,7 +11,6 @@ class TabList extends Component {
     constructor(props) {
         super(props);
         this.tabList = props.tabList;
-
         this.onSwitchTab = props.onSwitchTab;
         this.tabToDisplay = props.tabToDisplay;
         this.onDeleteTab = props.onDeleteTab;
@@ -52,11 +51,12 @@ class TabList extends Component {
         if (newTabButtonTabs.length === 0) {
             this.displayNewTabButton = false;
         }
-        var retVal;
+
+
         // convert list of tabs to html elements
         var tabElementList = this.tabList.map((title, index) => {
 
-            if (title === "welcome tab") {
+            if (title === "menu") {
               return <div className="tab"
                             key={index}>
                             <div onClick={(e) => this.onSwitchTab(title)}>{title}</div>
