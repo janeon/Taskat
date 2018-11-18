@@ -10,8 +10,6 @@ export default class PersistentData {
 
         this.read = this.read.bind(this);
         this.write = this.write.bind(this);
-
-        
     }
 
     /*

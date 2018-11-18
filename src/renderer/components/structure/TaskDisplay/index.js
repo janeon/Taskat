@@ -70,15 +70,23 @@ class TaskDisplay extends Component {
 
         const tabInfo = this.getTabInfo(this.state.currentTask, this.state.currentTabTitle);
 
+        const displayNewTabButton = (this.state.currentTabTitle != "welcome tab");
+
         return < View 
+                    // Tab list...
                     tabList={tabList} 
+                    displayNewTabButton={displayNewTabButton}
+                    addTabToTask={this.model.addTabToTask}
                     // TabList is going to wrap this onClick with the appropriate args.
                     onTabClick={this.onTabClick}
+
+                    // Tab Display....
                     tabToDisplay={this.state.currentTabTitle} 
                     tabInfo={tabInfo} 
                     registerFinalState={this.model.registerFinalState} 
                     taskKey={this.state.currentTask.key}
-                    deleteTaskOnClick={this.model.deleteTask}/>;
+                    deleteTaskOnClick={this.model.deleteTask}
+                    />
     }
 
 }

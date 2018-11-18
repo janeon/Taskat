@@ -11,6 +11,15 @@ describe('Resources', () => {
         expect(res.titleKeyList.getData()).toEqual(getTestTitleKeyListSmall());
     });
 
+    it("should return task data on 'getTask()'", () => {
+        const res = new Resources(getTestTaskListSmall());
+
+        const key = 2;
+        const correctTask = getTestTaskListSmall().filter(t => t.key === key)[0];
+
+        expect(res.getTask(key)).toEqual(correctTask);
+    });
+
     it("should update 'titleKeyList' on calls to 'refreshTitleKeyList'", () => {
         const res = new Resources(getTestTaskListSmall());
 
@@ -51,6 +60,17 @@ describe('Resources', () => {
         expect(res.taskList.length).toEqual(getTestTaskListSmall().length - 1);
         expect(res.taskList.filter(task => task.key == taskToRemove.key)).toEqual([]);
     });
+
+    it("edits tasks via 'updateTask' method", () => {
+        const res = new Resources(getTestTaskListSmall());
+
+        const editedTask = getTestTaskListSmall()[1];
+        editedTask.tabs = editedTask.tabs.filter(tab => tab.title !== "analytics");
+
+        res.updateTask(editedTask);
+
+        expect(res.taskList.filter(taskObs => taskObs.getData().key === editedTask.key)[0].getData()).toEqual(editedTask);
+    })
 
     it("should return the unwrapped tasklist", () => {
         const res = new Resources(getTestTaskListSmall());

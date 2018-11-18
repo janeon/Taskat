@@ -87,9 +87,3 @@ THE TREE... (structure of the html elements)
                 your individual component, passed in through the 'props' argument in the constructor.  ***
 
 /------------------------------- OTHER STUFF? -------------------------------/
-
-dependencies....
- 'react-chartjs-2' 
- 'react-big-calendar'
- 'electron-store'
-

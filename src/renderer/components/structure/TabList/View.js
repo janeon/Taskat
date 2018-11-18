@@ -3,12 +3,20 @@ import "./TabList.css"
 
 import NewTabButton from './NewTabButton';
 
-const View = ({tabElementList, newTabButtonTabs}) => (
+const View = ({tabElementList, newTabButtonTabs, displayNewTabButton, addTabToTask, taskKey}) => (
     <div id="tab-list-container">
         <div id="tab-list">
             {tabElementList}
         </div>
-        <NewTabButton options={newTabButtonTabs}/>
+        { 
+            displayNewTabButton ? 
+            ( <NewTabButton 
+                options={newTabButtonTabs} 
+                addTabToTask={addTabToTask}
+                taskKey={taskKey}/> )
+            : 
+            ( null ) 
+        }
     </div>
 );
 

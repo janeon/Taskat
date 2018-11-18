@@ -40,7 +40,7 @@ class TabDisplay extends Component {
             case "analytics":
                 return (
                     <div id="tab-display">
-                        <Analytics/>
+                        <Analytics />
                     </div>
                 );
             case "calendar":
@@ -52,7 +52,7 @@ class TabDisplay extends Component {
             case "journal":
                 return (
                     <div id="tab-display">
-                        <Analytics/>
+                        <Journal/>
                     </div>
                 );
             case "menu": 

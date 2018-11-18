@@ -11,6 +11,9 @@ class TabList extends Component {
         super(props);
         this.tabList = props.tabList;
         this.onTabClick = props.onTabClick;
+        this.displayNewTabButton = props.displayNewTabButton;
+        this.addTabToTask = props.addTabToTask;
+        this.taskKey = props.taskKey;
     }
 
     /*
@@ -20,6 +23,9 @@ class TabList extends Component {
     componentWillReceiveProps(newProps) {
         this.tabList = newProps.tabList;
         this.onTabClick = newProps.onTabClick;
+        this.displayNewTabButton = newProps.displayNewTabButton;
+        // don't need to refresh addTabToTask method...
+        this.taskKey = newProps.taskKey;
     }
 
     /*
@@ -29,11 +35,13 @@ class TabList extends Component {
         return ALL_TABS.filter(tab => ! listOfTabs.includes(tab));
     }
 
-    // ABSTRACT WRAP METHOD
-
     render() {
 
         const newTabButtonTabs = this.parseTabOptions(this.tabList);
+
+        if (newTabButtonTabs.length === 0) {
+            this.displayNewTabButton = false;
+        }
 
         // convert list of tabs to html elements
         const tabElementList = this.tabList.map((title, index) => {
@@ -45,7 +53,11 @@ class TabList extends Component {
                     </div>;
         });
 
-        return <View tabElementList={tabElementList} newTabButtonTabs={newTabButtonTabs}/>;
+        return <View tabElementList={tabElementList} 
+                    newTabButtonTabs={newTabButtonTabs} 
+                    displayNewTabButton={this.displayNewTabButton}
+                    addTabToTask={this.addTabToTask}
+                    taskKey={this.taskKey}/>;
     }
 
 }

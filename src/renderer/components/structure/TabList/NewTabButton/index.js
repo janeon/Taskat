@@ -8,10 +8,13 @@ export default class NewTabButton extends React.Component {
         super(props);
 
         this.options = props.options;
+        this.taskKey = props.taskKey;
+        this.addTabToTask = props.addTabToTask;
 
         this.state = {
             showOptions: false,
         };
+
 
         this.showOptions = this.showOptions.bind(this);
         this.hideOptions = this.hideOptions.bind(this);
@@ -19,18 +22,9 @@ export default class NewTabButton extends React.Component {
 
     componentWillReceiveProps(props) {
         this.options = props.options;
-    }
-
-    /*
-     * These two listeners are for closing the menu on clicks outside
-     *
-     *  see citation[1].
-     */
-    componentWillMount() {
-        
-    }
-    componentWillUnmount() {
-        document.removeEventListener('click', this.onButtonClick, false);
+        this.taskKey = props.taskKey;
+        // again, don't need to refresh the addtab function.
+        this.state.showOptions = false;
     }
 
     /*
@@ -42,7 +36,7 @@ export default class NewTabButton extends React.Component {
                             key={index} 
                             value={opt}
                             onClick={(e) => this.onOptionClick(opt)}
-                            > {opt} </div>);
+                            >{opt}</div>);
         });
     }
 
@@ -59,15 +53,18 @@ export default class NewTabButton extends React.Component {
         });
     }
 
+    /*
+     * Hide the options when you don't need to see them.  
+     */
     hideOptions(e) {
+        document.removeEventListener('click', this.hideOptions, false);
+
+        // if the button isn't displayed, don't update its state
         if (e.target.className != "tab-option") {
-            document.removeEventListener('click', this.hideOptions, false);
             this.setState((state) => {
                 state.showOptions = false;
                 return state;
-             });
-        } else {
-            // let the option click handle it...
+            });
         }
     }
 
@@ -75,7 +72,8 @@ export default class NewTabButton extends React.Component {
      * Actually create the new tab.  
      */
     onOptionClick(newTab) {
-        console.log(newTab);
+        console.log(`adding ${newTab} to task: ${this.taskKey}`)
+        this.addTabToTask(this.taskKey, newTab);
     }
 
     /*

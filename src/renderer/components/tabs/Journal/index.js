@@ -6,11 +6,10 @@ export default class Journal extends Component {
 
 	constructor(props) {
         super(props);
-
         this.state = {
             value: 'type a journal entry',
             entries: []
-        };
+        }; 
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
