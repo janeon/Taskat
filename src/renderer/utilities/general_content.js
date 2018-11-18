@@ -20,6 +20,7 @@ export function getInitialState(tabTitle) {
 
     switch(tabTitle) {
         case ("analytics"):
+            
             return {
                 date: date,
                 dataValue: 0,
