@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
 import View from './View';
-import { InitialTask } from '../../Utilities/GeneralContent';
 
 class TaskDetail extends Component {
     constructor(props) {
         super(props);
         this.taskState = {
-          name: date,
+          name: '',
           description: 'enter label',
           tags: [],
         };
+            
+    this.handleSubmit = this.handleSubmit.bind(this);
     }
 
   handleSubmit(currentTask) {
@@ -19,9 +20,9 @@ class TaskDetail extends Component {
   }
 
   render() {
-        return <View taskName={this.state.name}
-        taskDescription={this.state.description}
-        taskTage={this.state.tags}
+        return <View taskName={this.taskState.name}
+        taskDescription={this.taskState.description}
+        taskTage={this.taskState.tags}
         handleSubmit={this.handleSubmit} />;
 
   }

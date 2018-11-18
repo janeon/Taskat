@@ -33,6 +33,9 @@ class TabDisplay extends Component {
             case "journal":
                 console.log("display journal");
                 break;
+            case "edit":
+                console.log("display edit");
+                break;
             case "menu": 
                 console.log("display menu");
                 break;

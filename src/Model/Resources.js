@@ -1,5 +1,5 @@
 import ObservableData from './ObservableData';
-import { InitialTask } from '../Utilities/general_content';
+import { InitialTask } from '../utilities/general_content';
 /*
  * This is where the data is parsed and stored throughout its life.  It only ever returns 
  * copies of what it is holding, not actual references to their values.    
@@ -44,7 +44,7 @@ import { InitialTask } from '../Utilities/general_content';
      */
     refreshTitleKeyList() {
         const currentStateOfList = this.parseTasksToTitles();
-        if (currentStateOfList != this.titleKeyList.getData()) {
+        if (currentStateOfList !== this.titleKeyList.getData()) {
             this.titleKeyList.updateData(currentStateOfList);
         } 
         // it they are the same, then nothing needs to happen :)
