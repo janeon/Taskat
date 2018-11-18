@@ -71,7 +71,8 @@ class TaskDisplay extends Component {
         tabList.splice(targetIndex, 1);
       }
       else {
-         // if we are removing the first tab and it's the last one remaining, then we need to take stored tab copies
+         tabList.splice(targetIndex, 1);
+         tabList.push("welcome tab");
 
         }
 
