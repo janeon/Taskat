@@ -8,19 +8,22 @@ To preview the project, you can run 'yarn dev'.
 
 / --------------------------------- TODOS --------------------------------------/
 
-Possible goals for Wednesday's meeting:
-1. Find Sage's branch publicly
-2. Be able to add tabs from menu / welcome page
-3. Persist states from each tab to the current task via the registerFinalStateFunc
-4. Integrate information across multiple tabs 
+1. Persist states for tab
+2. Be able to add and delete tabs
+3. Be able to delete tasks
 
-Git tips: to push your local branch to a remote branch that it's not tracking (say currentState for instance), use 
+/ --------------------------------- NOTE TO TEAM --------------------------------------/
+
+Git tips: to push your local branch to a remote branch that it's not tracking (say currentState for instance), use
 git push origin your_updated_branch_name:currentState
 
+One more dependency to add/install as of 11/17
+yarn add font-awesome
+
 /--------------------------------- THE TREE -----------------------------------/
- 
- 
-```bash 
+
+
+```bash
 THE TREE... (structure of the html elements)
 
 (Electron Window)
@@ -29,7 +32,7 @@ THE TREE... (structure of the html elements)
           --> Frame (this is where the visible layout begins)
                 -
                 --> Task List (the list of tasks along the left side)
-                - 
+                -
                 --> TaskDisplay (this loads the information about the currently selected task)
                         -
                         --> TabList (the list of tabs associated with that task)
@@ -42,17 +45,17 @@ THE TREE... (structure of the html elements)
 
     RENDERING FOR DEBUGGING:
         To render your component for debuggging/testing (see ExTab for an example component) you can go into TabDisplay (the
-        componend and replace <ExTab /> with your component (and pass it any dummy data you will need). 
+        componend and replace <ExTab /> with your component (and pass it any dummy data you will need).
 
 /---------------------------------- MODEL ------------------------------------/
 
-    Model: 
+    Model:
             The Model manages the interactions between components (mostly tabs) and all the data for the app (list of all
          tasks ('taskList' list of all task titles, paired with their 'key' ('titlesKeyPairs')), and the most recently clicked
          task ('currentTask')).  It handles updates to the data (add, edit, remove) in response to actions (clicks, form
          entries, etc.) that occur from anywhere in the app.
 
-            What I think 'tasks' are: 
+            What I think 'tasks' are:
                 task = {
                     title: "<what is it called?>",
                     key: <unique numeric identifier, related to the index when it is first read from the DB>,
@@ -82,14 +85,13 @@ THE TREE... (structure of the html elements)
                 *** I'll update ExTab to try and illustrate what I mean ***
 
                 *** if you think this is bonkers, slack me, I am happy to make changes to try and make it easier :) ***
-                        
+
                 *** For now, just pretend that you have access to all of the data from the currentTask that has to do with
                 your individual component, passed in through the 'props' argument in the constructor.  ***
 
 /------------------------------- OTHER STUFF? -------------------------------/
 
 dependencies....
- 'react-chartjs-2' 
+ 'react-chartjs-2'
  'react-big-calendar'
  'electron-store'
-

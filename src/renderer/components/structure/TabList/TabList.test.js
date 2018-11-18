@@ -24,7 +24,7 @@ describe('TabList', () => {
         const listener = new MockOnClickListener();
         const onClickMock = listener.onClick;
 
-        const tl = mount(<TabList tabList={tabs} onTabClick={onClickMock}/>);
+        const tl = mount(<TabList tabList={tabs} onSwitchTab={onClickMock}/>);
 
         const tabToClick = tl.findWhere((el) => el.text() === tabs[3]);
 

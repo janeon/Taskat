@@ -1,11 +1,21 @@
 .rbc-calendar {
-  min-height: 500px ;
+  min-height: 590px;
+  max-height: 590px;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .rbc-time-header {
-  height: 60px;
-}
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: row;
 
-.rbc-time-content {
-  flex: 1;
+}
+.rbc-time-content { flex: 1; }
+
+&.rbc-overflowing {
+  border-right: 1px solid @cell-border;
 }

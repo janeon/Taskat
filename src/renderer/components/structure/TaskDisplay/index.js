@@ -8,15 +8,17 @@ class TaskDisplay extends Component {
 
         // This is the farthest down the tree the Model itself needs to go...
         this.model = props.model;
-    
+
         this.state = {
-            // what to do here is up in the air, maybe the 'menu' tab? 
+            // what to do here is up in the air, maybe the 'menu' tab?
             currentTask: new InitialTask(),
             currentTabTitle: "welcome tab",
+
         };
 
-        // binding 'this' in onTabClick()
-        this.onTabClick = this.onTabClick.bind(this);
+        // binding 'this' in onSwitchTab()
+        this.onSwitchTab = this.onSwitchTab.bind(this);
+        this.onDeleteTab = this.onDeleteTab.bind(this);
     }
 
     componentDidMount() {
@@ -37,48 +39,89 @@ class TaskDisplay extends Component {
         });
     }
 
-    /* 
+
+    /*
      * Clicks to tabList should cause a different tab to be loaded...
-     * 
-     * 'tabClicked' - a string that is the title of the clicked tab. 
+     *
+     * 'tabClicked' - a string that is the title of the clicked tab.
      */
-    onTabClick(tabTitle) {
+    onSwitchTab(tabTitle) {
         this.setState((state) => {
             state.currentTabTitle = tabTitle;
             return state;
         })
     }
 
+    onDeleteTab(tabTitle) {
+      var tabList = this.state.currentTask.tabsToDisplay;
+      // console.log("The current list of tabs", tabList[0].title);
+      const targetIndex = tabList.findIndex( tab => tab.title === tabTitle );
+
+      var newCurrentTabTitle; // if no other tabs are open, then keep the welcome tab up
+      // otherwise display another tab (need to eventually find an open tab)
+      if (targetIndex !== 0) { // if we're not removing the first tab, we'll just display the first
+        // console.log("current first tab", tabList[0].title);
+        newCurrentTabTitle = tabList[0].title;
+      }
+      else if (tabList.length > 1){ // if we are displaying the first tab and list is greater than 1 tab, remove first and display second tab
+        newCurrentTabTitle = tabList[1].title;
+        tabList.splice(targetIndex, 1);
+      }
+      else {
+         // if we are removing the first tab and it's the last one remaining, then we need to take stored tab copies
+        }
+
+      this.setState((state) => {
+          this.state.currentTabTitle = newCurrentTabTitle;
+          return state;
+      })
+
+
+      // Need to make sure the deleted tabs are kept on file somewhere
+      // if (tabList.length > 1
+
+    }
+
     /*
-     * Separates the tabs from the current_task into 'title' 'key' pairs.  
+     * Separates the tabs from the current_task into 'title' 'key' pairs.
      */
     getTabList(task) {
+      console.log("tabs to display",task.tabsToDisplay);
         return task.tabs.map( tab => {
             return tab.title;
         });
     }
 
+
+    removeTab(task) {
+      // will eventually allow us to remove tabs
+    }
+
     /*
-     * Strips the info from the current task for the current tab.  
+     * Strips the info from the current task for the current tab.
      */
     getTabInfo(task, tabTitle) {
         return task.tabs.filter( tab => tab.title === tabTitle)[0].info;
     }
 
     render() {
-        const tabList = this.getTabList(this.state.currentTask);
+        var tabList = this.getTabList(this.state.currentTask);
+        // console.log("THIS IS THE tabList", tabList);
+        // console.log("THIS IS THE currentTask", this.state.currentTask);
+        var tabInfo = this.getTabInfo(this.state.currentTask, this.state.currentTabTitle);
 
-        const tabInfo = this.getTabInfo(this.state.currentTask, this.state.currentTabTitle);
-
-        return < View 
-                    tabList={tabList} 
+        return < View
+                    tabList={tabList}
                     // TabList is going to wrap this onClick with the appropriate args.
-                    onTabClick={this.onTabClick}
-                    tabToDisplay={this.state.currentTabTitle} 
-                    tabInfo={tabInfo} 
-                    registerFinalState={this.model.registerFinalState} 
+                    onSwitchTab={this.onSwitchTab}
+                    tabToDisplay={this.state.currentTabTitle}
+                    tabInfo={tabInfo}
+                    registerFinalState={this.model.registerFinalState}
                     taskKey={this.state.currentTask.key}
-                    deleteTaskOnClick={this.model.deleteTask}/>;
+                    deleteTaskOnClick={this.model.deleteTask}
+                    currentTaskTabList={this.state.currentTask.tabs}
+                    onDeleteTab={this.onDeleteTab}
+                    />;
     }
 
 }
