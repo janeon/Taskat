@@ -1,9 +1,22 @@
 import React from 'react';
-import "./TabList.css"
+import NewTabButton from './NewTabButton';
+import "./TabList.css";
 
-const View = ({tabElementList}) => (
-    <div id="tab-list">
-        {tabElementList}
+
+const View = ({tabElementList, newTabButtonTabs, displayNewTabButton, addTabToTask, taskKey}) => (
+    <div id="tab-list-container">
+        <div id="tab-list">
+            {tabElementList}
+        </div>
+        { 
+            displayNewTabButton ? 
+            ( <NewTabButton 
+                options={newTabButtonTabs} 
+                addTabToTask={addTabToTask}
+                taskKey={taskKey}/> )
+            : 
+            ( null ) 
+        }
     </div>
 );
 

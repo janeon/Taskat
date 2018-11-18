@@ -15,7 +15,8 @@
     "moduleNameMapper": {
       "\\.(css|less|sass|scss)$": "identity-obj-proxy"
     },
-    "setupTestFrameworkScriptFile": "<rootDir>/src/renderer/setupTests.js"
+    "setupTestFrameworkScriptFile": "<rootDir>/src/renderer/setupTests.js",
+    "setupFiles": ["jest-canvas-mock"]
   },
   "scripts": {
     "test": "yarn jest",
@@ -25,8 +26,17 @@
     "dist:dir": "yarn dist --dir -c.compression=store -c.mac.identity=null"
   },
   "dependencies": {
+    "chart.js": "2.3",
     "electron-store": "^2.0.0",
+    "font-awesome": "^4.7.0",
+    "jest": "^23.6.0",
+    "less": "^3.8.1",
+    "less-loader": "^4.1.0",
+    "moment": "^2.22.2",
     "react": "^16.6.2",
+    "react-big-calendar": "^0.20.2",
+    "react-bootstrap": "^0.32.4",
+    "react-chartjs-2": "^2.7.4",
     "react-dom": "^16.6.2",
     "source-map-support": "^0.5.9"
   },
@@ -37,24 +47,19 @@
     "@babel/plugin-syntax-dynamic-import": "^7.0.0",
     "@babel/preset-env": "^7.1.5",
     "@babel/preset-react": "^7.0.0",
+    "@fortawesome/fontawesome-free": "^5.5.0",
     "babel-core": "7.0.0-bridge.0",
     "babel-jest": "^23.6.0",
     "babel-loader": "^8.0.4",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
-    "chart.js": "2.3",
     "electron": "3.0.7",
     "electron-builder": "^20.34.0",
     "electron-webpack": "^2.4.0",
     "enzyme": "^3.7.0",
     "enzyme-adapter-react-16": "^1.7.0",
     "identity-obj-proxy": "^3.0.0",
-    "jest": "^23.6.0",
-    "less": "^3.8.1",
-    "less-loader": "^4.1.0",
-    "moment": "^2.22.2",
-    "react-big-calendar": "^0.20.2",
-    "react-chartjs-2": "^2.7.4",
+    "jest-canvas-mock": "^1.1.0",
     "react-test-renderer": "^16.6.2",
     "webpack": "^4.24.0"
   }

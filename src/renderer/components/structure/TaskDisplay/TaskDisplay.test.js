@@ -42,7 +42,7 @@ describe('TaskDisplay', () => {
         const currentTask = getTestTaskListSmall()[2]
 
         td.instance().onChange(currentTask);
-        td.instance().onTabClick(currentTask.tabs[0].title);
+        td.instance().onSwitchTab(currentTask.tabs[0].title);
 
         expect(td.state().currentTabTitle).toEqual(currentTask.tabs[0].title);
     });

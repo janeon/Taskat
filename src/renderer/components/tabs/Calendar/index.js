@@ -30,6 +30,7 @@ class Calendar extends Component {
   {
       super(props);
       this.state = { events : events } ;
+      
       this.handleSelectSlot = this.handleSelectSlot.bind(this);
       this.handleSelectToDelete = this.handleSelectToDelete.bind(this);
       this.addRecurringEvents = this.addRecurringEvents.bind(this);

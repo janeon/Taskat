@@ -16,6 +16,7 @@ class ObservableData {
         this.subscribers = [];
 
         this.getData = this.getData.bind(this);
+        this.updateData = this.updateData.bind(this);
     }
 
     // Add the 'observer' to the subscriber list

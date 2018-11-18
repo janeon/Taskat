@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import View from "./View";
+import 'font-awesome/css/font-awesome.min.css';
+import { ALL_TABS } from "../../../utilities/constants";
 
 /*
  * This component renders the list of tabs for the 'current_task'.
@@ -9,7 +11,14 @@ class TabList extends Component {
     constructor(props) {
         super(props);
         this.tabList = props.tabList;
-        this.onTabClick = props.onTabClick;
+        this.onSwitchTab = props.onSwitchTab;
+        this.tabToDisplay = props.tabToDisplay;
+        this.onDeleteTab = props.onDeleteTab;
+
+        // this.onTabClick = props.onTabClick;
+        this.displayNewTabButton = props.displayNewTabButton;
+        this.addTabToTask = props.addTabToTask;
+        this.taskKey = props.taskKey;
     }
 
     /*
@@ -18,21 +27,57 @@ class TabList extends Component {
      */
     componentWillReceiveProps(newProps) {
         this.tabList = newProps.tabList;
-        this.onTabClick = newProps.onTabClick;
+        this.onSwitchTab = newProps.onSwitchTab;
+        this.tabToDisplay = newProps.tabToDisplay;
+        this.onDeleteTab = newProps.onDeleteTab;
+        this.displayNewTabButton = newProps.displayNewTabButton;
+        // don't need to refresh addTabToTask method...
+        this.taskKey = newProps.taskKey;
     }
 
+    /*
+     * Figure out which tabs aren't already available for the current task.
+     */
+    parseTabOptions(listOfTabs) {
+        return ALL_TABS.filter(tab => ! listOfTabs.includes(tab));
+// >>>>>>> baaadca39c86c7d411f4853ea0037751b117c838
+    }
+
+
     render() {
+
+        const newTabButtonTabs = this.parseTabOptions(this.tabList);
+
+        if (newTabButtonTabs.length === 0) {
+            this.displayNewTabButton = false;
+        }
+
+
         // convert list of tabs to html elements
-        const tabElementList = this.tabList.map((title, index) => {
-            // this will (eventually) bind the function for displaying the tab as a callback to the model.
-            return <div className="tab" 
-                        key={index}
-                        onClick={(e) => this.onTabClick(title)}>
-                            {title}
-                    </div>;
+        var tabElementList = this.tabList.map((title, index) => {
+
+            if (title === "menu") {
+              return <div className="tab"
+                            key={index}>
+                            <div onClick={(e) => this.onSwitchTab(title)}>{title}</div>
+                        </div>
+              }
+            else {
+              return <div className="tab"
+                          key={index}>
+                          <div onClick={(e) => this.onSwitchTab(title)}>{title}</div>
+                          <div className="delete" onClick={(event) => this.onDeleteTab(title)}>
+                            <i className="fa fa-times"></i>
+                          </div>
+                      </div>
+            };
         });
 
-        return <View tabElementList={tabElementList}/>;
+        return <View tabElementList={tabElementList}
+                    newTabButtonTabs={newTabButtonTabs}
+                    displayNewTabButton={this.displayNewTabButton}
+                    addTabToTask={this.addTabToTask}
+                    taskKey={this.taskKey}/>;
     }
 
 }

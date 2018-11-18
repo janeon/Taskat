@@ -1,19 +1,39 @@
-#tab-list{
+#tab-list-container{
     width: auto;
     height: 4%;
     display: flex;
     flex-direction: row;
-    
     padding: 10px;
     background: cornflowerblue;
-
     border-bottom: var(--pinkborder);
+}
+
+#tab-list {
+    display: flex;
+    flex-direction: row;
 }
 
 .tab {
     background: salmon;
     margin-right: 10px;
     padding: 10px;
+    padding-right: 20px;
     text-align: center;
     vertical-align: middle;
+    display: flex;
+}
+
+.delete {
+  /* float: right; */
+  max-height: 1em;
+  margin-left: 1em;
+  margin-right: -1em;
+  color: black;
+  padding: 2px;
+  z-index: 400;
+}
+
+.delete:hover {
+    background-color: darkgrey;
+    color: white;
 }
