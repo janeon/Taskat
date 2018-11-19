@@ -13,7 +13,7 @@ export default class PersistentData {
     }
 
     /*
-     * Get the previous state...
+     * Get the previous state...or an empty array...
      */
     read() {
         return this.store.get('taskList', []);
