@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom'
 import View from './View';
 
 export default class Journal extends Component {
