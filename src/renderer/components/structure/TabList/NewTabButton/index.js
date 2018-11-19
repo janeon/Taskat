@@ -72,7 +72,7 @@ export default class NewTabButton extends React.Component {
      * Actually create the new tab.  
      */
     onOptionClick(newTab) {
-        console.log(`adding ${newTab} to task: ${this.taskKey}`)
+        //console.log(`adding ${newTab} to task: ${this.taskKey}`)
         this.addTabToTask(this.taskKey, newTab);
     }
 

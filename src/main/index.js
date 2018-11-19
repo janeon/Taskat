@@ -15,6 +15,8 @@ function createMainWindow() {
     width: 1020
   });
 
+  window.setTitle("Task Manager");
+
   if (isDevelopment) {
     window.webContents.openDevTools();
   }

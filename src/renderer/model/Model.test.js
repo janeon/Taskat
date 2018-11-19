@@ -1,8 +1,6 @@
 import Model from './Model';
 import { getTestTaskListSmall, getTestTitleKeyListSmall, getNewTestTask } from '../test_resources/testutils.js';
 import { InitialTask } from '../utilities/general_content.js';
-import ObservableData from './ObservableData';
-import { NO_DUPLICATE_TASK_TITLES } from '../utilities/constants';
 
 describe('Model', () => {
 
@@ -173,12 +171,29 @@ describe('Model', () => {
         const correctTabs = getTestTaskListSmall()[0].tabs.filter(tab => tab.title != "journal");
 
         expect(model.resources.getTask(task.key).tabs).toEqual(correctTabs);
-    })
+    });
+
+    it("should call apropriate methods to persist state", () => {
+        const model = new Model(true, []);
+
+        var pd = new mockPd();
+        model.pd = pd;
+
+        model.resources = {
+            getUnwrappedTaskList() {
+                return getTestTaskListSmall();
+            }
+        }
+
+        model.writeAppState(getTestTaskListSmall());
+
+        expect(model.pd.read()).toEqual(getTestTaskListSmall());
+    });
 
 });
 
 /*
- * Mock implementation of an observer object
+ * Mock implementation of an observer object.
  */
 class MockObserver {
     constructor() {
@@ -187,5 +202,23 @@ class MockObserver {
 
     onChange(newData) {
         this.data = newData;
+    }
+}
+
+/*
+ * You guessed it, it mocks the PersistendData object.
+ */
+class mockPd {
+    constructor() {
+        this.data = [];
+
+        this.write = this.write.bind(this);
+        this.read = this.read.bind(this);
+    }
+    write(data) {
+        this.data = data;
+    }
+    read(key) {
+        return this.data;
     }
 }
