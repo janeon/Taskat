@@ -9,14 +9,14 @@ import 'react-big-calendar/lib/addons/dragAndDrop/styles.less'
 //const DragAndDropCalendar = withDragAndDrop(BigCalendar)
 
 const localizer = BigCalendar.momentLocalizer(moment)
-var events = [
+/*var events = [
     {
       end: new Date('November 11, 2018 20:00:00'),
       start: new Date('November 11, 2018 06:00:00'),
       title: 'Happy 11/11',
       desc: 'Big conference for important people'
     }
-];
+]; */
 
 class Calendar extends Component {
   /*
@@ -29,13 +29,19 @@ class Calendar extends Component {
   constructor(props)
   {
       super(props);
-      this.state = { events : events } ;
+      this.state = props.previousState;
+      this.registerFinalState = props.registerFinalState;
+      this.taskKey = props.taskKey;
       
       this.handleSelectSlot = this.handleSelectSlot.bind(this);
       this.handleSelectToDelete = this.handleSelectToDelete.bind(this);
       this.addRecurringEvents = this.addRecurringEvents.bind(this);
       this.resizeEvent = this.resizeEvent.bind(this);
       this.moveEvent = this.moveEvent.bind(this)
+  }
+
+  componentWillUnmount() {
+    this.registerFinalState("calendar", this.state, this.taskKey);
   }
 
   resizeEvent = (resizeType, { event, start, end }) => {

@@ -10,7 +10,7 @@ class App extends Component {
       super(props);
       // this reference to the model gets passed down through the tree
       // this is just for testing..
-      this.model = new Model(true, getTestTaskListSmall());
+      this.model = new Model();
   }
 
   componentDidMount() {
