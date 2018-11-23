@@ -7,7 +7,6 @@ export default class Journal extends Component {
         super(props);
         this.state = props.previousState;
 
-        console.log(this.state);
         this.taskKey = props.taskKey;
 
         this.registerFinalState = props.registerFinalState;
