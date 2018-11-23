@@ -22,14 +22,16 @@ class TabDisplay extends Component {
     componentWillReceiveProps(newProps) {
         this.state.tabInfo = newProps.tabInfo;
         this.state.tabToDisplay = newProps.tabToDisplay;
-        this.state.registerFinalStateFunc = newProps.registerFinalStateFunc;
+        this.state.registerFinalState = newProps.registerFinalState;
         this.state.taskKey = newProps.taskKey;
     }
 
       render() {
           return <View
-            registerFinalState={this.state.registerFinalStateFunc}
+            registerFinalState={this.state.registerFinalState}
             tabToDisplay={this.state.tabToDisplay}
+            tabInfo={this.state.tabInfo}
+            taskKey={this.state.taskKey}
             />;
       }
 }

@@ -30,9 +30,7 @@ describe('TabList', () => {
         const tl = mount(<TabList tabList={tabs} onSwitchTab={onClickMock}/>);
 
         // This filters the result of that search so that only the clickable part is grabbed
-        const tabToClick = tl.find(".tab").findWhere((el) => el.text() === tabs[1]).at(1);
-
-        console.log(tabToClick);
+        const tabToClick = tl.find(".tab").findWhere((el) => el.text() === tabs[1]);
 
         tabToClick.simulate('click');
 

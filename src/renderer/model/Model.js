@@ -37,6 +37,8 @@ class Model {
 
     writeAppState() {
         this.pd.write(this.resources.getUnwrappedTaskList());
+        // good spot to clear all previous data...
+        //this.pd.clear();
     }
 
     /*
@@ -96,10 +98,8 @@ class Model {
                 });
                 // handle the case where we don't find it
                 if (!foundIt) {
-                    throw Error(
-                        `You tried to update a component that isn't associated with that task: \n\tcomp -> ${componentName}\n\ttask -> ${task})`
-                    );
-                // otherwise update that task's data
+                    // tab probably just got deleted...
+                    // otherwise update that task's data
                 } else {
                     obsTask.updateData(task);
                 }

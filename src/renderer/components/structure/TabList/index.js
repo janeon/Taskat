@@ -40,7 +40,6 @@ class TabList extends Component {
      */
     parseTabOptions(listOfTabs) {
         return ALL_TABS.filter(tab => ! listOfTabs.includes(tab));
-// >>>>>>> baaadca39c86c7d411f4853ea0037751b117c838
     }
 
 
