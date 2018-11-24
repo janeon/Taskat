@@ -59,9 +59,12 @@
     "electron-webpack": "^2.4.0",
     "enzyme": "^3.7.0",
     "enzyme-adapter-react-16": "^1.7.0",
+    "globalize": "^1.4.0",
     "identity-obj-proxy": "^3.0.0",
     "jest-canvas-mock": "^1.1.0",
     "react-test-renderer": "^16.6.2",
+    "smalltalk": "^3.2.2",
+    "try-to-catch": "^1.1.1",
     "typeface-oswald": "^0.0.54",
     "typeface-roboto": "^0.0.54",
     "webpack": "^4.24.0"

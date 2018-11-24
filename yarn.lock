@@ -833,6 +833,14 @@
     lodash "^4.17.10"
     to-fast-properties "^2.0.0"
 
+"@cloudcmd/create-element@^1.0.0":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@cloudcmd/create-element/-/create-element-1.1.1.tgz#d99197addb11731c128c5042b8e1b35643288272"
+  integrity sha512-RntwJVi2Pw2nnEBKsGtheEvpb7eBN3fW4SuqTYhLP/uFDIhWLcpvpNeYAbKHZCjUXSQwUd3t8b0VwGqPib5oZQ==
+  dependencies:
+    currify "^3.0.0"
+    fullstore "^1.0.0"
+
 "@posthtml/esm@^1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@posthtml/esm/-/esm-1.0.0.tgz#09bcb28a02438dcee22ad1970ca1d85a000ae0cf"
@@ -2665,6 +2673,11 @@ classnames@^2.2.5, classnames@^2.2.6:
   resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.2.6.tgz#43935bffdd291f326dad0a205309b38d00f650ce"
   integrity sha512-JR/iSQOSt+LQIWwrwEzJ9uk0xfN3mTVYMwt1Ir5mUcSN6pU+V4zQFFaJsclJbPuAUQH+yfWef6tm7l1quW3C8Q==
 
+cldrjs@^0.5.0:
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/cldrjs/-/cldrjs-0.5.0.tgz#37be92d8d1a8e66c8ee12f1303ed316d85d8eb37"
+  integrity sha1-N76S2NGo5myO4S8TA+0xbYXY6zc=
+
 clean-css@4.2.x:
   version "4.2.1"
   resolved "https://registry.yarnpkg.com/clean-css/-/clean-css-4.2.1.tgz#2d411ef76b8569b6d0c84068dabe85b0aa5e5c17"
@@ -3211,6 +3224,11 @@ currently-unhandled@^0.4.1:
   integrity sha1-mI3zP+qxke95mmE2nddsF635V+o=
   dependencies:
     array-find-index "^1.0.1"
+
+currify@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/currify/-/currify-3.0.0.tgz#ec5b18fe65c2b3b08daba7f2a75a01063b2c89c2"
+  integrity sha512-ecz0Dq3T2UwiLwhiYvEFhdM4yUvlCLRgVbvpt6oI8RteJzEztum1UbLbN6snQ5nfHqtMcnrxkd7N0LeAIErorw==
 
 cyclist@~0.2.2:
   version "0.2.2"
@@ -4424,6 +4442,11 @@ fsevents@^1.2.2, fsevents@^1.2.3:
     nan "^2.9.2"
     node-pre-gyp "^0.10.0"
 
+fullstore@^1.0.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/fullstore/-/fullstore-1.1.0.tgz#a7a8b00ca07d86faca05fb825c45e5d1c3bba97e"
+  integrity sha512-XNlCWr3KBIL97G8mTR+dZ/J648ECCffflfFRgZW3Zm7pO0PYnH/ZCbwZjV1Dw4LrrDdhV6gnayiIcmdIY4JTsw==
+
 function-bind@^1.0.2, function-bind@^1.1.0, function-bind@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/function-bind/-/function-bind-1.1.1.tgz#a56899d3ea3c9bab874bb9773b7c5ede92f4895d"
@@ -4525,6 +4548,13 @@ global-modules-path@^2.3.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/global-modules-path/-/global-modules-path-2.3.0.tgz#b0e2bac6beac39745f7db5c59d26a36a0b94f7dc"
   integrity sha512-HchvMJNYh9dGSCy8pOQ2O8u/hoXaL+0XhnrwH0RyLiSXMMTl9W3N6KUU73+JFOg5PGjtzl6VZzUQsnrpm7Szag==
+
+globalize@^1.4.0:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/globalize/-/globalize-1.4.0.tgz#4c00a79de67d739a9b7ff83b66b90d0257c27493"
+  integrity sha1-TACnneZ9c5qbf/g7ZrkNAlfCdJM=
+  dependencies:
+    cldrjs "^0.5.0"
 
 globals@^11.1.0:
   version "11.8.0"
@@ -8445,9 +8475,9 @@ sax@^1.2.4, sax@~1.2.1, sax@~1.2.4:
   integrity sha512-NqVDv9TpANUjFm0N8uM5GxL36UgKi9/atZw+x7YFnQ8ckwFGKrl4xX4yWtrey3UJm5nP1kUbnYgLopqWNSRhWw==
 
 scheduler@^16.6.2:
-  version "0.11.2"
-  resolved "https://registry.yarnpkg.com/scheduler/-/scheduler-0.11.2.tgz#a8db5399d06eba5abac51b705b7151d2319d33d3"
-  integrity sha512-+WCP3s3wOaW4S7C1tl3TEXp4l9lJn0ZK8G3W3WKRWmw77Z2cIFUW2MiNTMHn5sCjxN+t7N43HAOOgMjyAg5hlg==
+  version "0.11.1"
+  resolved "https://registry.yarnpkg.com/scheduler/-/scheduler-0.11.1.tgz#a8560daf305bd3d17bd33f1e8278a7dab4aefc56"
+  integrity sha512-edDHoBW3XWrplgUSgMOGP16DXPLwN/MdGpCNkKS+4X7mDpLLp5j2Otwtv26+nHn1Sbq1aeSeEzUmGcV9dog0kA==
   dependencies:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
@@ -8621,6 +8651,15 @@ slash@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/slash/-/slash-1.0.0.tgz#c41f2f6c39fc16d1cd17ad4b5d896114ae470d55"
   integrity sha1-xB8vbDn8FtHNF61LXYlhFK5HDVU=
+
+smalltalk@^3.2.2:
+  version "3.2.2"
+  resolved "https://registry.yarnpkg.com/smalltalk/-/smalltalk-3.2.2.tgz#08d8dbdb8a229f615a2ea706fd1f73fa2424a447"
+  integrity sha512-UwHCzzIg89XEwC6KkIAQcQbXt9rZNt/iUgmiQn8uaHx9CSXczMbYa70wy9+ZiTW+PkKmYvFG+CZNhxJaeNFpcg==
+  dependencies:
+    "@cloudcmd/create-element" "^1.0.0"
+    currify "^3.0.0"
+    fullstore "^1.0.0"
 
 snapdragon-node@^2.0.1:
   version "2.1.1"
@@ -9251,6 +9290,11 @@ truncate-utf8-bytes@^1.0.0:
   integrity sha1-QFkjkJWS1W94pYGENLC3hInKXys=
   dependencies:
     utf8-byte-length "^1.0.1"
+
+try-to-catch@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/try-to-catch/-/try-to-catch-1.1.1.tgz#770162dd13b9a0e55da04db5b7f888956072038a"
+  integrity sha512-ikUlS+/BcImLhNYyIgZcEmq4byc31QpC+46/6Jm5ECWkVFhf8SM2Fp/0pMVXPX6vk45SMCwrP4Taxucne8I0VA==
 
 tslib@^1.9.0:
   version "1.9.3"

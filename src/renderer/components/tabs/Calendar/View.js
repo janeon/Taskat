@@ -4,7 +4,7 @@ import 'react-big-calendar/lib/css/react-big-calendar.css';
 import withDragAndDrop from 'react-big-calendar/lib/addons/dragAndDrop'
 import './Calendar.css'
 import 'react-big-calendar/lib/addons/dragAndDrop/styles.less'
-
+import moment from 'moment'
 const DragAndDropCalendar = withDragAndDrop(BigCalendar)
 
 /* The current version of big calendar implemented here is the most basic, the package also allows:
@@ -19,8 +19,8 @@ Q&A about big-calendar availale on Discord https://discordapp.com/channels/10286
 let allViews = Object.keys(BigCalendar.Views).map(k => BigCalendar.Views[k])
 
 const View = props => {
-  const event = props.Event;
-  const eventAgenda = props.EventAgenda;
+  var event = props.Event;
+  var eventAgenda = props.EventAgenda;
   var today = new Date();
   // console.log("this is the list of events", props.events);
   return (
@@ -29,7 +29,7 @@ const View = props => {
       <DragAndDropCalendar
       selectable
       events={props.events}
-      defaultView={BigCalendar.Views.DAY}
+      defaultView={BigCalendar.Views.MONTH}
       defaultDate={today}
       views={allViews}
       step={30}
@@ -41,9 +41,8 @@ const View = props => {
       onSelectSlot={event => props.handleSelectSlot(event)}
       resourceIdAccessor="resourceId"
       resourceTitleAccessor="resourceTitle"
-      defaultView="day"
       resizable
-      onEventResize={props.onEventResize}
+      onEventResize={event => props.onEventResize(event)}
       showMultiDayTimes
       components={{
         event: event,
