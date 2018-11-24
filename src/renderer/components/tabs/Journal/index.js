@@ -5,10 +5,12 @@ export default class Journal extends Component {
 
 	constructor(props) {
         super(props);
-        this.state = {
-            value: '',
-            entries: []
-        }; 
+
+        this.state = props.previousState;
+
+        this.taskKey = props.taskKey;
+
+        this.registerFinalState = props.registerFinalState;
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -36,7 +38,7 @@ export default class Journal extends Component {
 
     componentWillUnmount() {
         // this is where you record your final state to the model
-        //this.recordFinalState("Journal", this.state);
+        this.registerFinalState("journal", this.state, this.taskKey);
         // this is commented out because I'm not passing in the register function yet :)
     }
 
