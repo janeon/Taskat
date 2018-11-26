@@ -8,12 +8,12 @@ export default class NewTaskButton extends React.Component {
         this.createTask = props.createTask;
 
         this.state = this.initialState();
-        // what to show when nothing has been enetered. 
+        // what to show when nothing has been enetered.
         this.hint = "+ new task";
     }
 
     /*
-     * Returns the initial value of state.  
+     * Returns the initial value of state.
      */
     initialState() {
         return { value: '' }
@@ -32,7 +32,7 @@ export default class NewTaskButton extends React.Component {
     }
 
     /*
-     * Try and create a task, if succesful, refresh the button's state, 
+     * Try and create a task, if succesful, refresh the button's state,
      * otherwise show an alert and don't do anything.
      */
     handleSubmit(e) {
@@ -73,19 +73,19 @@ export default class NewTaskButton extends React.Component {
     }
 
     /*
-     * this would usually be in the 'View.js', but it felt like such a small 
-     * component, it made more sense to leave it in here. 
+     * this would usually be in the 'View.js', but it felt like such a small
+     * component, it made more sense to leave it in here.
      */
     render() {
         return (
             <div id="new-task-button">
                 <form onSubmit={(e) => this.handleSubmit(e)}>
-                    <input 
+                    <input
                         id="new-task-input"
-                        type="text"  
+                        type="text"
                         autoComplete="false"
-                        placeholder={this.hint} 
-                        value={this.state.value} 
+                        placeholder={this.hint}
+                        value={this.state.value}
                         onChange={(e) => this.handleChange(e)}/>
                 </form>
             </div>
