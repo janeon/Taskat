@@ -68,11 +68,10 @@ class Calendar extends Component {
   resizeEvent ({ event, start, end }) {
     const { events } = this.state
     const nextEvents = events.map(existingEvent => {
-      return existingEvent.id == event.id
+      return this.state.events.indexOf(existingEvent) === this.state.events.indexOf(event)
         ? { ...existingEvent, start, end }
         : existingEvent
     })
-
     this.setState({
       events: nextEvents,
     })
@@ -80,30 +79,15 @@ class Calendar extends Component {
     //alert(`${event.title} was resized to ${start}-${end}`)
   }
 
-  moveEvent({
-    event,
-    start,
-    end,
-    isAllDay: droppedOnAllDaySlot
-  }) {
-    const {
-      events
-    } = this.state
-
+  moveEvent({event, start, end, isAllDay: droppedOnAllDaySlot}) {
+    const {events} = this.state
     const idx = events.indexOf(event)
     let allDay = event.allDay
 
-    if (!event.allDay && droppedOnAllDaySlot) {
-      allDay = true
-    } else if (event.allDay && !droppedOnAllDaySlot) {
-      allDay = false
-    }
+    if (!event.allDay && droppedOnAllDaySlot) allDay = true
+    else if (event.allDay && !droppedOnAllDaySlot) allDay = false
 
-    const updatedEvent = { ...event,
-      start,
-      end,
-      allDay
-    }
+    const updatedEvent = { ...event, start, end, allDay }
 
     const nextEvents = [...events]
     nextEvents.splice(idx, 1, updatedEvent)
@@ -221,12 +205,7 @@ class Calendar extends Component {
     }
   }
 
-  async handleSelectSlot({
-    start,
-    end
-  }) {
-    // console.log("Start date", start);
-    //create an event
+  async handleSelectSlot({start, end}) {/*creates an event*/
     var title = ""; // getting title of event
     title = await tryToCatch(smalltalk.prompt, '', 'New event name');
     if (title.length < 2) return;
