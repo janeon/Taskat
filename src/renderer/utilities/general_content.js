@@ -37,11 +37,11 @@ export function getInitialState(tabTitle) {
                 dataValue: 0,
                 labelValue: 'enter label',
                 chartData : {
-                    labels: ['1', '2', '3', '4', '5', '6', '7'],
+                    labels: [],
                     datasets: [
                     {
                         label: 'My data!',
-                        data: [65, 59, 80, 81, 56, 55, 40],
+                        data: [],
                         fill: false,
                         lineTension: 0.1
                     }
