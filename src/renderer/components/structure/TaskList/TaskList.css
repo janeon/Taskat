@@ -5,13 +5,13 @@
     display: flex;
     flex-direction: column;
 
-    border-right: 2px solid var(--pinkline);
+    border-right: 2px solid var(--magenta);
 }
 
 .task {
-    background: lavender;
+    background: var(--periwinkle);
     padding: 10px;
-    border-bottom: 2px solid var(--pinkline);
+    border-bottom: 2px solid var(--magenta);
     font-family:oswald;
     cursor:pointer;
 }

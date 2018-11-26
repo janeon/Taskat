@@ -1,7 +1,14 @@
 :root {
   --offwhite-bg: #F9F8F8;
   --pinkline: #FF5191;
-  --pinkborder: 2px solid var(--pinkline);
+  --pinkborder: 2px solid var(--magenta);
+
+  --periwinkle: #CCD0FD;
+  --lightpink: #F8CEE6;
+  --magenta: #BE7CB9;
+  --navy: #2A3879;
+  --blue: #469CCB;
+  --lightblue: #9ECFED;
 }
 
 body {
@@ -23,7 +30,7 @@ body {
 
 .button {
 	cursor:pointer;
-	background-color:salmon;
+	background-color: var(--blue);
 	display:inline-block;
 	padding:3px 5px;
 	margin:5px;
