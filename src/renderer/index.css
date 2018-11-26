@@ -1,7 +1,7 @@
 :root {
   --offwhite-bg: #F9F8F8;
   --pinkline: #FF5191;
-  --pinkborder: 2px solid var(--magenta);
+  --border: 2px solid var(--navy);
   --periwinkle: #CCD0FD;
   --lightpink: #F8CEE6;
   --magenta: #BE7CB9;

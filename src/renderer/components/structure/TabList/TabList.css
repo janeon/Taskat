@@ -1,11 +1,11 @@
 #tab-list-container{
     width: auto;
-    height: 4%;
+    height: 52px;
     display: flex;
     flex-direction: row;
     padding: 10px;
     background: var(--periwinkle);
-    border-bottom: var(--magenta);
+    border-bottom: var(--border);
 }
 
 #tab-list {
@@ -13,8 +13,13 @@
     flex-direction: row;
 }
 
+
 .tab-wrapper {
   display: flex;
+}
+
+.displayContainer {
+  padding: 10px;
 }
 
 .tab {
