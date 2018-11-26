@@ -26,19 +26,26 @@ export function getInitialState(tabTitle) {
         case ("analytics"):
 
             return {
+                progress: 0,
+                progTotal: 10,
+                isNewTab: true,
+                chartType: 'select',
+                type: 'Line',
+                xLabel: 'x-axis',
+                yLabel: 'y-axis',
                 date: null,
                 dataValue: 0,
                 labelValue: 'enter label',
                 chartData : {
-                  labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-                  datasets: [
+                    labels: [],
+                    datasets: [
                     {
-                      label: 'My data!',
-                      data: [65, 59, 80, 81, 56, 55, 40],
-                      fill: false,
-                      lineTension: 0.1
+                        label: 'My data!',
+                        data: [],
+                        fill: false,
+                        lineTension: 0.1
                     }
-                  ]
+                    ]
                 }
               };
         case ("calendar"):

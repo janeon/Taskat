@@ -5,9 +5,13 @@ class Analytics extends Component {
   constructor(props) {
     super(props);
 
-    var today = new Date(),
-            date = (today.getMonth() + 1) + '/' + today.getDate();
+    var today = new Date();
+    var date = (today.getMonth() + 1) + '/' + today.getDate();
 
+    this.state = props.previousState;
+    this.state.date = date;
+
+    /*
     this.state = {
       progress: 0,
       progTotal: 10,
@@ -30,7 +34,10 @@ class Analytics extends Component {
           }
         ]
       }
-    };
+    }; */
+
+    this.registerFinalState = props.registerFinalState;
+    this.taskKey = props.taskKey;
 
     this.handleDataChange = this.handleDataChange.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
@@ -43,6 +50,10 @@ class Analytics extends Component {
     this.handleAddProgress = this.handleAddProgress.bind(this);
     this.handleRemoveProgress = this.handleRemoveProgress.bind(this);
   };
+
+  componentWillUnmount() {
+    this.registerFinalState("analytics", this.state, this.taskKey);
+  }
 
   handleDataChange(event) {
     this.setState({dataValue: event.target.value});

@@ -11,13 +11,16 @@ const View = props => {
   var ret;
   switch (props.tabToDisplay) {
     case "analytics":
-      ret = <Analytics/>;
+      ret = <Analytics
+        registerFinalState={props.registerFinalState}
+        previousState={props.tabInfo}
+        taskKey={props.taskKey}/>;
       break;
     case "calendar":
       ret = <Calendar
-      registerFinalState={props.registerFinalState}
-      previousState={props.tabInfo}
-      taskKey={props.taskKey}/>;
+        registerFinalState={props.registerFinalState}
+        previousState={props.tabInfo}
+        taskKey={props.taskKey}/>;
       break;
     case "journal":
       ret = <Journal 
