@@ -24,15 +24,13 @@ var events = [
 class Calendar extends Component {
   /*
   TODO: Things to fix
-  - be able to store event start and end times into localizer
-  - fix prompts for creating and adding nextEvents
-  - make edit time via selection tool actaully work
+  - make sure resize events without allowing it to impact other events
+  -
   https://www.reddit.com/r/reactjs/comments/8ig9q3/using_reactbigcalendar_is_there_an_easy_way_to/
   */
 
   constructor(props) {
     super(props);
-
     this.state = props.previousState;
     this.state.events = events;
     this.registerFinalState = props.registerFinalState;
@@ -67,28 +65,19 @@ class Calendar extends Component {
     </span>
   }
 
-  resizeEvent = ({
-    event,
-    start,
-    end
-  }) => {
-
-    const {
-      events
-    } = this.state
-
+  resizeEvent ({ event, start, end }) {
+    const { events } = this.state
     const nextEvents = events.map(existingEvent => {
-      return existingEvent.id === event.id ?
-        { ...existingEvent,
-          start,
-          end
-        } :
-        existingEvent
+      return existingEvent.id == event.id
+        ? { ...existingEvent, start, end }
+        : existingEvent
     })
 
     this.setState({
       events: nextEvents,
     })
+
+    //alert(`${event.title} was resized to ${start}-${end}`)
   }
 
   moveEvent({

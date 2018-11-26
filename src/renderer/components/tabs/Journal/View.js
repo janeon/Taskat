@@ -13,7 +13,7 @@ const View = ({value, entries, handleSubmit, handleChange, handleDelete}) => (
 
 	      	<p>Journal entries:</p>
 	      	<div>
-                {(entries.length==0) &&
+                {(entries.length===0) &&
                         <p>You have no entries. Write a new one above!</p>}
 
                         {entries.map((txt, index) => <div key={index}>{txt} <p className="button" onClick={() => { handleDelete(txt)}}>delete</p></div>)}

@@ -5,14 +5,14 @@ import { getInitialState } from '../utilities/general_content';
 /*
  * This manages connections between components, data, and actions (updates, edits, deletion, etc.).
  *
- * Any components that need information can subscribe to the datasource that they need (and they 
+ * Any components that need information can subscribe to the datasource that they need (and they
  * will be updated (through their 'onChange()' method) when that data is altered).
- * 
- * I am thinking that any alterations to the data also occur through this class.  
+ *
+ * I am thinking that any alterations to the data also occur through this class.
  */
 class Model {
 
-    // There is only an initTaskList passed in when 'testing' == true; 
+    // There is only an initTaskList passed in when 'testing' == true;
     constructor(testing, initTaskList) {
 
         this.pd = new PersistentData();
@@ -20,13 +20,13 @@ class Model {
         if (testing === undefined) {
             initTaskList = this.pd.read();
 
-            // careful...  
+            // careful...
             //this.pd.clear();
         }
-        
+
         this.resources = new Resources(initTaskList);
 
-        // binding the 'this' of the functions that get dispersed throughout the app. 
+        // binding the 'this' of the functions that get dispersed throughout the app.
         this.registerFinalState = this.registerFinalState.bind(this);
         this.writeAppState = this.writeAppState.bind(this);
         this.createTask = this.createTask.bind(this);
@@ -38,13 +38,13 @@ class Model {
     writeAppState() {
         this.pd.write(this.resources.getUnwrappedTaskList());
         // good spot to clear all previous data...
-        //this.pd.clear();
+        this.pd.clear();
     }
 
     /*
-     * 'desired_resource' - a string (ie. "task_title_list") that indicates which resource the subscriber wants to 
-     * know about.  
-     */ 
+     * 'desired_resource' - a string (ie. "task_title_list") that indicates which resource the subscriber wants to
+     * know about.
+     */
     subscribeTo(obs, desired_resource) {
 
         switch (desired_resource) {
@@ -57,11 +57,11 @@ class Model {
             default:
                 throw Error(`hmmm, couldn't find that resource: ${desired_resource}`);
         }
-        
+
     }
 
     /*
-     * Unsubscribes the 'obs' from the 'subbed_resource'.  
+     * Unsubscribes the 'obs' from the 'subbed_resource'.
      */
     unsubscribeFrom(obs, subbed_resource) {
 
@@ -82,7 +82,7 @@ class Model {
      * This is the function that updates tasks based on the final state of the tab....
      */
     registerFinalState(componentName, finalState, key) {
-        // Filter for the task that got changed by matching 'key's. 
+        // Filter for the task that got changed by matching 'key's.
         this.resources.taskList.forEach((obsTask) => {
             const task = obsTask.getData();
             // if the task matches...
@@ -108,8 +108,8 @@ class Model {
     }
 
     /*
-     * Update the current task, it gets called by the TaskList's task_key items, it changes  
-     * currentTask's value to be that of the task with the 'key' passed in to it.  
+     * Update the current task, it gets called by the TaskList's task_key items, it changes
+     * currentTask's value to be that of the task with the 'key' passed in to it.
      */
     updateCurrentTask(key) {
         // this should never be size greater than 1...
@@ -127,8 +127,8 @@ class Model {
     /*
      * Update the contents of the task (it finds it by key)
      *
-     * It just replaces whatever was there, so be careful that you 
-     * pass in all the task data, not just the thing you want to change.  
+     * It just replaces whatever was there, so be careful that you
+     * pass in all the task data, not just the thing you want to change.
      */
     updateTask(newTaskData) {
         this.resources.updateTask(newTaskData);
@@ -151,10 +151,10 @@ class Model {
             case ("calendar"):
                 newTab.info = getInitialState("calendar");
                 break;
-            case("journal"): 
+            case("journal"):
                 newTab.info = getInitialState("journal");
                 break;
-            default: 
+            default:
                 throw new Error(`I don't know how to init the ${tabTitle} tab... `);
         }
 
@@ -163,7 +163,7 @@ class Model {
     }
 
     /*
-     * Remove a tab from the task with the given 'key' 
+     * Remove a tab from the task with the given 'key'
      */
     removeTabFromTask(key, tabTitle) {
         const task = this.resources.getTask(key);
@@ -175,8 +175,8 @@ class Model {
 
     /*
      * Create a new task
-     * 'title' is the title of the new task. 
-     * returns - 'true' if it added, 'false' if it was a duplicate. 
+     * 'title' is the title of the new task.
+     * returns - 'true' if it added, 'false' if it was a duplicate.
      */
     createTask(title) {
         // look for duplicate titles
