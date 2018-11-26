@@ -1,26 +1,31 @@
 import React, { Component } from 'react';
 import View from './View';
-import { InitialTask } from '../../Utilities/GeneralContent';
 
 class TaskDetail extends Component {
     constructor(props) {
         super(props);
+        this.taskState = {
+          name: '',
+          description: 'enter label',
+          tags: [],
+        };
+            
+    this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    onChange(newCurrentTask) {
-        this.setState((state) => {
-            state.currentTask = newCurrentTask;
-            return state;
-        });
-    }
+  handleSubmit(currentTask) {
+    currentTask.description = this.taskState.description;
+    currentTask.name = this.taskState.name;
+    currentTask.tags = this.taskState.tags;
+  }
 
-    onClick(sectionClicked) {
-    
-    }
+  render() {
+        return <View taskName={this.taskState.name}
+        taskDescription={this.taskState.description}
+        taskTage={this.taskState.tags}
+        handleSubmit={this.handleSubmit} />;
 
-    render() {
- 
-    }
+  }
 
 }
 

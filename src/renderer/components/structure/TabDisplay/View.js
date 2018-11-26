@@ -3,7 +3,7 @@ import React from 'react';
 import Analytics from '../../tabs/Analytics';
 import Calendar from '../../tabs/Calendar';
 import Journal from '../../tabs/Journal';
-import ExTab from '../../tabs/ExTab';
+import TaskDetail from '../../tabs/TaskDetail';
 
 
 const View = props => {
@@ -29,7 +29,7 @@ const View = props => {
         taskKey={props.taskKey}/>;
       break;
     default:
-      ret = <ExTab/>;
+      ret = <TaskDetail/>;
   }
   return (
     <div className="displayContainer">

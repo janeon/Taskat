@@ -1,5 +1,5 @@
 import React from 'react';
-import "./TabList.css"
+import TaskDetail from "../TaskDetail"
 
 /*
  * Render the TaskDetail component, which allows for editing of a specific task. 
@@ -8,12 +8,21 @@ import "./TabList.css"
  * final state.
  */
 
-const View = ({task, registerFinalState}) => {
+const View = ({name, description,registerFinalState, handleSubmit, value, handleChange, }) => {
 
   return (
-    <div id="taskdetail">
-      {task} 
-      {registerFinalState}/>  
+    <div id="taskdetail"> 
+     	<form onSubmit={handleSubmit}>
+	  		<label>
+	    		Task Name:
+	    		<input type="text" value={name} />
+	  		</label>
+	  		<label>
+	    		Task Description:
+	    		<input type="text" value={description} />
+	  		</label>
+	  		<input type="submit" value="Submit" />
+		</form>
     </div>)}
 
 export default View;
