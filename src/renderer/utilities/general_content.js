@@ -50,7 +50,12 @@ export function getInitialState(tabTitle) {
               };
         case ("calendar"):
             return {
-                events: []
+                events: [    {
+                      end: new Date('November 11, 2018 20:00:00'),
+                      start: new Date('November 11, 2018 06:00:00'),
+                      title: 'Happy 11/11',
+                      desc: 'Big conference for important people'
+                    }]
             };
         case ("journal"):
             return {

@@ -4,8 +4,8 @@
     display: flex;
     flex-direction: row;
     padding: 10px;
-    background: cornflowerblue;
-    border-bottom: var(--pinkborder);
+    background: var(--periwinkle);
+    border-bottom: var(--magenta);
 }
 
 #tab-list {
@@ -18,7 +18,7 @@
 }
 
 .tab {
-    background: salmon;
+    background: var(--blue);
     margin-right: 0.5em;
     padding: 10px;
     padding-right: 2.25em;
@@ -31,6 +31,19 @@
 
 .tab:hover {
   background-color: white;
+}
+
+
+.currentTab {
+  background: beige;
+  margin-right: 0.5em;
+  padding: 10px;
+  padding-right: 2.25em;
+  text-align: center;
+  vertical-align: middle;
+  display: flex;
+  font-family:oswald;
+  font-size: 20px;
 }
 
 .delete {

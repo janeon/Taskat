@@ -49,7 +49,7 @@ const View = ({
                       How many times would you like to complete an action?
                       <input type="number" value={progTotal} onChange={handleProgTotalChange} /><br />
                     </label>
-                    <button onClick={handleDisplayChange}>Create your progress bar!</button>
+                    <button className="button" onClick={handleDisplayChange}>Create your progress bar!</button>
                   </div>
                 ) : ( null )
               }
@@ -70,7 +70,7 @@ const View = ({
                       Set y label:
                       <input type="text" value={yLabel} onChange={handleYLabelChange} /><br /><br />
                     </label>
-                    <button onClick={handleDisplayChange}>Create your graph!</button>
+                    <button className="button" onClick={handleDisplayChange}>Create your graph!</button>
                   </div>
                 ) : ( null )
               }
@@ -82,7 +82,7 @@ const View = ({
           { chartType==="line"
             ? (
               <div>
-              <h1>Welcome back</h1>
+              <h1>Good Work!</h1>
               <Line
                 data={chartData}
                 options = {{
@@ -109,10 +109,10 @@ const View = ({
                     Data for today:
                     <input type="number" value={dataValue} onChange={handleDataChange} />
                   </label>
-                  <button onClick={handleSubmit}>Submit</button>
+                  <button className="button" onClick={handleSubmit}>Submit</button>
 
                 </form>
-                <button onClick={handleDelete}>Delete Last Point</button><br /><br />
+                <button className="button" onClick={handleDelete}>Delete Last Point</button><br /><br />
                 <label>
                   Change x Label:
                   <input type="text" value={xLabel} onChange={handleXLabelChange} /><br />
@@ -126,10 +126,10 @@ const View = ({
             ) :
             (
               <div>
-              <h1> Welcome back </h1>
+              <h1> Good Work! </h1>
               <p>You are {progress}/{progTotal} of the way there!</p>
-              <button onClick={handleAddProgress}>+</button>
-              <button onClick={handleRemoveProgress}>-</button><br />
+              <button className="button" onClick={handleAddProgress}>+</button>
+              <button className="button" onClick={handleRemoveProgress}>-</button><br />
               <Progress id="pbar"
                 type="circle"
                 percent={((progress/progTotal)*100).toFixed(1)}
