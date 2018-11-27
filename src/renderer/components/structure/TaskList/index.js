@@ -13,7 +13,9 @@ class TaskList extends Component {
         this.model = props.model;
         // setting the initial state
         this.state = {
-            titleKeyList: [ { key:-2, title: "no tasks to display..." } ]
+            titleKeyList: [ { key:-2, title: "no tasks to display..." } ],
+            // which task was clicked last
+            currentTaskKey: null,
         };
     }
 
@@ -47,17 +49,22 @@ class TaskList extends Component {
      */
     onClick(key) {
         this.model.updateCurrentTask(parseInt(key));
+        // refresh the task
+        this.setState((state) => {
+            state.currentTaskKey = key;
+            return state;
+        });
     }
 
     render() {
-      var data = this.model.resources.currentTask.data; // current task data
+      //var data = this.model.resources.currentTask.data; // current task data
         // converting task objects to task html elements
         const taskTitleElementList = this.state.titleKeyList.map((titleKeyPair) => {
             const key = titleKeyPair.key;
-            console.log("current task data,", data.key);
+            console.log("current task key", this.state.currentTaskKey);
             console.log("key", key);
             var ret;
-            if (data.key === key) {
+            if (key === this.state.currentTaskKey) {
               ret = <div className="currentTask"
                           onClick={(e) => this.onClick(key)}
                           key={titleKeyPair.key}>
