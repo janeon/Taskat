@@ -1,10 +1,31 @@
 #new-tab-button {
     cursor: pointer;
-    background: orange;
+    background: var(--magenta);
+    margin-right: 0.5em;
+    margin-top: 0.5em;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: center;
+    vertical-align: middle;
+    display: flex;
+    font-family:oswald;
+    font-size: 20px;
+    color: white;
 }
 
 #new-tab-button-option-list {
     position: absolute;
     z-index: 99;
-    background: red;
+    background: var(--lightpink);
+}
+
+.tab-option {
+  font-family: oswald;
+  font-size: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
+  /*border-left: var(--border);
+  border-right: var(--border);
+  border-top: var(--border);*/
+
 }

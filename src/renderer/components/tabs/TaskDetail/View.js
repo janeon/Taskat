@@ -12,6 +12,7 @@ const View = ({name, description,registerFinalState, handleSubmit, value, handle
 
   return (
     <div id="taskdetail">
+      <h1>Edit Task</h1>
      	<form onSubmit={handleSubmit}>
 	  		<label>
 	    		Task Name:

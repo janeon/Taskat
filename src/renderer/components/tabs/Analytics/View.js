@@ -17,7 +17,7 @@ const View = ({
                 handleProgTotalChange, handleAddProgress,
                 handleRemoveProgress,
               }) => (
-<div id="displayContainer" className="displayContainer">
+/*<div id="displayContainer">*/
 <div id="chartContainer">
 
   <div>
@@ -144,7 +144,7 @@ const View = ({
   </div>
 
 </div>
-</div>
+/*</div>*/
 
 );
 

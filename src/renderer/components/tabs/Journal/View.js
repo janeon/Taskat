@@ -4,7 +4,7 @@ const View = ({value, entries, handleSubmit, handleChange, handleDelete}) => (
 	<div className="journal">
 		<form onSubmit={handleSubmit}>
 	        <label>
-	          <p>Write a new entry</p>
+	          <h1>Write a new entry</h1>
 	          <textarea value={value} onChange={handleChange} />
 	        </label>
 	        <br /><div className="button" onClick={handleSubmit}> submit</div>

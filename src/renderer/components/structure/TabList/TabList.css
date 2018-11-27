@@ -1,11 +1,11 @@
 #tab-list-container{
     width: auto;
-    height: 52px;
+    height: 50px;
     display: flex;
     flex-direction: row;
-    padding: 10px;
-    background: var(--periwinkle);
-    border-bottom: var(--border);
+    padding: 0px;
+    background: var(--navy);
+    /*border-bottom: var(--border);*/
 }
 
 #tab-list {
@@ -19,11 +19,17 @@
 }
 
 .displayContainer {
-  padding: 10px;
+  height: 600px;
+  padding: 30px;
+  background-color: var(--periwinkle);
+}
+
+.fa.fa-times {
+  color: white;
 }
 
 .tab {
-    background: var(--blue);
+    background: var(--navy);
     margin-right: 0.5em;
     padding: 10px;
     padding-right: 2.25em;
@@ -32,15 +38,16 @@
     display: flex;
     font-family:oswald;
     font-size: 20px;
+    color: white;
 }
 
 .tab:hover {
-  background-color: white;
+  background-color: var(--lightpink);
 }
 
 
 .currentTab {
-  background: beige;
+  background: var(--periwinkle);
   margin-right: 0.5em;
   padding: 10px;
   padding-right: 2.25em;

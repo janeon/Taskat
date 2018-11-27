@@ -1,7 +1,7 @@
 :root {
   --offwhite-bg: #F9F8F8;
   --pinkline: #FF5191;
-  --border: 2px solid var(--navy);
+  --border: 2px solid var(--lightblue);
   --periwinkle: #CCD0FD;
   --lightpink: #F8CEE6;
   --magenta: #BE7CB9;
@@ -15,10 +15,11 @@ body {
   height: 650px;
   padding: 0;
   font-family:roboto;
+  color: var(--navy);
 }
 
 .journal {
-	padding:20px;
+	padding:0px;
 }
 
 #app-container {
