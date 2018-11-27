@@ -57,12 +57,9 @@ class TaskList extends Component {
     }
 
     render() {
-      //var data = this.model.resources.currentTask.data; // current task data
         // converting task objects to task html elements
         const taskTitleElementList = this.state.titleKeyList.map((titleKeyPair) => {
             const key = titleKeyPair.key;
-            console.log("current task key", this.state.currentTaskKey);
-            console.log("key", key);
             var ret;
             if (key === this.state.currentTaskKey) {
               ret = <div className="currentTask"
