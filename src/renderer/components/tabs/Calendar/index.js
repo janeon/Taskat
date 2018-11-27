@@ -12,6 +12,7 @@ const tryToCatch = require('try-to-catch');
 //const DragAndDropCalendar = withDragAndDrop(BigCalendar)
 
 const localizer = BigCalendar.momentLocalizer(moment)
+
 var events = [
     {
       end: new Date('November 11, 2018 20:00:00'),
@@ -21,6 +22,8 @@ var events = [
     }
 ];
 
+
+
 class Calendar extends Component {
   /*
   TODO: Things to fix
@@ -28,11 +31,10 @@ class Calendar extends Component {
   -
   https://www.reddit.com/r/reactjs/comments/8ig9q3/using_reactbigcalendar_is_there_an_easy_way_to/
   */
-
   constructor(props) {
     super(props);
     this.state = props.previousState;
-    this.state.events = events;
+    // this.state.events = events;
     this.registerFinalState = props.registerFinalState;
     this.taskKey = props.taskKey;
     this.handleSelectSlot = this.handleSelectSlot.bind(this);
@@ -205,14 +207,13 @@ class Calendar extends Component {
     }
   }
 
-  async handleSelectSlot({start, end}) {/*creates an event*/
-    var title = ""; // getting title of event
-    title = await tryToCatch(smalltalk.prompt, '', 'New event name');
+  async handleSelectSlot({start, end}) {
+    /*creates an event*/
+    var title = await tryToCatch(smalltalk.prompt, '', 'New event name');
     if (title.length < 2) return;
     else title = title[1];
-    var desc = "";
     var repeat; // getting description and whether event repeats
-    desc = await tryToCatch(smalltalk.prompt, '', 'Give your event some description', title);
+    var desc = await tryToCatch(smalltalk.prompt, '', 'Give your event some description', title);
     if (desc.length < 2) return;
     else desc = desc[1];
     var result = await tryToCatch(smalltalk.confirm, 'Question', 'Repeat this event over time?', {
@@ -221,9 +222,7 @@ class Calendar extends Component {
         cancel: 'Do not repeat',
       }
     });
-    var repeat;
     repeat = (result.length === 2) ? 1 : 0;
-
     if (repeat) {
       // handling recurring events
       var frequency = await tryToCatch(smalltalk.prompt,
@@ -302,7 +301,6 @@ class Calendar extends Component {
       }
       this.addRecurringEvents(start, end, title, desc, frequency, gap, timesRepeating);
     }
-
     else {
       this.setState({
         events: this.state.events.concat({
