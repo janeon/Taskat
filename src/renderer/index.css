@@ -16,6 +16,7 @@ body {
   height: 650px;
   padding: 0;
   font-family:roboto;
+  color: var(--navy);
 }
 
 .journal {

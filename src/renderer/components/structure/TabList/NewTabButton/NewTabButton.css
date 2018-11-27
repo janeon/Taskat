@@ -1,10 +1,10 @@
 #new-tab-button {
     cursor: pointer;
-    background: orange;
+    background: var(--magenta);
 }
 
 #new-tab-button-option-list {
     position: absolute;
     z-index: 99;
-    background: red;
+    background: var(--lightpink);
 }
