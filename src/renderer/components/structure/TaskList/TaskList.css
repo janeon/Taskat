@@ -5,15 +5,20 @@
     display: flex;
     flex-direction: column;
 
-    border-right: var(--border);
+    /*border-right: var(--border);*/
 }
 
 .task {
-    background: var(--periwinkle);
+    background: var(--navy);
     padding: 10px;
-    border-bottom: var(--border);
+    /*border-bottom: var(--border);*/
     font-family:oswald;
     cursor:pointer;
+    color: white;
+}
+
+.task:hover {
+    background-color: var(--lightpink);
 }
 
 #new-task-button-container {

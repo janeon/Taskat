@@ -24,7 +24,7 @@ const View = props => {
   var today = new Date();
   // console.log("this is the list of events", props.events);
   return (
-    <div className="displayContainer">
+    /*<div className="displayContainer">*/
       <div className="rbc-calendar">
       <DragAndDropCalendar
       selectable
@@ -72,7 +72,7 @@ const View = props => {
               />
               */}
               </div>
-    </div>
+    /*</div>*/
 )}
 
 

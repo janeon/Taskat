@@ -1,11 +1,11 @@
 #tab-list-container{
     width: auto;
-    height: 52px;
+    height: 50px;
     display: flex;
     flex-direction: row;
-    padding: 10px;
-    background: var(--periwinkle);
-    border-bottom: var(--border);
+    padding: 0px;
+    background: var(--navy);
+    /*border-bottom: var(--border);*/
 }
 
 #tab-list {
@@ -19,7 +19,13 @@
 }
 
 .displayContainer {
-  padding: 10px;
+  height: 600px;
+  padding: 30px;
+  background-color: var(--periwinkle);
+}
+
+.fa.fa-times {
+  color: white;
 }
 
 .tab {

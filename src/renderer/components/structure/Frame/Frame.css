@@ -9,5 +9,6 @@
 }
 
 .tasklist {
-    border-right: var(--border);
+    /*border-right: var(--border);*/
+    background-color: var(--navy);
 }
