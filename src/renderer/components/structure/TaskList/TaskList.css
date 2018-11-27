@@ -9,20 +9,21 @@
 }
 
 .task {
-  background: var(--periwinkle);
+  background: var(--navy);
+  color: white;
   padding: 10px;
-  border-bottom: var(--border);
+  /*border-bottom: var(--border);*/
   font-family:oswald;
   cursor:pointer;
 }
 
 .currentTask {
-    background: var(--navy);
+    background: var(--periwinkle);
     padding: 10px;
     /*border-bottom: var(--border);*/
     font-family:oswald;
     cursor:pointer;
-    color: white;
+    color: var(--navy);
 }
 
 .task:hover {
