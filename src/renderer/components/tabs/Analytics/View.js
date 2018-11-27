@@ -109,10 +109,10 @@ const View = ({
                     Data for today:
                     <input type="number" value={dataValue} onChange={handleDataChange} />
                   </label>
-                  <button className="button" onClick={handleSubmit}>Submit</button>
+                  <button className="button" onClick={handleSubmit}>submit</button>
 
                 </form>
-                <button className="button" onClick={handleDelete}>Delete Last Point</button><br /><br />
+                <button className="button" onClick={handleDelete}>delete last point</button><br /><br />
                 <label>
                   Change x Label:
                   <input type="text" value={xLabel} onChange={handleXLabelChange} /><br />
