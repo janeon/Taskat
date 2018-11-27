@@ -9,11 +9,19 @@
 }
 
 .task {
-    background: var(--periwinkle);
-    padding: 10px;
-    border-bottom: var(--border);
-    font-family:oswald;
-    cursor:pointer;
+  background: var(--periwinkle);
+  padding: 10px;
+  border-bottom: var(--border);
+  font-family:oswald;
+  cursor:pointer;
+}
+
+.currentTask {
+  background: var(--border);
+  padding: 10px;
+  border-bottom: var(--border);
+  font-family:oswald;
+  cursor:pointer;
 }
 
 #new-task-button-container {
