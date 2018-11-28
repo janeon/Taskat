@@ -12,7 +12,8 @@ let mainWindow;
 function createMainWindow() {
   const window = new BrowserWindow({
     height: 800,
-    width: 1020
+    width: 1020,
+    icon: path.join(__dirname, 'assets/icon/task-kat.png')
   });
 
   window.setTitle("Taskat");

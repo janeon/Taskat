@@ -1,5 +1,5 @@
 {
-  "name": "electron-webpack-quick-start",
+  "name": "task-kat",
   "version": "0.0.0",
   "license": "MIT",
   "babel": {
@@ -10,6 +10,10 @@
     "plugins": [
       "@babel/plugin-proposal-class-properties"
     ]
+  },
+  "build": {
+    "files": ["src/assets/icon/icon.png"],
+    "icon": "src/assets/icon/icon.png"
   },
   "jest": {
     "moduleNameMapper": {
