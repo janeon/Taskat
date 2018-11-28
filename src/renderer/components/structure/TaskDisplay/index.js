@@ -2,6 +2,17 @@ import React, { Component } from 'react';
 import View from './View';
 import { InitialTask } from '../../../utilities/general_content';
 
+var keydownListener = function (e) {
+  if (e.keyCode === 13) {
+    // Do your stuff here
+    console.log("enter pressed");
+  }
+  console.log("other keys");
+};
+
+// Bind "keydown" event
+addEventListener("keydown", keydownListener);
+
 class TaskDisplay extends Component {
     constructor(props) {
         super(props);
@@ -38,7 +49,7 @@ class TaskDisplay extends Component {
             return state;
         });
     }
-    
+
 
     /*
      * Clicks to tabList should cause a different tab to be loaded...

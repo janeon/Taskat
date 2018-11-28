@@ -5,17 +5,6 @@ import './App.css';
 import 'font-awesome/css/font-awesome.min.css'
 import { getTestTaskListSmall } from '../test_resources/testutils'
 
-var keydownListener = function (e) {
-  if (e.keyCode === 13) {
-    // Do your stuff here
-    console.log("enter pressed");
-  }
-  console.log("other keys");
-};
-
-// Bind "keydown" event
-addEventListener("keydown", keydownListener);
-
 class App extends Component {
   constructor(props) {
       super(props);
@@ -36,8 +25,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        {<Frame model={this.model}
-                keydownListener = {keydownListener}/>}
+        {<Frame model={this.model}/>}
       </div>
     );
   }

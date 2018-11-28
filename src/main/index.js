@@ -43,10 +43,10 @@ function createMainWindow() {
       window.focus();
     });
   });
-
-  electronLocalshortcut.register(window, 'CmdOrCtrl+Alt+Super+Right', () => {
-    console.log("helllo");
-});
+//
+//   electronLocalshortcut.register(window, 'CmdOrCtrl+Alt+Super+Right', () => {
+//     console.log("helllo");
+// });
 
   return window;
 }

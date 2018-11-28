@@ -8,6 +8,11 @@
     /*border-right: var(--border);*/
 }
 
+#task-list {
+  overflow: scroll;
+  flex-direction: column;
+  max-height: 660px;
+}
 .task {
   background: var(--navy);
   color: white;

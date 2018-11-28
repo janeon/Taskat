@@ -4,14 +4,10 @@ import TaskList from '../TaskList';
 import TaskDisplay from '../TaskDisplay';
 import './Frame.css';
 
-const View = ({model, keydownListener}) => (
+const View = ({model}) => (
     <div id="frame">
-        <div className="tasklist">
-        <TaskList model={model}></TaskList>
-        </div>
-        <TaskDisplay model={model}
-                     keydownListener={keydownListener}
-        ></TaskDisplay>
+        <TaskList model={model}/>
+        <TaskDisplay model={model}/>
     </div>
 
 );

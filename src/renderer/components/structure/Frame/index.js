@@ -6,8 +6,6 @@ import View from './View';
  */
 export default function Frame(props) {
     return (
-            <View model={props.model}
-                  keydownListener={props.keydownListener}
-            />
+            <View model={props.model}/>
         );
 }
