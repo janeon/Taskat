@@ -14,7 +14,7 @@ class TaskDisplay extends Component {
             currentTask: new InitialTask(),
             currentTabTitle: "welcome tab",
         };
-    
+
         // this.state.tabListToDisplay = task.tabListToDisplay;
         // console.log("What's the current task like?", this.state.tabListToDisplay);
         this.onSwitchTab = this.onSwitchTab.bind(this);
@@ -38,7 +38,7 @@ class TaskDisplay extends Component {
             return state;
         });
     }
-
+    
 
     /*
      * Clicks to tabList should cause a different tab to be loaded...
@@ -128,13 +128,13 @@ class TaskDisplay extends Component {
                     tabToDisplay={this.state.currentTabTitle}
                     tabInfo={tabInfo}
                     registerFinalState={this.model.registerFinalState}
-                    
+
                     deleteTaskOnClick={this.model.deleteTask}
 
-                    // both 
+                    // both
                     taskKey={this.state.currentTask.key}
                     />;
-                    
+
     }
 
 }
