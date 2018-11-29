@@ -1,7 +1,8 @@
 'use strict';
-import { app, BrowserWindow, globalShortcut } from 'electron';
+import { app, BrowserWindow, Menu, MenuItem, globalShortcut} from 'electron';
 import * as path from 'path';
 import { format as formatUrl } from 'url';
+const menu = new Menu()
 
 const isDevelopment = process.env.NODE_ENV !== 'production';
 
@@ -9,9 +10,7 @@ const isDevelopment = process.env.NODE_ENV !== 'production';
 let mainWindow;
 
 function createMainWindow() {
-  const window = new BrowserWindow({
-    height: 800,
-    width: 1020,
+  const window = new BrowserWindow({ height: 800, width: 1020,
     icon: path.join(__dirname, 'assets/icon/task-kat.png')
   });
 
@@ -64,10 +63,11 @@ app.on('activate', () => {
 // create main BrowserWindow when electron is ready
 app.on('ready', () => {
   mainWindow = createMainWindow();
-    globalShortcut.register('Command+1', () => {
-      console.log('Command+1 is pressed')
-    })
+  // globalShortcut.register('Command+2', () => {
+  //   console.log('Command+2 is pressed')
+  // })
 });
+
 
 app.on('will-quit', () => {
   // Unregister a shortcut.

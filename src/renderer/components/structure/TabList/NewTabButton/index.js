@@ -6,16 +6,10 @@ export default class NewTabButton extends React.Component {
 
     constructor(props) {
         super(props);
-
         this.options = props.options;
         this.taskKey = props.taskKey;
         this.addTabToTask = props.addTabToTask;
-
-        this.state = {
-            showOptions: false,
-        };
-
-
+        this.state = { showOptions: false };
         this.showOptions = this.showOptions.bind(this);
         this.hideOptions = this.hideOptions.bind(this);
     }

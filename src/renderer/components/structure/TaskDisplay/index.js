@@ -2,17 +2,17 @@ import React, { Component } from 'react';
 import View from './View';
 import { InitialTask } from '../../../utilities/general_content';
 
-var keydownListener = function (e) {
-  if (e.keyCode === 13) {
-    // Do your stuff here
-    console.log("enter pressed");
-  }
-  console.log("other keys");
-};
-
-
-// Bind "keydown" event
-addEventListener("keydown", keydownListener);
+var map = {49: false, // 1
+           50: false, // 2
+           51: false, // 3
+           52: false, // 4
+           17: false, // left ctrl
+           91: false, // left command
+           93: false, // right command
+           65: false,
+           87: false,
+           83: false,
+           68: false};
 
 class TaskDisplay extends Component {
     constructor(props) {
@@ -31,11 +31,15 @@ class TaskDisplay extends Component {
         // console.log("What's the current task like?", this.state.tabListToDisplay);
         this.onSwitchTab = this.onSwitchTab.bind(this);
         this.onDeleteTab = this.onDeleteTab.bind(this);
+        this.handleKeyDown = this.handleKeyDown.bind(this);
+        this.handleKeyUp = this.handleKeyUp.bind(this);
     }
 
     componentDidMount() {
         // subscribe to the "current_task"
         this.model.subscribeTo(this, "current_task");
+        document.addEventListener("keydown", this.handleKeyDown, false);
+        document.addEventListener("keyup", this.handleKeyUp, false);
     }
 
     componentWillUnmount() {
@@ -51,11 +55,10 @@ class TaskDisplay extends Component {
         });
     }
 
-
     /*
      * Clicks to tabList should cause a different tab to be loaded...
      *
-     * 'tabClicked' - a string that is the title of the clicked tab.
+     * 'tabTitle' - a string that is the title of the clicked tab.
      */
     onSwitchTab(tabTitle) {
         this.setState((state) => {
@@ -63,6 +66,50 @@ class TaskDisplay extends Component {
             return state;
         })
     }
+
+    handleKeyDown(e) {
+    // console.log("keydown", e.keyCode);
+      var count = 0; var code = 0;
+      for (var key in map) {
+        if (map[key]) {
+          count++;
+          if (key >= 49 && key <= 52)
+            code = key;
+        }
+      }
+
+      if (code !== 0 && count > 1) map[code] = false;
+      if (e.keyCode in map) {
+          map[e.keyCode] = true;
+          if ((map[93] && map[49]) || (map[91] && map[49])){
+              // console.log('first tab');
+              this.onSwitchTab(this.state.currentTask.tabs[0].title);
+          }
+          if ((map[93] && map[50]) || (map[91] && map[50])){
+              // console.log('second tab');
+              this.onSwitchTab(this.state.currentTask.tabs[1].title);
+          }
+          if ((map[93] && map[51]) || (map[91] && map[51])){
+              // console.log('third tab');
+              this.onSwitchTab(this.state.currentTask.tabs[2].title);
+          }
+          if ((map[93] && map[52]) || (map[91] && map[52])){
+              // console.log('fourth tab');
+              this.onSwitchTab(this.state.currentTask.tabs[3].title);
+          }
+        }
+      }
+
+      handleKeyUp(e) {
+        // console.log("keyup", e.keyCode);
+        if (e.keyCode in map) {
+            map[e.keyCode] = false;
+            if (e.keyCode === 91 || e.keyCode === 93) {
+              for (var key in map)
+                map[key] = false;
+            }
+          }
+      }
 
     onDeleteTab(tabTitle) {
       var tabList = this.state.currentTask.tabs;
