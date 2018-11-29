@@ -65,12 +65,14 @@
   /* margin-left: 1em; */
   margin-right: 1em;
   margin-top: -2em;
-  color: black;
+  /* color: pink; */
   padding: 2px;
   z-index: 400;
+  opacity: 0.1;
 }
 
 .delete:hover {
     background-color: darkgrey;
     color: white;
+    opacity: 1
 }
