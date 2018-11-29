@@ -21,7 +21,7 @@ class Model {
             initTaskList = this.pd.read();
 
             // careful...
-            // this.pd.clear();
+            this.pd.clear();
         }
 
         this.resources = new Resources(initTaskList);

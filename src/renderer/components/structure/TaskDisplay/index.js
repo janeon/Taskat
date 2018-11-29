@@ -9,6 +9,9 @@ var map = {49: false, // 1
            17: false, // left ctrl
            91: false, // left command
            93: false, // right command
+           37: false, // left arrow
+           39: false, // right arrow
+           18: false, // right option
            65: false,
            87: false,
            83: false,
@@ -33,6 +36,7 @@ class TaskDisplay extends Component {
         this.onDeleteTab = this.onDeleteTab.bind(this);
         this.handleKeyDown = this.handleKeyDown.bind(this);
         this.handleKeyUp = this.handleKeyUp.bind(this);
+        this.toggleTab = this.toggleTab.bind(this);
     }
 
     componentDidMount() {
@@ -67,8 +71,22 @@ class TaskDisplay extends Component {
         })
     }
 
+    toggleTab(direction) {
+        // console.log("current tab", this.state.currentTask);
+        var currTabs = this.state.currentTask.tabs;
+        // console.log("current tabs", currTabs);
+        var elementPos = currTabs.findIndex(tab => tab.title === this.state.currentTabTitle)
+        // console.log("current tab index", elementPos);
+        // console.log("want to tab this way", direction);
+        var length = currTabs.length;
+        // console.log("which lands in this tab index", ((elementPos+direction % length) + length) % length)
+        // var newIndex = ((elementPos+direction % length) + length) % length;
+        // console.log("which has this title", currTabs[((elementPos+direction % length) + length) % length].title);
+        this.onSwitchTab(currTabs[((elementPos+direction % length) + length) % length].title)
+    }
+
     handleKeyDown(e) {
-    // console.log("keydown", e.keyCode);
+      var pressed = e.keyCode;
       var count = 0; var code = 0;
       for (var key in map) {
         if (map[key]) {
@@ -77,8 +95,10 @@ class TaskDisplay extends Component {
             code = key;
         }
       }
+      if (pressed === 37 && map[93] && map[18]) this.toggleTab(-1);
+      if (pressed === 39 && map[93] && map[18]) this.toggleTab(1);
+      if (code !== 0 && count === 2) map[code] = false;
 
-      if (code !== 0 && count > 1) map[code] = false;
       if (e.keyCode in map) {
           map[e.keyCode] = true;
           if ((map[93] && map[49]) || (map[91] && map[49])){
@@ -133,16 +153,11 @@ class TaskDisplay extends Component {
         (targetIndex !== 0) ? newCurrentTabTitle = tabList[0].title : newCurrentTabTitle = tabList[nextTabIndex].title;
         tabList.splice(targetIndex, 1);
       }
-
-
       this.setState((state) => {
           this.state.currentTabTitle = newCurrentTabTitle;
           return state;
       })
-
-
-      // Need to make sure the deleted tabs are kept on file somewhere
-      // if (tabList.length > 1
+      // Should keep deleted tabs on file somewhere
 
     }
 
