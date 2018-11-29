@@ -28,12 +28,12 @@ export default class NewTabButton extends React.Component {
     }
 
     /*
-     * Convert 'options' to html elements.  
+     * Convert 'options' to html elements.
      */
     wrapTabOptions(options) {
         return options.map((opt, index) => {
-            return (<div className="tab-option" 
-                            key={index} 
+            return (<div className="tab-option"
+                            key={index}
                             value={opt}
                             onClick={(e) => this.onOptionClick(opt)}
                             >{opt}</div>);
@@ -46,7 +46,7 @@ export default class NewTabButton extends React.Component {
     showOptions(e) {
         e.preventDefault();
         document.addEventListener('click', this.hideOptions, false);
-    
+
         this.setState((state) => {
             state.showOptions = ! state.showOptions;
             return state;
@@ -54,7 +54,7 @@ export default class NewTabButton extends React.Component {
     }
 
     /*
-     * Hide the options when you don't need to see them.  
+     * Hide the options when you don't need to see them.
      */
     hideOptions(e) {
         document.removeEventListener('click', this.hideOptions, false);
@@ -69,7 +69,7 @@ export default class NewTabButton extends React.Component {
     }
 
     /*
-     * Actually create the new tab.  
+     * Actually create the new tab.
      */
     onOptionClick(newTab) {
         //console.log(`adding ${newTab} to task: ${this.taskKey}`)
@@ -77,21 +77,21 @@ export default class NewTabButton extends React.Component {
     }
 
     /*
-     * Should I abstract this into its own DropdownButton component? 
+     * Should I abstract this into its own DropdownButton component?
      */
     render() {
         const wrappedOptions = this.wrapTabOptions(this.options);
-        
+
         return (
-                <div id="new-tab-button-container tab">
+                <div id="new-tab-button-container-tab">
                     <div id="new-tab-button" onClick={this.showOptions}>
                         + Tab
                     </div>
-                    { 
-                        this.state.showOptions ? 
+                    {
+                        this.state.showOptions ?
                         ( <div id="new-tab-button-option-list">
                             {wrappedOptions}
-                        </div> ) : 
+                        </div> ) :
                         (null)
                     }
                 </div>

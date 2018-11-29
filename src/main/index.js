@@ -1,6 +1,5 @@
 'use strict';
-
-import { app, BrowserWindow, electronLocalshortcut } from 'electron';
+import { app, BrowserWindow, globalShortcut } from 'electron';
 import * as path from 'path';
 import { format as formatUrl } from 'url';
 
@@ -43,10 +42,6 @@ function createMainWindow() {
       window.focus();
     });
   });
-//
-//   electronLocalshortcut.register(window, 'CmdOrCtrl+Alt+Super+Right', () => {
-//     console.log("helllo");
-// });
 
   return window;
 }
@@ -69,18 +64,9 @@ app.on('activate', () => {
 // create main BrowserWindow when electron is ready
 app.on('ready', () => {
   mainWindow = createMainWindow();
-  // Register a 'CommandOrControl+X' shortcut listener.
-    // const ret = globalShortcut.register('CommandOrControl+X', () => {
-    //   // console.log('CommandOrControl+X is pressed')
-    // })
-    //
-    // if (!ret) {
-      // console.log('registration failed')
-    // }
-
-    // Check whether a shortcut is registered.
-    // console.log(globalShortcut.isRegistered('CommandOrControl+X'))
-
+    globalShortcut.register('Command+1', () => {
+      console.log('Command+1 is pressed')
+    })
 });
 
 app.on('will-quit', () => {
