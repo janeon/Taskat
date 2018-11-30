@@ -83,6 +83,7 @@ class Model {
      */
     registerFinalState(componentName, finalState, key) {
         // Filter for the task that got changed by matching 'key's.
+        console.log("in registerFinalState");
         this.resources.taskList.forEach((obsTask) => {
             const task = obsTask.getData();
             // if the task matches...
@@ -90,6 +91,7 @@ class Model {
                 // find the tab to update...
                 var foundIt = false;
                 task.tabs.forEach((tab) => {
+                    console.log("HERHEEHRHE");
                     if (tab.title === componentName) {
                         tab.info = finalState;
                         // mark that we found the tab we were looking for
@@ -131,6 +133,7 @@ class Model {
      * pass in all the task data, not just the thing you want to change.
      */
     updateTask(newTaskData) {
+        console.log("updating task!");
         this.resources.updateTask(newTaskData);
         this.resources.refreshTitleKeyList();
     }

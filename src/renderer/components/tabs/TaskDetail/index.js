@@ -4,26 +4,46 @@ import View from './View';
 class TaskDetail extends Component {
     constructor(props) {
         super(props);
-        this.taskState = {
-          name: '',
-          description: 'enter label',
+        this.state = {
+          name: '_name',
+          description: '_description',
           tags: [],
         };
+
+    this.state = props.previousState;
+
+    this.taskKey = props.taskKey;
+
+    this.registerFinalState = props.registerFinalState;
             
+    this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
     }
 
   handleSubmit(currentTask) {
-    currentTask.description = this.taskState.description;
-    currentTask.name = this.taskState.name;
-    currentTask.tags = this.taskState.tags;
+    currentTask.description = this.state.currentTask.taskName;
+    currentTask.name = this.state.name;
+  }
+
+  handleChange(event) {
+    this.setState({name: event.target.name, description: event.target.description});
+  }
+
+  handleDelete(currentTask) {   
+    this.state = null;
+  }
+
+  componentWillUnmount() {
+    // this is where you record your final state to the model
+    this.registerFinalState("taskdetail", this.state, this.taskKey);        // this is commented out because I'm not passing in the register function yet :)
   }
 
   render() {
-        return <View taskName={this.taskState.name}
-        taskDescription={this.taskState.description}
-        taskTage={this.taskState.tags}
-        handleSubmit={this.handleSubmit} />;
+        return <View taskName={this.state.name}
+        taskDescription={this.state.description}
+        handleSubmit={this.handleSubmit} 
+        handleDelete={this.handleDelete}/>;
 
   }
 

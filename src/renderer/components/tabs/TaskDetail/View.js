@@ -1,5 +1,6 @@
 import React from 'react';
 import TaskDetail from "../TaskDetail"
+import './taskDetail.css'
 
 /*
  * Render the TaskDetail component, which allows for editing of a specific task.
@@ -8,11 +9,12 @@ import TaskDetail from "../TaskDetail"
  * final state.
  */
 
-const View = ({name, description,registerFinalState, handleSubmit, value, handleChange, }) => {
+const View = ({name, description, handleSubmit, handleDelete }) => {
 
   return (
     <div id="taskdetail">
       <h1>Edit Task</h1>
+      <input className="deleteButton" type="delete" value="Delete This Task" onClick={handleDelete}/>
      	<form onSubmit={handleSubmit}>
 	  		<label>
 	    		Task Name:

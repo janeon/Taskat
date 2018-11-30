@@ -7,7 +7,8 @@ import TaskDetail from '../../tabs/TaskDetail';
 
 
 const View = props => {
-  // console.log("Props for TabDisplay",props.tabToDisplay); // testing what props look like as passed from tabdisplay
+  console.log("Props for TabDisplay",props.tabToDisplay); // testing what props look like as passed from tabdisplay
+  console.log("Props, pops",props);
   var ret;
   switch (props.tabToDisplay) {
     case "analytics":
@@ -29,7 +30,11 @@ const View = props => {
         taskKey={props.taskKey}/>;
       break;
     default:
-      ret = <TaskDetail/>;
+      ret = <TaskDetail 
+        registerFinalState={props.registerFinalState} 
+        previousState={props.tabInfo} 
+        taskKey={props.taskKey}/>;
+      break;
   }
   return (
     <div className="displayContainer">
