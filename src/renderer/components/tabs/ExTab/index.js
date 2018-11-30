@@ -31,10 +31,10 @@ export default class ExTab extends Component {
         // You have to provide an initial value for 'state' if you are going to use it, it will probably be passed in via 
         // the 'props'.  
         this.state = {
-            data: 0
+            data: 0.0
         }
 
-        this.mytitle = "tomatoes, apples, big difference.";
+        this.mytitle = "Welcome to our task manager! Create a new task to get started. From there, add your data, journal entries, and calendar events as you please! (just don't try and delete right now. That's a task we'll finish later ;)";
 
         // You have to bind functions you are going to pass so that when they get called, they know what 'this' is
         this.onClick = this.onClick.bind(this);

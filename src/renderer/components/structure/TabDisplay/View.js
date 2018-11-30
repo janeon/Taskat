@@ -4,6 +4,7 @@ import Analytics from '../../tabs/Analytics';
 import Calendar from '../../tabs/Calendar';
 import Journal from '../../tabs/Journal';
 import TaskDetail from '../../tabs/TaskDetail';
+import ExTab from '../../tabs/ExTab';
 
 
 const View = props => {
@@ -30,10 +31,7 @@ const View = props => {
         taskKey={props.taskKey}/>;
       break;
     default:
-      ret = <TaskDetail 
-        registerFinalState={props.registerFinalState} 
-        previousState={props.tabInfo} 
-        taskKey={props.taskKey}/>;
+      ret = <ExTab/>;
       break;
   }
   return (

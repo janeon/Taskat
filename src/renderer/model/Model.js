@@ -208,9 +208,8 @@ class Model {
     /*
      * Deletes the selected task, a deleted task cannot be recovered(!)
      */
-    deleteTask() {
-        console.log("DELETE");
-        this.resources.removeTask();
+    deleteTask(key) {
+        this.resources.removeTask(key);
         this.resources.refreshTitleKeyList();
     }
 

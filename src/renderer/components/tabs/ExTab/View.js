@@ -12,7 +12,6 @@ const View = ({title, data, onClick}) => (
     <div>
         <div className="ExTab">{title}</div>
         <div>{data}</div>
-        <button className="exbutton" onClick={onClick}>Click Me!</button>
     </div>
 );
 

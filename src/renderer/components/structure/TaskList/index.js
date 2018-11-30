@@ -56,6 +56,10 @@ class TaskList extends Component {
         });
     }
 
+    onDelete(key){
+      this.model.deleteTask(key);
+    }
+
     render() {
         // converting task objects to task html elements
         const taskTitleElementList = this.state.titleKeyList.map((titleKeyPair) => {

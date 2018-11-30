@@ -1,5 +1,4 @@
 import React from 'react';
-import NewTabButton from './NewTabButton';
 import "./TabList.css";
 
 
