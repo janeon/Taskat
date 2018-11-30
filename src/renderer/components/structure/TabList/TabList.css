@@ -63,14 +63,16 @@
   display: flex;
   max-height: 1em;
   /* margin-left: 1em; */
-  margin-right: 0.75em;
-  margin-top: -1.8em;
-  color: black;
+  margin-right: 1em;
+  margin-top: -2em;
+  /* color: pink; */
   padding: 2px;
   z-index: 400;
+  opacity: 0.1;
 }
 
 .delete:hover {
     background-color: darkgrey;
     color: white;
+    opacity: 1
 }

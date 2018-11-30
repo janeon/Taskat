@@ -20,6 +20,7 @@ class App extends Component {
   componentWillUnmount() {
     window.removeEventListener('beforeunload', this.model.writeAppState);
   }
+  // Create a named function as your event handler
 
   render() {
     return (
@@ -30,5 +31,6 @@ class App extends Component {
   }
 
 }
+
 
 export default App;

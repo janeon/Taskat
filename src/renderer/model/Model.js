@@ -21,7 +21,7 @@ class Model {
             initTaskList = this.pd.read();
 
             // careful...
-            //this.pd.clear();
+            this.pd.clear();
         }
 
         this.resources = new Resources(initTaskList);
@@ -38,7 +38,7 @@ class Model {
     writeAppState() {
         this.pd.write(this.resources.getUnwrappedTaskList());
         // good spot to clear all previous data...
-        //this.pd.clear();
+        // this.pd.clear();
     }
 
     /*

@@ -6,12 +6,10 @@ import './Frame.css';
 
 const View = ({model}) => (
     <div id="frame">
-        <div className="tasklist">
-        <TaskList model={model}></TaskList>
-        </div>
-
-        <TaskDisplay model={model}></TaskDisplay>
+        <TaskList model={model}/>
+        <TaskDisplay model={model}/>
     </div>
+
 );
 
 export default View;

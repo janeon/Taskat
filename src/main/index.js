@@ -1,8 +1,8 @@
 'use strict';
-
-import { app, BrowserWindow } from 'electron';
+import { app, BrowserWindow, Menu, MenuItem, globalShortcut} from 'electron';
 import * as path from 'path';
 import { format as formatUrl } from 'url';
+const menu = new Menu()
 
 const isDevelopment = process.env.NODE_ENV !== 'production';
 
@@ -10,13 +10,11 @@ const isDevelopment = process.env.NODE_ENV !== 'production';
 let mainWindow;
 
 function createMainWindow() {
-  const window = new BrowserWindow({
-    height: 800,
-    width: 1020,
+  const window = new BrowserWindow({ height: 800, width: 1020,
     icon: path.join(__dirname, 'assets/icon/task-kat.png')
   });
 
-  window.setTitle("Task Manager");
+  window.setTitle("Taskat");
 
   if (isDevelopment) {
     window.webContents.openDevTools();
@@ -65,4 +63,16 @@ app.on('activate', () => {
 // create main BrowserWindow when electron is ready
 app.on('ready', () => {
   mainWindow = createMainWindow();
+  // globalShortcut.register('Command+2', () => {
+  //   console.log('Command+2 is pressed')
+  // })
 });
+
+
+app.on('will-quit', () => {
+  // Unregister a shortcut.
+  // globalShortcut.unregister('CommandOrControl+X')
+
+  // Unregister all shortcuts.
+  // globalShortcut.unregisterAll()
+})

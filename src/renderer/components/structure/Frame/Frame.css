@@ -4,11 +4,6 @@
 
     display: flex;
     flex-direction: row;
-
-    border: var(--border);
-}
-
-.tasklist {
-    /*border-right: var(--border);*/
     background-color: var(--navy);
+    border: var(--border);
 }
