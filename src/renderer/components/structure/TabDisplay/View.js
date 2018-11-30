@@ -31,7 +31,7 @@ const View = props => {
         taskKey={props.taskKey}/>;
       break;
     default:
-      ret = <ExTab/>;
+      ret = <TaskDetail model={model}/>;
       break;
   }
   return (

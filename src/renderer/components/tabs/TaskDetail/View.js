@@ -9,7 +9,7 @@ import './taskDetail.css'
  * final state.
  */
 
-const View = ({name, description, handleSubmit, handleDelete }) => {
+const View = ({name, description, handleSubmit, handleDelete, model }) => {
 
   return (
     <div id="taskdetail">
