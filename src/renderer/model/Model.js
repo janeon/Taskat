@@ -1,6 +1,6 @@
 import Resources from './Resources';
 import PersistentData from './PersistentData';
-import { getInitialState } from '../utilities/general_content';
+import { getInitialState, InitialTask } from '../utilities/general_content';
 
 /*
  * This manages connections between components, data, and actions (updates, edits, deletion, etc.).
@@ -211,6 +211,9 @@ class Model {
     deleteTask(key) {
         this.resources.removeTask(key);
         this.resources.refreshTitleKeyList();
+        // the task we were just in is gone, so reset current task to the home task
+        const initTask = new InitialTask();
+        this.resources.currentTask.updateData(initTask);
     }
 
     findMaxKey(titleKeyList) {
