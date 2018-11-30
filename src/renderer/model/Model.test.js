@@ -129,8 +129,13 @@ describe('Model', () => {
 
     it("should reset current task to the InitialTask on deletion", () => {
         const testing = true;
+        const model = new Model(testing, getTestTaskListSmall());
 
+        model.updateCurrentTask(2);
 
+        model.deleteTask(2);
+
+        expect(model.resources.currentTask.getData().key).toEqual(-1);
     });
 
     it("should edit tasks", () => {

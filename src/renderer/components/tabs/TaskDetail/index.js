@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import View from './View';
 
 class TaskDetail extends Component {
+<<<<<<< HEAD
     constructor(props) {
         super(props);
         this.state = {
@@ -10,6 +11,11 @@ class TaskDetail extends Component {
           tags: [],
         };
 
+=======
+  constructor(props) {
+    super(props);
+    
+>>>>>>> task-detail
     this.taskKey = props.taskKey;
 
     this.registerFinalState = props.registerFinalState;
@@ -33,8 +39,7 @@ class TaskDetail extends Component {
   }
 
   componentWillUnmount() {
-    // this is where you record your final state to the model
-    this.registerFinalState("taskdetail", this.state, this.taskKey);        // this is commented out because I'm not passing in the register function yet :)
+     
   }
 
   render() {
@@ -42,7 +47,6 @@ class TaskDetail extends Component {
         taskDescription={this.state.description}
         handleSubmit={this.handleSubmit} 
         handleDelete={this.handleDelete}/>;
-
   }
 
 }
