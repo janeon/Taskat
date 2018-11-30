@@ -10,8 +10,6 @@ class TaskDetail extends Component {
           tags: [],
         };
 
-    this.state = props.previousState;
-
     this.taskKey = props.taskKey;
 
     this.registerFinalState = props.registerFinalState;

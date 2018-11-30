@@ -71,8 +71,8 @@ import { InitialTask } from '../utilities/general_content';
     /*
      * Remove a task (with the matching key)
      */
-    removeTask(keyOfTaskToRemove) {
-        this.taskList = this.taskList.filter(taskObs => taskObs.getData().key !== keyOfTaskToRemove);
+    removeTask() {
+        this.taskList = this.taskList.filter(taskObs => taskObs.getData().key !== this.currentTask.getData().key);
     }
 
     /*

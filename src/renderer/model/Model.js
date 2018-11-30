@@ -83,7 +83,7 @@ class Model {
      */
     registerFinalState(componentName, finalState, key) {
         // Filter for the task that got changed by matching 'key's.
-        console.log("in registerFinalState");
+        //console.log("in registerFinalState");
         this.resources.taskList.forEach((obsTask) => {
             const task = obsTask.getData();
             // if the task matches...
@@ -208,8 +208,9 @@ class Model {
     /*
      * Deletes the selected task, a deleted task cannot be recovered(!)
      */
-    deleteTask(key) {
-        this.resources.removeTask(key);
+    deleteTask() {
+        console.log("DELETE");
+        this.resources.removeTask();
         this.resources.refreshTitleKeyList();
     }
 
