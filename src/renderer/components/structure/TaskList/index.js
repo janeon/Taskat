@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import View from "./View"
-
+import 'font-awesome/css/font-awesome.min.css';
 /*
  * Renders the list of tasks, and also creates the button for adding new tasks.
  */
@@ -17,6 +17,8 @@ class TaskList extends Component {
             // which task was clicked last
             currentTaskKey: null,
         };
+        this.onDeleteTask = this.onDeleteTask.bind(this);
+        this.onClick = this.onClick.bind(this);
     }
 
     /*
@@ -48,6 +50,7 @@ class TaskList extends Component {
      * Update the current task in the model on task element clicks.
      */
     onClick(key) {
+      console.log("onclick key", key);
         this.model.updateCurrentTask(parseInt(key));
         // refresh the task
         this.setState((state) => {
@@ -56,28 +59,49 @@ class TaskList extends Component {
         });
     }
 
-    onDelete(key){
+    onDeleteTask(key) {
+      // this.onClick(parseInt(this.state.currentTaskKey-1));
+      console.log('setting new task');
+      // this.setState((state) => {
+      //     state.currentTaskKey = state.currentTaskKey-1;
+      //     return state;
+      // });
       this.model.deleteTask(key);
+      // console.log("current task key", this.state.currentTaskKey);
     }
 
+
     render() {
+      // console.log("task props", this.props.model);
         // converting task objects to task html elements
         const taskTitleElementList = this.state.titleKeyList.map((titleKeyPair) => {
             const key = titleKeyPair.key;
             var ret;
             if (key === this.state.currentTaskKey) {
-              ret = <div className="currentTask"
-                          onClick={(e) => this.onClick(key)}
-                          key={titleKeyPair.key}>
-                              {titleKeyPair.title}
-                      </div>;
+              ret =
+              <div key={titleKeyPair.key}>
+                <div className="currentTask"
+                            onClick={(e) => this.onClick(key)}
+                            key={titleKeyPair.key}>
+                                {titleKeyPair.title}
+                </div>
+                <div className="taskDelete" onClick={(e) => this.onDeleteTask(key)}>
+                  <i className="fa fa-times"></i>
+                </div>
+              </div>
+              ;
             }
             else {
-              ret = <div className="task"
+              ret = <div key={titleKeyPair.key}>
+                      <div className="task"
                         onClick={(e) => this.onClick(key)}
                         key={titleKeyPair.key}>
                             {titleKeyPair.title}
-                    </div>;
+                        </div>
+                        <div className="taskDelete" onClick={(e) =>this.onDeleteTask(key)}> <i className="fa fa-times"></i>
+                      </div>
+                    </div>
+                    ;
               }
             return ret;
         });

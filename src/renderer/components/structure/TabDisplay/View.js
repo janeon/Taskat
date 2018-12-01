@@ -8,8 +8,8 @@ import ExTab from '../../tabs/ExTab';
 
 
 const View = props => {
-  console.log("Props for TabDisplay",props.tabToDisplay); // testing what props look like as passed from tabdisplay
-  console.log("Props, pops",props);
+  // console.log("Props for TabDisplay",props.tabToDisplay); // testing what props look like as passed from tabdisplay
+  // console.log("Props, pops",props);
   var ret;
   switch (props.tabToDisplay) {
     case "analytics":
@@ -25,9 +25,9 @@ const View = props => {
         taskKey={props.taskKey}/>;
       break;
     case "journal":
-      ret = <Journal 
-        registerFinalState={props.registerFinalState} 
-        previousState={props.tabInfo} 
+      ret = <Journal
+        registerFinalState={props.registerFinalState}
+        previousState={props.tabInfo}
         taskKey={props.taskKey}/>;
       break;
     default:
