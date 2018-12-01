@@ -8,8 +8,6 @@ import ExTab from '../../tabs/ExTab';
 
 
 const View = props => {
-  console.log("Props for TabDisplay",props.tabToDisplay); // testing what props look like as passed from tabdisplay
-  console.log("Props, pops",props);
   var ret;
   switch (props.tabToDisplay) {
     case "analytics":
@@ -31,7 +29,10 @@ const View = props => {
         taskKey={props.taskKey}/>;
       break;
     default:
-      ret = <TaskDetail model={model}/>;
+      ret = <TaskDetail 
+        model={props.model} 
+        taskKey={props.taskKey}
+        currentTask={props.currentTask}/>;
       break;
   }
   return (

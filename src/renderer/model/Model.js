@@ -31,6 +31,7 @@ class Model {
         this.writeAppState = this.writeAppState.bind(this);
         this.createTask = this.createTask.bind(this);
         this.deleteTask = this.deleteTask.bind(this);
+        this.updateTask = this.updateTask.bind(this);
 
         this.addTabToTask = this.addTabToTask.bind(this);
     }

@@ -8,7 +8,7 @@ import NewTaskButton from './NewTaskButton';
 // 'taskElementList' is a list of html elements that represent tasks.
 const View = ({createTask, taskTitleElementList}) => (
     <div id="tasklist-container">
-     <button class="deleteButton" onClick={createTask}> Delete Task </button>
+     <button className="deleteButton" onClick={createTask}> Delete Task </button>
             <div className="task" id="new-task-button-container">
                 <NewTaskButton createTask={createTask}/>
             </div>

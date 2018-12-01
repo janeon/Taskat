@@ -202,6 +202,8 @@ class TaskDisplay extends Component {
                     tabToDisplay={this.state.currentTabTitle}
                     tabInfo={tabInfo}
                     registerFinalState={this.model.registerFinalState}
+                    currentTask={this.state.currentTask}
+                    model={this.model}
 
                     deleteTaskOnClick={this.model.deleteTask}
 

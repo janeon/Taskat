@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import View from './View';
 
 class TaskDetail extends Component {
-<<<<<<< HEAD
+
     constructor(props) {
         super(props);
         this.state = {
@@ -11,21 +11,22 @@ class TaskDetail extends Component {
           tags: [],
         };
 
-=======
-  constructor(props) {
-    super(props);
-    
->>>>>>> task-detail
     this.taskKey = props.taskKey;
 
-    this.registerFinalState = props.registerFinalState;
+    this.currentTask = props.currentTask;
+
+    this.model = props.model;
             
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
     }
 
-  handleSubmit(currentTask) {
+  handleSubmit(event) {
+    event.preventDefault();
+    
+    // make onChange track values in state (event.target.value)
+
     currentTask.description = this.state.currentTask.taskName;
     currentTask.name = this.state.name;
   }
@@ -41,6 +42,20 @@ class TaskDetail extends Component {
   componentWillUnmount() {
      
   }
+
+     /*
+     * A lifecycle method that tracks updates to 'props'
+     * (necessary because constructor is only called once)
+     */
+    componentWillReceiveProps(newProps) {
+      this.taskKey = newProps.taskKey;
+
+      this.currentTask = newProps.currentTask;
+
+      this.model = newProps.model;
+
+      console.log("HEHREOURW", this.taskKey, this.currentTask, this.model);
+    }
 
   render() {
         return <View taskName={this.state.name}
