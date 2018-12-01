@@ -40,10 +40,13 @@ export function getInitialState(tabTitle) {
                     labels: [],
                     datasets: [
                     {
-                        label: 'My data!',
+                        label: false,
                         data: [],
                         fill: false,
-                        lineTension: 0.1
+                        lineTension: 0.1,
+                        backgroundColor: 'rgba(42,56,121,1)',
+                        borderColor: 'rgba(42,56,121,1)',
+
                     }
                     ]
                 }

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import View from './View';
 
 class TaskDetail extends Component {
-
     constructor(props) {
         super(props);
         this.state = {
@@ -35,12 +34,12 @@ class TaskDetail extends Component {
     this.setState({name: event.target.name, description: event.target.description});
   }
 
-  handleDelete(currentTask) {   
+  handleDelete(currentTask) {
     this.state = null;
   }
 
   componentWillUnmount() {
-     
+
   }
 
      /*
@@ -60,7 +59,7 @@ class TaskDetail extends Component {
   render() {
         return <View taskName={this.state.name}
         taskDescription={this.state.description}
-        handleSubmit={this.handleSubmit} 
+        handleSubmit={this.handleSubmit}
         handleDelete={this.handleDelete}/>;
   }
 

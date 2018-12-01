@@ -3,10 +3,10 @@
  */
 import React from 'react';
 import "./TaskList.css";
-import NewTaskButton from './NewTaskButton';
+
 
 // 'taskElementList' is a list of html elements that represent tasks.
-const View = ({createTask, taskTitleElementList}) => (
+const View = ({taskTitleElementList,deleteButton, newTaskButton}) => (
     <div id="tasklist-container">
      <button className="deleteButton" onClick={createTask}> Delete Task </button>
             <div className="task" id="new-task-button-container">

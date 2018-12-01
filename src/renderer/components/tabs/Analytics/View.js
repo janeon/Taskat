@@ -86,17 +86,40 @@ const View = ({
               <Line
                 data={chartData}
                 options = {{
+                  legend: {
+                    display: false,
+                  },
+                  tooltips: {
+                    callbacks: {
+                      label: function(tooltipItem) {
+                        return tooltipItem.yLabel;
+                      }
+                    }
+                  },
                 scales: {
                   yAxes: [{
+                    ticks: {
+                      beginAtZero: true,
+                      fontColor: 'rgba(42,56,121,1)',
+                    },
                     scaleLabel: {
                       display: true,
                       labelString: yLabel,
+                      fontColor: 'rgba(42,56,121,1)',
+                      fontStyle: 'bold',
+                      fontSize: 15,
                     }
                   }],
                   xAxes: [{
+                    ticks: {
+                      fontColor: 'rgba(42,56,121,1)',
+                    },
                     scaleLabel: {
                       display: true,
                       labelString: xLabel,
+                      fontColor: 'rgba(42,56,121,1)',
+                      fontStyle: 'bold',
+                      fontSize: 14,
                     }
                   }],
                 }

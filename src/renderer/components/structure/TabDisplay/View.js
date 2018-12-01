@@ -23,9 +23,9 @@ const View = props => {
         taskKey={props.taskKey}/>;
       break;
     case "journal":
-      ret = <Journal 
-        registerFinalState={props.registerFinalState} 
-        previousState={props.tabInfo} 
+      ret = <Journal
+        registerFinalState={props.registerFinalState}
+        previousState={props.tabInfo}
         taskKey={props.taskKey}/>;
       break;
     default:

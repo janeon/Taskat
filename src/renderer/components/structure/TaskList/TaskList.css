@@ -46,9 +46,9 @@
   font-family: oswald;
 }
 
-#deleteButton {
-  height: 30px;
-  width: 400px;
+.deleteButton {
+  height: auto;
+  width: auto;
   font-size: 15px;
   cursor:pointer;
   background-color:#202060;
@@ -56,6 +56,23 @@
   padding:3px 5px;
   margin:5px;
   border-radius:10px;
-    font-size: 17px;
+  font-size: 17px;
   color:#F9F8F8;
+}
+
+.taskDelete {
+  float: right;
+  display: flex;
+  max-height: 1em;
+  margin-right: 1em;
+  margin-top: -2em;
+  padding: 2px;
+  z-index: 400;
+  opacity: 0.5;
+}
+
+.taskDelete:hover {
+    background-color: darkgrey;
+    color: white;
+    opacity: 1
 }

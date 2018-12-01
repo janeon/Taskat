@@ -92,7 +92,7 @@ class Model {
                 // find the tab to update...
                 var foundIt = false;
                 task.tabs.forEach((tab) => {
-                    console.log("HERHEEHRHE");
+                    // console.log("HERHEEHRHE");
                     if (tab.title === componentName) {
                         tab.info = finalState;
                         // mark that we found the tab we were looking for
@@ -134,7 +134,7 @@ class Model {
      * pass in all the task data, not just the thing you want to change.
      */
     updateTask(newTaskData) {
-        console.log("updating task!");
+        // console.log("updating task!");
         this.resources.updateTask(newTaskData);
         this.resources.refreshTitleKeyList();
     }
