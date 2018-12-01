@@ -120,11 +120,11 @@ class Analytics extends Component {
     const data = this.state.chartData.datasets[0].data;
     const labels = this.state.chartData.labels;
 
-    console.log(parseInt(dataToAdd));
+    console.log(parseFloat(dataToAdd));
     console.log(labelToAdd);
 
     this.setState({
-      data: data.push(parseInt(dataToAdd)),
+      data: data.push(parseFloat(dataToAdd)),
       labels: labels.push(labelToAdd)
     });
     console.log(this.state.chartData.datasets[0].data);
