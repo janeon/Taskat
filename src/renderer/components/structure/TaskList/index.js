@@ -90,7 +90,7 @@ class TaskList extends Component {
 
         const newTaskButton =
         <div className="task" id="new-task-button-container">
-            <NewTaskButton createTask={this.model.createTask}/>
+            <NewTaskButton createTask={this.model.createTask} ref="NewTabButton"/>
         </div>
         ;
 

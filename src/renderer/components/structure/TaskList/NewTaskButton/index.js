@@ -84,6 +84,7 @@ export default class NewTaskButton extends React.Component {
                         id="new-task-input"
                         type="text"
                         autoComplete="false"
+                        ref="NewTabButtonInput"
                         placeholder={this.hint}
                         value={this.state.value}
                         onChange={(e) => this.handleChange(e)}/>

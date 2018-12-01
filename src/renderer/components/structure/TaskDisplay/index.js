@@ -42,7 +42,7 @@ class TaskDisplay extends Component {
     componentDidMount() {
         // subscribe to the "current_task"
         this.model.subscribeTo(this, "current_task");
-        document.addEventListener("keydown", this.handleKeyDown, false);
+        document.addEventListener("keydown", this.handleKeyDown, false); // for keyboard shortcuts
         document.addEventListener("keyup", this.handleKeyUp, false);
     }
 
