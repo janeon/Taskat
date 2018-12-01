@@ -46,9 +46,9 @@
   font-family: oswald;
 }
 
-#deleteButton {
-  height: 30px;
-  width: 400px;
+.deleteButton {
+  height: auto;
+  width: auto;
   font-size: 15px;
   cursor:pointer;
   background-color:#202060;

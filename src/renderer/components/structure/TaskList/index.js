@@ -99,7 +99,7 @@ class TaskList extends Component {
             return ret;
         });
 
-        const deleteButton = <button class="deleteButton" onClick={(e)=>this.onDeleteTask(this.state.currentTaskKey)}> Delete Task </button>;
+        const deleteButton = <button className="deleteButton" onClick={(e)=>this.onDeleteTask(this.state.currentTaskKey)}> Delete Task </button>;
         // for deleting current tasks
         return <View
         createTask={this.model.createTask}
