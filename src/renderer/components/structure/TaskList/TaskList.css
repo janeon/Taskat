@@ -64,10 +64,8 @@
   float: right;
   display: flex;
   max-height: 1em;
-  /* margin-left: 1em; */
   margin-right: 1em;
   margin-top: -2em;
-  /* color: pink; */
   padding: 2px;
   z-index: 400;
   opacity: 0.5;

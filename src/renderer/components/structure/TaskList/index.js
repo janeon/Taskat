@@ -50,7 +50,7 @@ class TaskList extends Component {
      * Update the current task in the model on task element clicks.
      */
     onClick(key) {
-      console.log("onclick key", key);
+      // console.log("onclick key", key);
         this.model.updateCurrentTask(parseInt(key));
         // refresh the task
         this.setState((state) => {
@@ -60,14 +60,7 @@ class TaskList extends Component {
     }
 
     onDeleteTask(key) {
-      // this.onClick(parseInt(this.state.currentTaskKey-1));
-      console.log('setting new task');
-      // this.setState((state) => {
-      //     state.currentTaskKey = state.currentTaskKey-1;
-      //     return state;
-      // });
       this.model.deleteTask(key);
-      // console.log("current task key", this.state.currentTaskKey);
     }
 
 
@@ -106,7 +99,13 @@ class TaskList extends Component {
             return ret;
         });
 
-        return <View createTask={this.model.createTask} taskTitleElementList={taskTitleElementList}/>;
+        const deleteButton = <button class="deleteButton" onClick={(e)=>this.onDeleteTask(this.state.currentTaskKey)}> Delete Task </button>;
+        // for deleting current tasks
+        return <View
+        createTask={this.model.createTask}
+        taskTitleElementList={taskTitleElementList}
+        deleteButton={deleteButton}
+        />;
     }
 }
 
