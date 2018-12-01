@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import View from "./View"
 import 'font-awesome/css/font-awesome.min.css';
+import NewTaskButton from './NewTaskButton';
 /*
  * Renders the list of tasks, and also creates the button for adding new tasks.
  */
@@ -60,22 +61,21 @@ class TaskList extends Component {
     }
 
     onDeleteTask(key) {
-      this.model.deleteTask(key);
+      const sure = window.confirm("Are you sure you want to delete this task?");
+      if (sure) this.model.deleteTask(key);
     }
-
 
     render() {
       // console.log("task props", this.props.model);
         // converting task objects to task html elements
         const taskTitleElementList = this.state.titleKeyList.map((titleKeyPair) => {
             const key = titleKeyPair.key;
-            var ret;
-            if (key === this.state.currentTaskKey) {
-              ret =
-              <div key={titleKeyPair.key}>
-                <div className="currentTask"
+            var ret =
+              <div key={key}>
+                <div
+                className={(this.state.currentTaskKey === key) ? "currentTask" : "task"}
                             onClick={(e) => this.onClick(key)}
-                            key={titleKeyPair.key}>
+                            key={key}>
                                 {titleKeyPair.title}
                 </div>
                 <div className="taskDelete" onClick={(e) => this.onDeleteTask(key)}>
@@ -83,28 +83,21 @@ class TaskList extends Component {
                 </div>
               </div>
               ;
-            }
-            else {
-              ret = <div key={titleKeyPair.key}>
-                      <div className="task"
-                        onClick={(e) => this.onClick(key)}
-                        key={titleKeyPair.key}>
-                            {titleKeyPair.title}
-                        </div>
-                        <div className="taskDelete" onClick={(e) =>this.onDeleteTask(key)}> <i className="fa fa-times"></i>
-                      </div>
-                    </div>
-                    ;
-              }
             return ret;
         });
-
         const deleteButton = <button className="deleteButton" onClick={(e)=>this.onDeleteTask(this.state.currentTaskKey)}> Delete Task </button>;
         // for deleting current tasks
+
+        const newTaskButton =
+        <div className="task" id="new-task-button-container">
+            <NewTaskButton createTask={this.model.createTask}/>
+        </div>
+        ;
+
         return <View
-        createTask={this.model.createTask}
         taskTitleElementList={taskTitleElementList}
         deleteButton={deleteButton}
+        newTaskButton={newTaskButton}
         />;
     }
 }
