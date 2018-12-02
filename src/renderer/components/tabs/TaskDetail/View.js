@@ -13,9 +13,8 @@ const View = ({name, description, handleSubmit, handleDelete, model }) => {
 
   return (
     <div id="taskdetail">
-      <h1>Edit Task</h1>
+      <h1>Edit</h1>
       <input className="deleteButton" type="delete" value="Delete This Task" onClick={handleDelete}/>
-     	<form onSubmit={handleSubmit}>
 	  		<label>
 	    		Task Name:
 	    		<input type="text" value={name} />
@@ -25,7 +24,6 @@ const View = ({name, description, handleSubmit, handleDelete, model }) => {
 	    		<input type="text" value={description} />
 	  		</label>
 	  		<input className="button" type="submit" value="Submit" />
-		</form>
     </div>)}
 
 export default View;
