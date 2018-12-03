@@ -3,22 +3,23 @@ import View from './View';
 
 class TaskDetail extends Component {
     constructor(props) {
-        super(props);
-        this.state = {
-          name: '_name',
-          description: '_description',
-          tags: [],
+      super(props);
+
+      this.taskKey = props.taskKey;
+
+      this.currentTask = props.currentTask;
+
+      this.model = props.model;
+
+      this.state = {
+          name: this.currentTask.title,
+          description: this.currentTask.description,
         };
-
-    this.taskKey = props.taskKey;
-
-    this.currentTask = props.currentTask;
-
-    this.model = props.model;
-            
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleDelete = this.handleDelete.bind(this);
+              
+      this.handleNameChange = this.handleNameChange.bind(this);
+      this.handleDescChange = this.handleDescChange.bind(this);
+      this.handleSubmit = this.handleSubmit.bind(this);
+      this.handleDelete = this.handleDelete.bind(this);
     }
 
   handleSubmit(event) {
@@ -26,41 +27,57 @@ class TaskDetail extends Component {
     
     // make onChange track values in state (event.target.value)
 
-    currentTask.description = this.state.currentTask.taskName;
-    currentTask.name = this.state.name;
+    const name = this.state.name;
+    const desc = this.state.description;
+    this.currentTask.title = name;
+    this.currentTask.description = desc;
+    console.log("TODAAS", this.currentTask.title);
+    console.log("BEGDS", this.currentTask.description);
+    this.model.updateTask(this.currentTask);
   }
 
-  handleChange(event) {
-    this.setState({name: event.target.name, description: event.target.description});
+  handleNameChange(event) {
+    console.log("NAME HAS CHANGED");
+    this.setState({name: event.target.value});
+    
+  }
+
+  handleDescChange(event) {
+    this.setState({description: event.target.value});
+   console.log("DESC HAS CHANGED");
   }
 
   handleDelete(currentTask) {
-    this.state = null;
+    this.model.deleteTask(this.taskKey);
   }
 
-  componentWillUnmount() {
+   /*
+    * A lifecycle method that tracks updates to 'props'
+    * (necessary because constructor is only called once)
+    */
+  componentWillReceiveProps(newProps) {
+    this.taskKey = newProps.taskKey;
 
-  }
+    this.currentTask = newProps.currentTask;
 
-     /*
-     * A lifecycle method that tracks updates to 'props'
-     * (necessary because constructor is only called once)
-     */
-    componentWillReceiveProps(newProps) {
-      this.taskKey = newProps.taskKey;
+    this.model = newProps.model;
 
-      this.currentTask = newProps.currentTask;
+    this.state = {
+          name: this.currentTask.title,
+          description: this.currentTask.description,
+          tags: [],
+        };
 
-      this.model = newProps.model;
-
-      console.log("HEHREOURW", this.taskKey, this.currentTask, this.model);
+    console.log("HEHREOURW", this.taskKey, this.currentTask, this.model);
     }
 
   render() {
-        return <View taskName={this.state.name}
-        taskDescription={this.state.description}
+        return <View name={this.state.name}
+        description={this.state.description}
         handleSubmit={this.handleSubmit}
-        handleDelete={this.handleDelete}/>;
+        handleDelete={this.handleDelete}
+        handleDescChange={this.handleDescChange}
+        handleNameChange={this.handleNameChange}/>;
   }
 
 }
