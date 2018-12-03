@@ -31,20 +31,16 @@ class TaskDetail extends Component {
     const desc = this.state.description;
     this.currentTask.title = name;
     this.currentTask.description = desc;
-    console.log("TODAAS", this.currentTask.title);
-    console.log("BEGDS", this.currentTask.description);
     this.model.updateTask(this.currentTask);
   }
 
   handleNameChange(event) {
-    console.log("NAME HAS CHANGED");
     this.setState({name: event.target.value});
     
   }
 
   handleDescChange(event) {
     this.setState({description: event.target.value});
-   console.log("DESC HAS CHANGED");
   }
 
   handleDelete(currentTask) {
@@ -67,8 +63,6 @@ class TaskDetail extends Component {
           description: this.currentTask.description,
           tags: [],
         };
-
-    console.log("HEHREOURW", this.taskKey, this.currentTask, this.model);
     }
 
   render() {

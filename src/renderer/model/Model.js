@@ -194,7 +194,7 @@ class Model {
             const maxKey = this.findMaxKey(this.resources.titleKeyList.getData());
 
             // However we decide to init tasks
-            const temp = {title: title, key: maxKey + 1, tabs: [{title: "menu", info: []}]};
+            const temp = {title: title, description: "How does one describe something so beautiful as a task?", key: maxKey + 1, tabs: [{title: "edit", info: []}]};
 
             // add the task
             this.resources.addTask(temp);
