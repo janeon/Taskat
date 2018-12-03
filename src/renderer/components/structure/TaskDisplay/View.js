@@ -11,7 +11,10 @@ import './TaskDisplay.css';
  */
 const View = (
     {tabList, displayNewTabButton, addTabToTask, onSwitchTab,
-      tabToDisplay, tabInfo, registerFinalState, taskKey, deleteTaskOnClick, currentTaskTabList, onDeleteTab}
+      tabToDisplay, tabInfo, registerFinalState, currentTask,
+      model, taskKey, deleteTaskOnClick, currentTaskTabList, 
+      onDeleteTab,
+    }
   ) => {
       return (
         <div id="task-display">
@@ -29,7 +32,9 @@ const View = (
             tabInfo={tabInfo}
             registerFinalState={registerFinalState}
             taskKey={taskKey}
-            deleteTaskOnClick={deleteTaskOnClick}/>
+            deleteTaskOnClick={deleteTaskOnClick}
+            model={model}
+            currentTask={currentTask}/>
         </div>)}
 
 export default View;

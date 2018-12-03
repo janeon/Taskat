@@ -8,7 +8,11 @@
  */
 export class InitialTask {
     constructor() {
-        this.title = "initialTask";
+        this.title = "Welcome!";
+        this.description = "You havent made any tasks yet!. Here's how to use our app. on the upper left corner, type " + 
+        "into the 'new task' field to create a task. The first view you'll then see is the name of your task and a default " +
+        "description. You can change the name and description of the task in this view. To add analytics, journal entries, " +
+        "and/or calendar events to that specific task, use the +Tab button. Have fun, and stay on task!";
         this.tabs = [ {title: "welcome tab", info: {welcomeMessage: "Welcome, select a task, or create a new one :) "}}];
         this.tabsToDisplay= this.tabs;
         this.key = -1;
@@ -40,10 +44,13 @@ export function getInitialState(tabTitle) {
                     labels: [],
                     datasets: [
                     {
-                        label: 'My data!',
+                        label: false,
                         data: [],
                         fill: false,
-                        lineTension: 0.1
+                        lineTension: 0.1,
+                        backgroundColor: 'rgba(42,56,121,1)',
+                        borderColor: 'rgba(42,56,121,1)',
+
                     }
                     ]
                 }

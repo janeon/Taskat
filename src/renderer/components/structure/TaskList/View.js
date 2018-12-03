@@ -8,7 +8,6 @@ import "./TaskList.css";
 // 'taskElementList' is a list of html elements that represent tasks.
 const View = ({taskTitleElementList,deleteButton, newTaskButton}) => (
     <div id="tasklist-container">
-            {deleteButton}
             {newTaskButton}
             <div id="task-list">
                 {taskTitleElementList}

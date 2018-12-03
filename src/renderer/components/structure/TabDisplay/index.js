@@ -12,7 +12,9 @@ class TabDisplay extends Component {
           // this is being passed the registerFinalState function, it just isn't passing it yet.
           taskKey:props.taskKey,
           //THIS IS NOT USUALLY PASSED TO A TASK!!
-          deleteTaskOnClick : props.deleteTaskOnClick
+          deleteTaskOnClick : props.deleteTaskOnClick,
+          currentTask : props.currentTask,
+          model : props.model
         };
     }
 
@@ -24,6 +26,8 @@ class TabDisplay extends Component {
         this.state.tabToDisplay = newProps.tabToDisplay;
         this.state.registerFinalState = newProps.registerFinalState;
         this.state.taskKey = newProps.taskKey;
+        this.state.model = newProps.model;
+        this.state.currentTask = newProps.currentTask;
     }
 
       render() {
@@ -32,6 +36,8 @@ class TabDisplay extends Component {
             tabToDisplay={this.state.tabToDisplay}
             tabInfo={this.state.tabInfo}
             taskKey={this.state.taskKey}
+            currentTask={this.state.currentTask}
+            model={this.state.model}
             />;
       }
 }
