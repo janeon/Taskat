@@ -161,9 +161,9 @@ class Model {
             default:
                 throw new Error(`I don't know how to init the ${tabTitle} tab... `);
         }
-
         task.tabs.push(newTab);
         this.resources.updateTask(task);
+        console.log("post push tablist", this.resources);
     }
 
     /*

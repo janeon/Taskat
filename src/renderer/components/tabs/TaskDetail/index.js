@@ -15,7 +15,7 @@ class TaskDetail extends Component {
           name: this.currentTask.title,
           description: this.currentTask.description,
         };
-              
+
       this.handleNameChange = this.handleNameChange.bind(this);
       this.handleDescChange = this.handleDescChange.bind(this);
       this.handleSubmit = this.handleSubmit.bind(this);
@@ -24,7 +24,7 @@ class TaskDetail extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    
+
     // make onChange track values in state (event.target.value)
 
     const name = this.state.name;
@@ -36,7 +36,7 @@ class TaskDetail extends Component {
 
   handleNameChange(event) {
     this.setState({name: event.target.value});
-    
+
   }
 
   handleDescChange(event) {
@@ -57,12 +57,11 @@ class TaskDetail extends Component {
     this.currentTask = newProps.currentTask;
 
     this.model = newProps.model;
-
-    this.state = {
+    this.setState({
           name: this.currentTask.title,
           description: this.currentTask.description,
           tags: [],
-        };
+        });
     }
 
   render() {

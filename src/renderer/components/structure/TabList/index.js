@@ -7,14 +7,18 @@ import { ALL_TABS } from "../../../utilities/constants";
  * This component renders the list of tabs for the 'current_task'.
  */
 class TabList extends Component {
-
+/*
+Goals:
+- save last tab
+-
+-
+*/
     constructor(props) {
         super(props);
         this.tabList = props.tabList;
         this.onSwitchTab = props.onSwitchTab;
         this.tabToDisplay = props.tabToDisplay;
         this.onDeleteTab = props.onDeleteTab;
-
         // this.onTabClick = props.onTabClick;
         this.displayNewTabButton = props.displayNewTabButton;
         this.addTabToTask = props.addTabToTask;
@@ -51,29 +55,16 @@ class TabList extends Component {
 
         // convert list of tabs to html elements
         var tabElementList = this.tabList.map((title, index) => {
-          var ret;
-            if (this.tabList.indexOf(this.tabToDisplay) === index) {
-                ret =
+          var ret =
                       <div key={index}>
-                        <div className="currentTab" onClick={(e) => this.onSwitchTab(title)}>{title}</div>
+                        <div className={(this.tabList.indexOf(this.tabToDisplay) === index) ? "currentTab" : "tab"} onClick={(e) => this.onSwitchTab(title)}>{title}</div>
                           <div className="delete" onClick={(event) => this.onDeleteTab(title)}>
                             <i className="fa fa-times"></i>
                           </div>
                       </div>
-            }
-            else {
-                  ret =
-                  <div key={index}>
-                    <div className="tab" onClick={(e) => this.onSwitchTab(title)}>{title}</div>
-                      <div className="delete" onClick={(event) => this.onDeleteTab(title)}>
-                        <i className="fa fa-times"></i>
-                  </div>
-                  </div>
-        }
+            ;
         return ret;
       });
-
-
         return <View tabElementList={tabElementList}
                     newTabButtonTabs={newTabButtonTabs}
                     displayNewTabButton={this.displayNewTabButton}

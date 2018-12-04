@@ -14,10 +14,10 @@ const View = ({test, name, description, handleSubmit, handleDelete, handleNameCh
   return (
     <div id="taskdetail">
       <h1>{name}</h1>
-      <input className="deleteButton" type="delete" value="Delete This Task" onClick={handleDelete}/>
+      <input className="deleteButton" type="delete" value="Delete This Task" onClick={handleDelete} readOnly/>
      	<form onSubmit={handleSubmit} >
 	    		Task Name: <br/>
-	    		<textarea id="nameArea" value={name} onChange={handleNameChange}/> <br/> 
+	    		<textarea id="nameArea" value={name} onChange={handleNameChange}/> <br/>
 	    		Task Description: <br/>
 	    		<textarea id="descArea" value={description} onChange={handleDescChange}/>
 	  		<input className="button" type="submit" value="Save" />
