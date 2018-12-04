@@ -36,7 +36,7 @@ const View = props => {
       break;
   }
   return (
-    <div className="displayContainer">
+    <div className="displayContainer" id="displayContainer">
         {ret}
         </div>
 )

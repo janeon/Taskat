@@ -6,7 +6,6 @@ import NewTaskButton from './NewTaskButton';
  * Renders the list of tasks, and also creates the button for adding new tasks.
  */
 class TaskList extends Component {
-
     constructor(props) {
         super(props);
 
@@ -65,6 +64,18 @@ class TaskList extends Component {
       if (sure) this.model.deleteTask(key);
     }
 
+    makeFierce() {
+        var tabContainer = document.getElementById("tab-list-container");
+        var displayContainer = document.getElementById("displayContainer");
+        if (!tabContainer.classList.contains("rawr")) {
+            tabContainer.classList.add("rawr");
+            displayContainer.classList.add("hiss");
+        } else {
+            tabContainer.classList.remove("rawr");
+            displayContainer.classList.remove("hiss");
+        }
+    }
+
     render() {
       // console.log("task props", this.props.model);
         // converting task objects to task html elements
@@ -98,6 +109,7 @@ class TaskList extends Component {
         taskTitleElementList={taskTitleElementList}
         deleteButton={deleteButton}
         newTaskButton={newTaskButton}
+        makeFierce={this.makeFierce}
         />;
     }
 }

@@ -6,8 +6,9 @@ import "./TaskList.css";
 
 
 // 'taskElementList' is a list of html elements that represent tasks.
-const View = ({taskTitleElementList,deleteButton, newTaskButton}) => (
+const View = ({taskTitleElementList,deleteButton, newTaskButton, makeFierce}) => (
     <div id="tasklist-container">
+    		<div id="fierceButton" onClick={makeFierce}>FIERCE FELINE MODE</div>
             {newTaskButton}
             <div id="task-list">
                 {taskTitleElementList}
