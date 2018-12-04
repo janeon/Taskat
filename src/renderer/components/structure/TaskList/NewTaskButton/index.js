@@ -5,9 +5,9 @@ export default class NewTaskButton extends React.Component {
 
     constructor(props) {
         super(props);
-        this.createTask = props.createTask;
-
+        this.createTask = props.model.createTask;
         this.state = this.initialState();
+        this.model = props.model;
         // what to show when nothing has been enetered.
         this.hint = "+ new task";
     }
@@ -32,7 +32,7 @@ export default class NewTaskButton extends React.Component {
     }
 
     /*
-     * Try and create a task, if succesful, refresh the button's state,
+     * Try and create a task, if successful, refresh the button's state,
      * otherwise show an alert and don't do anything.
      */
     handleSubmit(e) {
@@ -48,10 +48,12 @@ export default class NewTaskButton extends React.Component {
             const taskCreated = this.createTask(newTitle);
 
             if (taskCreated) {
+                // console.log("task created: ", parseInt(this.resources.taskList.length-1));
                 // reset state...
                 this.setState((state) => {
                     return this.initialState();
                 });
+                // this.updateCurrentTask(parseInt(this.resources.taskList.length-2))
             } else {
                 alert(NO_DUPLICATE_TASK_TITLES);
             }

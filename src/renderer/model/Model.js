@@ -32,7 +32,6 @@ class Model {
         this.createTask = this.createTask.bind(this);
         this.deleteTask = this.deleteTask.bind(this);
         this.updateTask = this.updateTask.bind(this);
-
         this.addTabToTask = this.addTabToTask.bind(this);
     }
 
@@ -115,12 +114,15 @@ class Model {
      * currentTask's value to be that of the task with the 'key' passed in to it.
      */
     updateCurrentTask(key) {
+        // console.log("updating current task with key", key);
         // this should never be size greater than 1...
         const newCurrentTask = this.resources.taskList.filter(taskObs =>
             taskObs.getData().key === key)[0];
-
+        // console.log("retrieved new current task", newCurrentTask.getData());
+        const data = newCurrentTask.getData();
         if (newCurrentTask !== null) {
-            this.resources.currentTask.updateData(newCurrentTask.getData());
+            this.resources.currentTask.updateData(data);
+            // console.log("finishes update");
         } else {
             // this shouldn't ever happen...
             throw Error("model.updateCurrentTask() was called with a null task...");
@@ -201,7 +203,8 @@ class Model {
 
             // update the taskkey list
             this.resources.refreshTitleKeyList();
-
+            // console.log("here's total number of tasks", this.resources.taskList.length);
+            this.updateCurrentTask(this.resources.taskList.length);
             return true
         }
     }

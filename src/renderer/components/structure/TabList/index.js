@@ -51,7 +51,7 @@ Goals:
 
     addTabToTaskandSwitch(key, tabTitle) {
       this.addTabToTask(key, tabTitle);
-      console.log("adding and swtiching", this.currentTabTitle);
+      // console.log("adding and swtiching", this.currentTabTitle); // gives last opened tab, which we should store somewhere...
       this.onSwitchTab(tabTitle)
     }
 
