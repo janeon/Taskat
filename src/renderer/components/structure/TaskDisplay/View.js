@@ -12,8 +12,8 @@ import './TaskDisplay.css';
 const View = (
     {tabList, displayNewTabButton, addTabToTask, onSwitchTab,
       tabToDisplay, tabInfo, registerFinalState, currentTask,
-      model, taskKey, deleteTaskOnClick, currentTaskTabList, 
-      onDeleteTab,
+      model, taskKey, deleteTaskOnClick, currentTaskTabList,
+      onDeleteTab,currentTabTitle
     }
   ) => {
       return (
@@ -26,7 +26,9 @@ const View = (
             onDeleteTab={onDeleteTab}
             displayNewTabButton={displayNewTabButton}
             taskKey={taskKey}
-            addTabToTask={addTabToTask}/>
+            addTabToTask={addTabToTask}
+            currentTabTitle={currentTabTitle}
+            />
           <TabDisplay
             tabToDisplay={tabToDisplay}
             tabInfo={tabInfo}

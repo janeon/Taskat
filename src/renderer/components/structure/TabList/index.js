@@ -23,6 +23,8 @@ Goals:
         this.displayNewTabButton = props.displayNewTabButton;
         this.addTabToTask = props.addTabToTask;
         this.taskKey = props.taskKey;
+        this.currentTabTitle = props.currentTabTitle
+        this.addTabToTaskandSwitch = this.addTabToTaskandSwitch.bind(this);
     }
 
     /*
@@ -35,6 +37,7 @@ Goals:
         this.tabToDisplay = newProps.tabToDisplay;
         this.onDeleteTab = newProps.onDeleteTab;
         this.displayNewTabButton = newProps.displayNewTabButton;
+        this.currentTabTitle = newProps.currentTabTitle;
         // don't need to refresh addTabToTask method...
         this.taskKey = newProps.taskKey;
     }
@@ -46,6 +49,11 @@ Goals:
         return ALL_TABS.filter(tab => ! listOfTabs.includes(tab));
     }
 
+    addTabToTaskandSwitch(key, tabTitle) {
+      this.addTabToTask(key, tabTitle);
+      console.log("adding and swtiching", this.currentTabTitle);
+      this.onSwitchTab(tabTitle)
+    }
 
     render() {
         const newTabButtonTabs = this.parseTabOptions(this.tabList);
@@ -68,7 +76,7 @@ Goals:
         return <View tabElementList={tabElementList}
                     newTabButtonTabs={newTabButtonTabs}
                     displayNewTabButton={this.displayNewTabButton}
-                    addTabToTask={this.addTabToTask}
+                    addTabToTask={this.addTabToTaskandSwitch}
                     taskKey={this.taskKey}/>;
     }
 

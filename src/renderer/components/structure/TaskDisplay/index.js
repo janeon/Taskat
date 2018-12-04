@@ -197,6 +197,7 @@ class TaskDisplay extends Component {
                     displayNewTabButton={displayNewTabButton}
                     // TabList is going to wrap this onSwitchTab with the appropriate args.
                     onSwitchTab={this.onSwitchTab}
+                    currentTabTitle={this.state.currentTabTitle}
 
                     // TabDisplay
                     tabToDisplay={this.state.currentTabTitle}

@@ -1,8 +1,8 @@
 import ObservableData from './ObservableData';
 import { InitialTask } from '../utilities/general_content';
 /*
- * This is where the data is parsed and stored throughout its life.  It only ever returns 
- * copies of what it is holding, not actual references to their values.    
+ * This is where the data is parsed and stored throughout its life.  It only ever returns
+ * copies of what it is holding, not actual references to their values.
  */
  export default class Resources {
      // Initializing the things we will want to track
@@ -17,11 +17,10 @@ import { InitialTask } from '../utilities/general_content';
         });
         this.titleKeyList = new ObservableData();
         this.currentTask = new ObservableData();
-
         this.currentTask.updateData(new InitialTask());
         this.titleKeyList.updateData(this.parseTasksToTitles());
-
         this.parseTasksToTitles = this.parseTasksToTitles.bind(this);
+        console.log("new task created!", this.currentTask);
     }
 
     /*
@@ -31,7 +30,7 @@ import { InitialTask } from '../utilities/general_content';
         return (
             this.taskList.map((obsTask) => {
                 const task = obsTask.getData()
-                return { 
+                return {
                         title: task.title,
                         key: task.key,
                 }
@@ -40,19 +39,19 @@ import { InitialTask } from '../utilities/general_content';
     }
 
     /*
-     * Make sure that the titlekeyList is still accurate (in case we change 
+     * Make sure that the titlekeyList is still accurate (in case we change
      * the title of a task for instance)
      */
     refreshTitleKeyList() {
         const currentStateOfList = this.parseTasksToTitles();
         if (currentStateOfList !== this.titleKeyList.getData()) {
             this.titleKeyList.updateData(currentStateOfList);
-        } 
+        }
         // it they are the same, then nothing needs to happen :)
     }
 
     /*
-     * Return all data for the task with the given key, 
+     * Return all data for the task with the given key,
      * or null if that task doesn't exist.
      */
     getTask(key) {

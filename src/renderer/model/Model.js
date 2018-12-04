@@ -163,7 +163,7 @@ class Model {
         }
         task.tabs.push(newTab);
         this.resources.updateTask(task);
-        console.log("post push tablist", this.resources);
+        // console.log("post push tablist", this.resources);
     }
 
     /*

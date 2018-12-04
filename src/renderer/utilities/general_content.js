@@ -15,6 +15,7 @@ export class InitialTask {
         "and/or calendar events to that specific task, use the +Tab button. Have fun, and stay on task!";
         this.tabs = [ {title: "welcome tab", info: {welcomeMessage: "Welcome, select a task, or create a new one :) "}}];
         this.tabsToDisplay= this.tabs;
+        this.lastTab = this.tabs[0];
         this.key = -1;
     }
 }
