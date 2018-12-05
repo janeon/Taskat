@@ -119,9 +119,9 @@ class Model {
         const newCurrentTask = this.resources.taskList.filter(taskObs =>
             taskObs.getData().key === key)[0];
         // console.log("retrieved new current task", newCurrentTask.getData());
-        const data = newCurrentTask.getData();
+        // const data = newCurrentTask.getData();
         if (newCurrentTask !== null) {
-            this.resources.currentTask.updateData(data);
+            this.resources.currentTask.updateData(newCurrentTask.getData());
             // console.log("finishes update");
         } else {
             // this shouldn't ever happen...
@@ -204,7 +204,7 @@ class Model {
             // update the taskkey list
             this.resources.refreshTitleKeyList();
             // console.log("here's total number of tasks", this.resources.taskList.length);
-            this.updateCurrentTask(this.resources.taskList.length);
+            // this.updateCurrentTask(this.resources.taskList.length);
             return true
         }
     }
