@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import View from './View';
+import { emojisplosion, emojisplosions } from "emojisplosion";
 
 class TaskDetail extends Component {
     constructor(props) {
@@ -44,7 +45,12 @@ class TaskDetail extends Component {
   }
 
   handleDelete(currentTask) {
-    this.model.deleteTask(this.taskKey);
+    const sure = window.confirm("Congratulations! Would you like to delete this task now?");
+    if (sure) {
+      this.model.deleteTask(this.taskKey)
+    }
+    const { cancel } = emojisplosions();
+    setTimeout(cancel, 2000);
   }
 
    /*

@@ -12,7 +12,9 @@
     ]
   },
   "build": {
-    "files": ["src/assets/icon/icon.png"],
+    "files": [
+      "src/assets/icon/icon.png"
+    ],
     "icon": "src/assets/icon/icon.png"
   },
   "jest": {
@@ -62,6 +64,7 @@
     "electron-builder": "^20.34.0",
     "electron-localshortcut": "^3.1.0",
     "electron-webpack": "^2.4.0",
+    "emojisplosion": "^1.1.2",
     "enzyme": "^3.7.0",
     "enzyme-adapter-react-16": "^1.7.0",
     "globalize": "^1.4.0",
