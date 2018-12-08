@@ -137,6 +137,7 @@ class Model {
      */
     updateTask(newTaskData) {
         // console.log("updating task!");
+        //FIX NAMING COLLISIONS (@svouse)
         this.resources.updateTask(newTaskData);
         this.resources.refreshTitleKeyList();
     }

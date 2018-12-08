@@ -13,6 +13,32 @@
   flex-direction: column;
   max-height: 660px;
 }
+
+#fierceButton {
+  background-image: url("swag/tiger_fur.jpg");
+  height: 30px;
+  width: auto;
+  cursor:pointer;
+  display:inline-block;
+  padding:3px 5px;
+  margin:5px;
+  border-radius:10px;
+  font-size: 15px;
+  font-weight: bold;
+  text-align: center;
+  vertical-align: middle;
+  color:#ffcc00;
+}
+
+.rawr {
+  background: url("swag/tiger_fur.jpg") !important;
+}
+
+.hiss {
+  background: url("swag/leopard_fur.jpg") !important;
+  color:#ffff99 !important;
+}
+
 .task {
   background: var(--navy);
   color: white;
