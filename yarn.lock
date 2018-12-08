@@ -8512,9 +8512,9 @@ sax@^1.2.4, sax@~1.2.1, sax@~1.2.4:
   integrity sha512-NqVDv9TpANUjFm0N8uM5GxL36UgKi9/atZw+x7YFnQ8ckwFGKrl4xX4yWtrey3UJm5nP1kUbnYgLopqWNSRhWw==
 
 scheduler@^16.6.2:
-  version "0.11.1"
-  resolved "https://registry.yarnpkg.com/scheduler/-/scheduler-0.11.1.tgz#a8560daf305bd3d17bd33f1e8278a7dab4aefc56"
-  integrity sha512-edDHoBW3XWrplgUSgMOGP16DXPLwN/MdGpCNkKS+4X7mDpLLp5j2Otwtv26+nHn1Sbq1aeSeEzUmGcV9dog0kA==
+  version "0.11.3"
+  resolved "https://registry.yarnpkg.com/scheduler/-/scheduler-0.11.3.tgz#b5769b90cf8b1464f3f3cfcafe8e3cd7555a2d6b"
+  integrity sha512-i9X9VRRVZDd3xZw10NY5Z2cVMbdYg6gqFecfj79USv1CFN+YrJ3gIPRKf1qlY+Sxly4djoKdfx1T+m9dnRB8kQ==
   dependencies:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
