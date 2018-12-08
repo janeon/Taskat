@@ -274,7 +274,7 @@ class Calendar extends Component {
           else gap = gap[1];
           // console.log("the gap", (gap));
           if (gap > 10) {
-            // window.alert("Please try a smaller interval of time between each of your events "+String.fromCharCode(1F92A));
+            window.alert("Please try a smaller interval of time between each of your events "+String.fromCodePoint("U+1F601"));
             return;
           }
         }

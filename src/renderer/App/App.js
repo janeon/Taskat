@@ -54,7 +54,7 @@ class App extends Component {
         // console.log("mapped key", pressed);
         map[e.keyCode] = true;
 
-        if (map[67]) // new task
+        // if (map[67]) // new task
           //this.refs.Frame.refs.TaskList.refs.NewTabButton.refs.NewTabButtonInput.focus();
         if ((map[93]) && (map[8])) { // delete task shortcut
           // console.log("current task key", this.model.resources.currentTask.data.key);
