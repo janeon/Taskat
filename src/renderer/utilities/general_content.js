@@ -38,8 +38,8 @@ export function getInitialState(tabTitle) {
                 type: 'Line',
                 xLabel: 'x-axis',
                 yLabel: 'y-axis',
-                date: null,
-                dataValue: 0,
+                dataXvalue: '',
+                dataYvalue: 0,
                 labelValue: 'enter label',
                 chartData : {
                     labels: [],

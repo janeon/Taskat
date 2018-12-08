@@ -7,8 +7,8 @@ import './Analytics.css'
 
 const View = ({
                 xLabel, yLabel, chartType,
-                type, dataValue, labelValue,
-                chartData, handleDataChange,
+                type, dataXvalue, dataYvalue, labelValue,
+                chartData, handleXDataChange, handleYDataChange,
                 handleDelete, handleSubmit,
                 handleXLabelChange, handleYLabelChange,
                 isNewTab, handleDisplayChange,
@@ -129,8 +129,12 @@ const View = ({
 
                 <form onSubmit={handleSubmit}>
                   <label>
-                    Data for today:
-                    <input type="number" value={dataValue} onChange={handleDataChange} />
+                    Enter y data:
+                    <input type="number" value={dataYvalue} onChange={handleYDataChange} />
+                  </label><br />
+                  <label>
+                    Enter x data label:
+                    <input type="text" value={dataXvalue} onChange={handleXDataChange} />
                   </label>
                   <button className="button" onClick={handleSubmit}>submit</button>
 

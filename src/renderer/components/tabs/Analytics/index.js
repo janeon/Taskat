@@ -5,11 +5,11 @@ class Analytics extends Component {
   constructor(props) {
     super(props);
 
-    var today = new Date();
-    var date = (today.getMonth() + 1) + '/' + today.getDate();
+    /*var today = new Date();
+    var date = (today.getMonth() + 1) + '/' + today.getDate();*/
 
     this.state = props.previousState;
-    this.state.date = date;
+    //this.state.date = date;
 
     /*
     this.state = {
@@ -39,7 +39,8 @@ class Analytics extends Component {
     this.registerFinalState = props.registerFinalState;
     this.taskKey = props.taskKey;
 
-    this.handleDataChange = this.handleDataChange.bind(this);
+    this.handleXDataChange = this.handleXDataChange.bind(this);
+    this.handleYDataChange = this.handleYDataChange.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleXLabelChange = this.handleXLabelChange.bind(this);
@@ -55,8 +56,13 @@ class Analytics extends Component {
     this.registerFinalState("analytics", this.state, this.taskKey);
   }
 
-  handleDataChange(event) {
-    this.setState({dataValue: event.target.value});
+  handleYDataChange(event) {
+    this.setState({dataYvalue: event.target.value});
+    console.log("handling data change: " + event.target.value);
+  }
+
+  handleXDataChange(event) {
+    this.setState({dataXvalue: event.target.value});
     console.log("handling data change: " + event.target.value);
   }
 
@@ -115,8 +121,8 @@ class Analytics extends Component {
 
   handleSubmit(event) {
     event.persist();
-    const dataToAdd = this.state.dataValue;
-    const labelToAdd = this.state.date;
+    const dataToAdd = this.state.dataYvalue;
+    const labelToAdd = this.state.dataXvalue;
     const data = this.state.chartData.datasets[0].data;
     const labels = this.state.chartData.labels;
 
@@ -134,11 +140,13 @@ class Analytics extends Component {
 
   render() {
     return <View type={this.state.type}
-    dataValue={this.state.dataValue}
+    dataXvalue={this.state.dataXvalue}
+    dataYvalue={this.state.dataYvalue}
     labelValue={this.state.labelValue}
     chartData={this.state.chartData}
     handleSubmit={this.handleSubmit}
-    handleDataChange={this.handleDataChange}
+    handleXDataChange={this.handleXDataChange}
+    handleYDataChange={this.handleYDataChange}
     xLabel={this.state.xLabel}
     yLabel={this.state.yLabel}
     handleXLabelChange={this.handleXLabelChange}
