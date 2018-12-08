@@ -14,7 +14,7 @@ const View = ({test, name, description, handleSubmit, handleDelete, handleNameCh
   return (
     <div id="taskdetail">
       <h1>{name}</h1>
-     	<form onSubmit={handleSubmit} >
+     	<form onSubmit={handleSubmit}>
 	    		Task Name: <br/>
 	    		<textarea id="nameArea" value={name} onChange={handleNameChange}/> <br/>
 	    		Task Description: <br/>

@@ -63,12 +63,17 @@ Goals:
 
         // convert list of tabs to html elements
         var tabElementList = this.tabList.map((title, index) => {
+          var theDelete = null;
+          if (!['edit','welcome tab'].includes(this.tabList[index])) {
+            theDelete = <div className="delete" onClick={(event) => this.onDeleteTab(title)}>
+              <i className="fa fa-times"></i>
+            </div>;
+          }
+          // console.log(this.tabList[index]);
           var ret =
                       <div key={index}>
                         <div className={(this.tabList.indexOf(this.tabToDisplay) === index) ? "currentTab" : "tab"} onClick={(e) => this.onSwitchTab(title)}>{title}</div>
-                          <div className="delete" onClick={(event) => this.onDeleteTab(title)}>
-                            <i className="fa fa-times"></i>
-                          </div>
+                          {theDelete}
                       </div>
             ;
         return ret;

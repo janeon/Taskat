@@ -46,9 +46,7 @@ class TaskDetail extends Component {
 
   handleDelete(currentTask) {
     const sure = window.confirm("Congratulations! Would you like to delete this task now?");
-    if (sure) {
-      this.model.deleteTask(this.taskKey)
-    }
+    (sure) ? this.model.deleteTask(this.taskKey) : null;
     const { cancel } = emojisplosions();
     setTimeout(cancel, 2000);
   }

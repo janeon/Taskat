@@ -34,16 +34,16 @@ class TaskDisplay extends Component {
         // console.log("What's the current task like?", this.state.tabListToDisplay);
         this.onSwitchTab = this.onSwitchTab.bind(this);
         this.onDeleteTab = this.onDeleteTab.bind(this);
-        this.handleKeyDown = this.handleKeyDown.bind(this);
-        this.handleKeyUp = this.handleKeyUp.bind(this);
+        // this.handleKeyDown = this.handleKeyDown.bind(this);
+        // this.handleKeyUp = this.handleKeyUp.bind(this);
         this.toggleTab = this.toggleTab.bind(this);
     }
 
     componentDidMount() {
         // subscribe to the "current_task"
         this.model.subscribeTo(this, "current_task");
-        document.addEventListener("keydown", this.handleKeyDown, false); // for keyboard shortcuts
-        document.addEventListener("keyup", this.handleKeyUp, false);
+        // document.addEventListener("keydown", this.handleKeyDown, false); // for keyboard shortcuts
+        // document.addEventListener("keyup", this.handleKeyUp, false);
     }
 
     componentWillUnmount() {
@@ -146,7 +146,7 @@ class TaskDisplay extends Component {
       if (!sure) {
         newCurrentTabTitle = this.state.currentTabTitle;
       }
-      else if (tabTitle === "menu") {
+      else if (tabTitle === "edit") {
         newCurrentTabTitle = tabTitle;
       }
       else { // if we are displaying the first tab and list is greater than 1 tab, remove first and display second tab

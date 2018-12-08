@@ -53,8 +53,8 @@ class App extends Component {
     if (e.keyCode in map) {
         // console.log("mapped key", pressed);
         map[e.keyCode] = true;
-        if (map[67]) // new task
-          this.refs.Frame.refs.TaskList.refs.NewTabButton.refs.NewTabButtonInput.focus();
+        // if (map[67]) // new task
+        //   this.refs.Frame.refs.TaskList.refs.NewTabButton.refs.NewTabButtonInput.focus();
         if ((map[93]) && (map[8])) { // delete task shortcut
           // console.log("current task key", this.model.resources.currentTask.data.key);
           const sure = window.confirm("Are you sure you want to delete this task?");
@@ -63,7 +63,6 @@ class App extends Component {
           map[8] = false;
           if (sure) this.model.deleteTask(this.model.resources.currentTask.data.key);
         }
-
       }
     }
 
