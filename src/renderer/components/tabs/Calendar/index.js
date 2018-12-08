@@ -272,7 +272,11 @@ class Calendar extends Component {
           "How many " + frequency + "s in between each repeat?", "", "0");
           if (gap.length < 2) return;
           else gap = gap[1];
-          // console.log("what gap is:", gap);
+          // console.log("the gap", (gap));
+          if (gap > 10) {
+            window.alert("Please try a smaller interval of time between each of your events "+String.fromCharCode(1F92A));
+            return;
+          }
         }
 
         if (gap === 1) {

@@ -34,16 +34,16 @@ class TaskDisplay extends Component {
         // console.log("What's the current task like?", this.state.tabListToDisplay);
         this.onSwitchTab = this.onSwitchTab.bind(this);
         this.onDeleteTab = this.onDeleteTab.bind(this);
-        // this.handleKeyDown = this.handleKeyDown.bind(this);
-        // this.handleKeyUp = this.handleKeyUp.bind(this);
+        this.handleKeyDown = this.handleKeyDown.bind(this);
+        this.handleKeyUp = this.handleKeyUp.bind(this);
         this.toggleTab = this.toggleTab.bind(this);
     }
 
     componentDidMount() {
         // subscribe to the "current_task"
         this.model.subscribeTo(this, "current_task");
-        // document.addEventListener("keydown", this.handleKeyDown, false); // for keyboard shortcuts
-        // document.addEventListener("keyup", this.handleKeyUp, false);
+        document.addEventListener("keydown", this.handleKeyDown, false); // for keyboard shortcuts
+        document.addEventListener("keyup", this.handleKeyUp, false);
     }
 
     componentWillUnmount() {
