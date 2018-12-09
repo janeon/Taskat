@@ -114,11 +114,11 @@ class Model {
      * currentTask's value to be that of the task with the 'key' passed in to it.
      */
     updateCurrentTask(key) {
-        // console.log("updating current task with key", key);
+        console.log("updating current task with key", key);
         // this should never be size greater than 1...
         const newCurrentTask = this.resources.taskList.filter(taskObs =>
             taskObs.getData().key === key)[0];
-        // console.log("retrieved new current task", newCurrentTask.getData());
+        console.log("retrieved new current task", newCurrentTask.getData());
         // const data = newCurrentTask.getData();
         if (newCurrentTask !== null) {
             this.resources.currentTask.updateData(newCurrentTask.getData());

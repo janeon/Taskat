@@ -50,8 +50,14 @@ class TaskList extends Component {
     newTask(key) {
       var list = this.model.resources.taskList;
       if (this.model.createTask(key)) {
-        const targetIndex = list.findIndex(task => task.data.title === key);
-        this.onClick(parseInt(targetIndex+1));
+        var targetIndex = 0;
+        // const targetIndex = list.findIndex(task => task.data.title === key);
+        for (var i = 0; i < list.length; i++) {
+          if (list[i].data.title === key)
+            targetIndex = list[i].data.key;
+        }
+        console.log("target",targetIndex);
+        this.onClick(parseInt(targetIndex));
         return true;
       }
       else return false;
@@ -61,7 +67,7 @@ class TaskList extends Component {
      * Update the current task in the model on task element clicks.
      */
     onClick(key) {
-      // console.log("onclick key", key);
+      console.log("onclick key", key);
       // console.log("all tasks", this.model);
         this.model.updateCurrentTask(parseInt(key));
         // refresh the task
