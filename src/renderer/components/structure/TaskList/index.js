@@ -51,7 +51,7 @@ class TaskList extends Component {
       var list = this.model.resources.taskList;
       if (this.model.createTask(key)) {
         const targetIndex = list.findIndex(task => task.data.title === key);
-        this.onClick(parseInt(targetIndex));
+        this.onClick(parseInt(targetIndex+1));
         return true;
       }
       else return false;
