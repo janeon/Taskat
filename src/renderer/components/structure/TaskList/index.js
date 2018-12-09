@@ -19,6 +19,7 @@ class TaskList extends Component {
         };
         this.onDeleteTask = this.onDeleteTask.bind(this);
         this.onClick = this.onClick.bind(this);
+        this.newTask = this.newTask.bind(this)
     }
 
     /*
@@ -46,11 +47,22 @@ class TaskList extends Component {
         });
     }
 
+    newTask(key) {
+      var list = this.model.resources.taskList;
+      if (this.model.createTask(key)) {
+        const targetIndex = list.findIndex(task => task.data.title === key);
+        this.onClick(parseInt(targetIndex));
+        return true;
+      }
+      else return false;
+    }
+
     /*
      * Update the current task in the model on task element clicks.
      */
     onClick(key) {
       // console.log("onclick key", key);
+      // console.log("all tasks", this.model);
         this.model.updateCurrentTask(parseInt(key));
         // refresh the task
         this.setState((state) => {
@@ -96,14 +108,14 @@ class TaskList extends Component {
               ;
             return ret;
         });
+
         const deleteButton = <button className="deleteButton" onClick={(e)=>this.onDeleteTask(this.state.currentTaskKey)}> Delete Task </button>;
         // for deleting current tasks
 
         const newTaskButton =
         <div className="task" id="new-task-button-container">
             <NewTaskButton
-            createTask={this.model.createTask}
-            model={this.model}
+            createTask={this.newTask}
             ref="NewTabButton"/>
         </div>
         ;

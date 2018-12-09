@@ -69,7 +69,6 @@ Goals:
               <i className="fa fa-times"></i>
             </div>;
           }
-          // console.log(this.tabList[index]);
           var ret =
                       <div key={index}>
                         <div className={(this.tabList.indexOf(this.tabToDisplay) === index) ? "currentTab" : "tab"} onClick={(e) => this.onSwitchTab(title)}>{title}</div>

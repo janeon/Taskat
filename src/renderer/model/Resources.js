@@ -20,7 +20,7 @@ import { InitialTask } from '../utilities/general_content';
         this.currentTask.updateData(new InitialTask());
         this.titleKeyList.updateData(this.parseTasksToTitles());
         this.parseTasksToTitles = this.parseTasksToTitles.bind(this);
-        console.log("new task created!", this.currentTask);
+        // console.log("new task created!", this.currentTask);
     }
 
     /*

@@ -5,9 +5,8 @@ export default class NewTaskButton extends React.Component {
 
     constructor(props) {
         super(props);
-        this.createTask = props.model.createTask;
+        this.createTask = props.createTask;
         this.state = this.initialState();
-        this.model = props.model;
         // what to show when nothing has been enetered.
         this.hint = "+ new task";
     }
