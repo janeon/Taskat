@@ -1,6 +1,6 @@
 import React from 'react';
 import { NO_EMPTY_TASK_TITLES, NO_DUPLICATE_TASK_TITLES} from '../../../../utilities/constants';
-
+import ReactTooltip from 'react-tooltip'
 export default class NewTaskButton extends React.Component {
 
     constructor(props) {
@@ -80,7 +80,8 @@ export default class NewTaskButton extends React.Component {
     render() {
         return (
             <div id="new-task-button">
-                <form onSubmit={(e) => this.handleSubmit(e)}>
+                <form onSubmit={(e) => this.handleSubmit(e)}
+                      data-tip="Type name & enter to start a new task">
                     <input
                         id="new-task-input"
                         type="text"
@@ -90,6 +91,8 @@ export default class NewTaskButton extends React.Component {
                         value={this.state.value}
                         onChange={(e) => this.handleChange(e)}/>
                 </form>
+                <ReactTooltip />
+
             </div>
         );
     }

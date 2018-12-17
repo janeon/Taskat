@@ -72,6 +72,7 @@
     "jest-canvas-mock": "^1.1.0",
     "react-sweet-progress": "^1.1.2",
     "react-test-renderer": "^16.6.2",
+    "react-tooltip": "^3.9.0",
     "smalltalk": "^3.2.2",
     "try-to-catch": "^1.1.1",
     "typeface-oswald": "^0.0.54",

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import View from "./View";
 import 'font-awesome/css/font-awesome.min.css';
 import { ALL_TABS } from "../../../utilities/constants";
+import ReactTooltip from 'react-tooltip'
 
 /*
  * This component renders the list of tabs for the 'current_task'.
@@ -70,10 +71,18 @@ Goals:
             </div>;
           }
           var ret =
-                      <div key={index}>
-                        <div className={(this.tabList.indexOf(this.tabToDisplay) === index) ? "currentTab" : "tab"} onClick={(e) => this.onSwitchTab(title)}>{title}</div>
+
+                      <div><div key={index}>
+                        <div className={(this.tabList.indexOf(this.tabToDisplay) === index) ? "currentTab" : "tab"}
+                             onClick={(e) => this.onSwitchTab(title)}
+                             data-tip="To toggle tabs: use (⌘ + ⌥ + ←/→) or (⌘ + 1-4)">
+                             {title}
+                        </div>
+                        <ReactTooltip />
                           {theDelete}
+                          </div>
                       </div>
+
             ;
         return ret;
       });

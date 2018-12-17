@@ -1,6 +1,7 @@
 import React from 'react';
 import View from './View';
 import './NewTabButton.css';
+import ReactTooltip from 'react-tooltip'
 
 export default class NewTabButton extends React.Component {
 
@@ -77,10 +78,12 @@ export default class NewTabButton extends React.Component {
         const wrappedOptions = this.wrapTabOptions(this.options);
 
         return (
-                <div id="new-tab-button-container-tab">
+                <div id="new-tab-button-container-tab" data-tip="Click to add new tabs!">
                     <div id="new-tab-button" onClick={this.showOptions}>
                         + Tab
                     </div>
+                    <ReactTooltip />
+
                     {
                         this.state.showOptions ?
                         ( <div id="new-tab-button-option-list">

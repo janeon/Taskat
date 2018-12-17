@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import View from "./View"
 import 'font-awesome/css/font-awesome.min.css';
 import NewTaskButton from './NewTaskButton';
+import ReactTooltip from 'react-tooltip'
 /*
  * Renders the list of tasks, and also creates the button for adding new tasks.
  */
@@ -67,7 +68,7 @@ class TaskList extends Component {
      * Update the current task in the model on task element clicks.
      */
     onClick(key) {
-      console.log("onclick key", key);
+      // console.log("onclick key", key);
       // console.log("all tasks", this.model);
         this.model.updateCurrentTask(parseInt(key));
         // refresh the task
@@ -107,9 +108,10 @@ class TaskList extends Component {
                             key={key}>
                                 {titleKeyPair.title}
                 </div>
-                <div className="taskDelete" onClick={(e) => this.onDeleteTask(key)}>
+                <div className="taskDelete" onClick={(e) => this.onDeleteTask(key)} data-tip="To delete the current task: use (⌘ + ⌫)">
                   <i className="fa fa-times"></i>
                 </div>
+                <ReactTooltip />
               </div>
               ;
             return ret;
