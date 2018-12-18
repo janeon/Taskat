@@ -83,7 +83,6 @@ export default class NewTabButton extends React.Component {
                         + Tab
                     </div>
                     <ReactTooltip />
-
                     {
                         this.state.showOptions ?
                         ( <div id="new-tab-button-option-list">

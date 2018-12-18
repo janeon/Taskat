@@ -4,6 +4,7 @@ import React, {
 import View from './View';
 import BigCalendar from 'react-big-calendar';
 import moment from 'moment'
+import ReactTooltip from 'react-tooltip'
 import withDragAndDrop from 'react-big-calendar/lib/addons/dragAndDrop'
 import 'react-big-calendar/lib/addons/dragAndDrop/styles.less'
 const smalltalk = require('smalltalk');
@@ -34,7 +35,7 @@ class Calendar extends Component {
   constructor(props) {
     super(props);
     this.state = props.previousState;
-    // this.state.events = events;
+    this.model= props.model;
     this.registerFinalState = props.registerFinalState;
     this.taskKey = props.taskKey;
     this.handleSelectSlot = this.handleSelectSlot.bind(this);
@@ -52,12 +53,14 @@ class Calendar extends Component {
 
   Event({ event }) {
       return (
-          <span>
+          <div><span data-tip="hold and drag inside an event to move it around or on its endpoints to change duration">
         <strong>
         {event.title}
         </strong>
               { event.desc && (':  ' + event.desc)}
       </span>
+      <ReactTooltip />
+      </div>
       )
   }
 
@@ -339,10 +342,12 @@ class Calendar extends Component {
   }
 
   render() {
+    // console.log("title", this.model.resources.currentTask.data.title);
     return ( <
       View handleSelectSlot = {
         this.handleSelectSlot
       }
+      currentTaskTitle = {this.model.resources.currentTask.data.title}
       handleSelectToDelete = {
         this.handleSelectToDelete
       }

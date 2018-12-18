@@ -79,7 +79,7 @@ Goals:
                              {title}
                         </div>
                         <ReactTooltip />
-                          {theDelete}
+                          <div data-tip="To delete the current tab: use ⌥ + ⌫">{theDelete}</div>
                           </div>
                       </div>
 

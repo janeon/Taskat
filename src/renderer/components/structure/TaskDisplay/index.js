@@ -7,6 +7,8 @@ var map = {49: false, // 1
            51: false, // 3
            52: false, // 4
            17: false, // left ctrl
+           18: false, // option
+           8: false, // backspace
            91: false, // left command
            93: false, // right command
            37: false, // left arrow
@@ -117,9 +119,11 @@ class TaskDisplay extends Component {
               // console.log('fourth tab');
               this.onSwitchTab(this.state.currentTask.tabs[3].title);
           }
-          if ((map[93] && map[87]) || (map[91] && map[87])){
-              console.log('delete current tab');
+          if ((map[18] && map[8])){
+              // console.log('delete current tab', this.state.currentTabTitle);
+              this.onDeleteTab(this.state.currentTabTitle);
               // this.onSwitchTab(this.state.currentTask.tabs[3].title);
+
           }
         }
       }

@@ -6,6 +6,7 @@ import './Calendar.css'
 import 'react-big-calendar/lib/addons/dragAndDrop/styles.less'
 import moment from 'moment'
 const DragAndDropCalendar = withDragAndDrop(BigCalendar)
+import ReactTooltip from 'react-tooltip'
 
 /* The current version of big calendar implemented here is the most basic, the package also allows:
 - event creation
@@ -21,10 +22,15 @@ let allViews = Object.keys(BigCalendar.Views).map(k => BigCalendar.Views[k])
 const View = props => {
   var event = props.Event;
   var eventAgenda = props.EventAgenda;
+  var title = props.currentTaskTitle;
   var today = new Date();
   // console.log("this is the list of events", props.events);
   return (
     /*<div className="displayContainer">*/
+      <div>
+      <h2 data-tip="drag across calendar to make an event">
+      Welcome to the calendar for <u>{title.toString()}</u>
+      <ReactTooltip /></h2>
       <div className="rbc-calendar">
       <DragAndDropCalendar
       selectable
@@ -71,6 +77,7 @@ const View = props => {
               }}
               />
               */}
+              </div>
               </div>
     /*</div>*/
 )}

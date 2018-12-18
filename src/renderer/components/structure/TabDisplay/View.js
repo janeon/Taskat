@@ -5,7 +5,7 @@ import Calendar from '../../tabs/Calendar';
 import Journal from '../../tabs/Journal';
 import TaskDetail from '../../tabs/TaskDetail';
 import ExTab from '../../tabs/ExTab';
-
+// import ReactTooltip from 'react-tooltip'
 
 const View = props => {
   var ret;
@@ -17,10 +17,12 @@ const View = props => {
         taskKey={props.taskKey}/>;
       break;
     case "calendar":
-      ret = <Calendar
+      ret = <div ><Calendar
+        model={props.model}
         registerFinalState={props.registerFinalState}
         previousState={props.tabInfo}
-        taskKey={props.taskKey}/>;
+        taskKey={props.taskKey}/></div>
+        ;
       break;
     case "journal":
       ret = <Journal
@@ -29,15 +31,16 @@ const View = props => {
         taskKey={props.taskKey}/>;
       break;
     default:
-      ret = <TaskDetail 
-        model={props.model} 
+      ret = <div> <TaskDetail
+        model={props.model}
         taskKey={props.taskKey}
-        currentTask={props.currentTask}/>;
+        currentTask={props.currentTask}/> </div>;
       break;
   }
   return (
-    <div className="displayContainer" id="displayContainer">
+        <div className="displayContainer" id="displayContainer" >
         {ret}
+
         </div>
 )
 }
