@@ -75,7 +75,9 @@ Goals:
                       <div><div key={index}>
                         <div className={(this.tabList.indexOf(this.tabToDisplay) === index) ? "currentTab" : "tab"}
                              onClick={(e) => this.onSwitchTab(title)}
-                             data-tip="To toggle tabs: use (⌘ + ⌥ + ←/→) or (⌘ + 1-4)">
+                             data-tip= {(this.currentTabTitle !== 'welcome tab') ?
+                               "To toggle tabs: use (⌘ + ⌥ + ←/→) or (⌘ + 1-4)" :
+                               "Welcome! Start the app by starting a new task from the top right"}>
                              {title}
                         </div>
                         <ReactTooltip />

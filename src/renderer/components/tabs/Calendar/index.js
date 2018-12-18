@@ -14,16 +14,14 @@ const tryToCatch = require('try-to-catch');
 
 const localizer = BigCalendar.momentLocalizer(moment)
 
-var events = [
-    {
-      end: new Date('November 11, 2018 20:00:00'),
-      start: new Date('November 11, 2018 06:00:00'),
-      title: 'Happy 11/11',
-      desc: 'Big conference for important people'
-    }
-];
-
-
+// var events = [
+//     {
+//       end: new Date('November 11, 2018 20:00:00'),
+//       start: new Date('November 11, 2018 06:00:00'),
+//       title: 'Happy 11/11',
+//       desc: 'Big conference for important people'
+//     }
+// ];
 
 class Calendar extends Component {
   /*
@@ -53,14 +51,14 @@ class Calendar extends Component {
 
   Event({ event }) {
       return (
-          <div><span data-tip="hold and drag inside an event to move it around or on its endpoints to change duration">
+      <div><div data-tip="hold and drag inside an event to move it around or on its endpoints to change duration"><span>
         <strong>
         {event.title}
         </strong>
               { event.desc && (':  ' + event.desc)}
       </span>
-      <ReactTooltip />
       </div>
+      <ReactTooltip /></div>
       )
   }
 
@@ -277,7 +275,7 @@ class Calendar extends Component {
           else gap = gap[1];
           // console.log("the gap", (gap));
           if (gap > 10) {
-            window.alert("Please try a smaller interval of time between each of your events "+String.fromCodePoint("U+1F601"));
+            window.alert("Please try a smaller interval of time between each of your events ");
             return;
           }
         }
@@ -288,6 +286,10 @@ class Calendar extends Component {
             "For how many " + frequency + "s?","", "10");
           if (result.length < 2) return;
           else timesRepeating = result[1].toString();
+          if (timesRepeating > 100) {
+            window.alert("Please try a smaller number of repeats");
+            return;
+          }
         }
 
         else {
